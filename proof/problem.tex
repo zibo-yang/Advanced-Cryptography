@@ -1,0 +1,94 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb,amsthm,xcolor}
+\usepackage[utf8]{inputenc}
+\input{_macros}
+
+\newtheorem{conjecture}{Conjecture}
+
+\title{Stabilizing quantities $\rho_p$ for boundary control of PDE}
+\author{Amaury Hayat}
+\date{February 09, 2026}
+
+\begin{document}
+\maketitle
+
+\section*{Context}
+
+This is a question originally raised by Jean-Michel Coron in 2016.
+When studying the stability of nonlinear PDE of the form
+\begin{equation}
+  \partial_t u + A(u)\,\partial_x u + B(u) = 0, \quad \text{on } [0, L],
+\end{equation}
+where $u \in \mathbb{R}^n$ and with boundary conditions of the form
+\begin{equation}
+  \begin{pmatrix} u_+(t,0) \\ u_-(t,L) \end{pmatrix}
+  = G \begin{pmatrix} u_+(t,L) \\ u_-(t,0) \end{pmatrix},
+\end{equation}
+a natural quantity that appears is the following function
+\begin{equation}
+  \rho_p : M \mapsto \inf\bigl\{\|\Delta M \Delta^{-1}\|_p \;\big|\;
+    \Delta = \mathrm{diag}(\delta_1,\ldots,\delta_n),\; \delta_i > 0,\;
+    \forall\, i \in \{1,\ldots,n\}\bigr\},
+\end{equation}
+where $\|\cdot\|_p$ is the matrix $p$-norm.
+
+\section*{Conjectures}
+
+\begin{conjecture}
+For any $M \in \mathbb{R}^{n\times n}$ one has
+\[
+  \rho_2(M) \leq \rho_3(M) \leq \cdots \leq \rho_\infty(M).
+\]
+\end{conjecture}
+
+A weaker version is:
+
+\begin{conjecture}
+For any $M \in \mathbb{R}^{n\times n}$ one has
+\[
+  \rho_2(M) \leq \rho_k(M), \quad \forall\, k \in \mathbb{N}\setminus\{0\}.
+\]
+\end{conjecture}
+
+\begin{conjecture}
+For any $n > 6$ and any $p > 2$ ($n, p \in \mathbb{N}$), there exists $M \in \mathbb{R}^{n\times n}$ such that
+\begin{equation}
+  \rho_p(M) < \rho_{p+1}(M).
+\end{equation}
+\end{conjecture}
+
+\section*{What is already known}
+
+The main previous works are in \cite{coron2008,coron2015}. In particular it is known that
+for any $n \in \mathbb{N}$ and any $M \in \mathbb{R}^{n\times n}$,
+\[
+  \rho_1(M) \geq \rho_2(M), \quad \rho_1(M) = \rho_\infty(M),
+\]
+and for $n \geq 2$ there exists $M \in \mathbb{R}^{n\times n}$ such that
+\[
+  \rho_1(M) > \rho_2(M).
+\]
+It is also known \cite{rump2003} that if $M$ has only non-negative coefficients then
+\[
+  \rho_k(M) = \rho_1(M), \quad \forall\, k \in [1,+\infty].
+\]
+
+\begin{thebibliography}{9}
+\bibitem{coron2015}
+Jean-Michel Coron and Hoai-Minh Nguyen.
+Dissipative boundary conditions for nonlinear 1-D hyperbolic systems:
+sharp conditions through an approach via time-delay systems.
+\textit{SIAM J. Math. Anal.}, 47(3):2220--2240, 2015.
+
+\bibitem{coron2008}
+Jean-Michel Coron, Georges Bastin, and Brigitte d'Andr\'ea-Novel.
+Dissipative boundary conditions for one-dimensional nonlinear hyperbolic systems.
+\textit{SIAM Journal on Control and Optimization}, 47(3):1460--1498, 2008.
+
+\bibitem{rump2003}
+Siegfried M.\ Rump.
+Optimal scaling for $p$-norms and componentwise distance to singularity.
+\textit{IMA Journal of Numerical Analysis}, 23(1):1--9, 2003.
+\end{thebibliography}
+
+\end{document}
