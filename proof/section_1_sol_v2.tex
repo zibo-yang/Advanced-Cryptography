@@ -1,0 +1,180 @@
+Here is an improved proof with the two justification gaps made explicit.
+
+\[
+\textbf{Claim: }\sqrt{11}\text{ is irrational.}
+\]
+
+We first record two elementary facts needed in the proof.
+
+**Fact 1: Lowest-terms representation.**  
+If \(x\in \mathbb{Q}\), then there exist integers \(a,b\) with \(b\neq 0\) and \(\gcd(a,b)=1\) such that
+
+\[
+x=\frac{a}{b}.
+\]
+
+Indeed, since \(x\in \mathbb{Q}\), there exist integers \(m,n\) with \(n\neq 0\) such that
+
+\[
+x=\frac{m}{n}.
+\]
+
+Let \(d=\gcd(m,n)\). Then \(d>0\), and \(d\mid m\), \(d\mid n\). Hence there exist integers \(a,b\) such that
+
+\[
+m=da,\qquad n=db.
+\]
+
+Since \(n\neq 0\), we have \(b\neq 0\). Also,
+
+\[
+x=\frac{m}{n}=\frac{da}{db}=\frac{a}{b}.
+\]
+
+Now suppose \(e\) is a positive common divisor of \(a\) and \(b\). Then \(e\mid a\) and \(e\mid b\), so \(de\mid da=m\) and \(de\mid db=n\). Thus \(de\) is a positive common divisor of \(m\) and \(n\). Since \(d=\gcd(m,n)\) is the greatest positive common divisor, we must have
+
+\[
+de\le d.
+\]
+
+Because \(d>0\), this implies \(e\le 1\). Since \(e\) is positive, \(e=1\). Therefore \(\gcd(a,b)=1\).
+
+---
+
+**Fact 2: If \(11\mid n^2\), then \(11\mid n\).**
+
+Let \(n\in \mathbb{Z}\). By the division algorithm, there is some residue
+
+\[
+r\in \{0,1,2,3,4,5,6,7,8,9,10\}
+\]
+
+such that
+
+\[
+n\equiv r \pmod{11}.
+\]
+
+Congruence is compatible with squaring: since \(n\equiv r\pmod{11}\), we have \(11\mid n-r\). Therefore
+
+\[
+n^2-r^2=(n-r)(n+r)
+\]
+
+is also divisible by \(11\). Hence
+
+\[
+n^2\equiv r^2 \pmod{11}.
+\]
+
+Now compute the squares of the possible residues modulo \(11\):
+
+\[
+\begin{array}{c|ccccccccccc}
+r & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+\hline
+r^2 \bmod 11 & 0 & 1 & 4 & 9 & 5 & 3 & 3 & 5 & 9 & 4 & 1
+\end{array}
+\]
+
+The only residue \(r\) in this list satisfying
+
+\[
+r^2\equiv 0\pmod{11}
+\]
+
+is \(r=0\). Therefore, if \(11\mid n^2\), then \(n^2\equiv 0\pmod{11}\), so \(r^2\equiv 0\pmod{11}\), which forces \(r=0\). Thus
+
+\[
+n\equiv 0\pmod{11},
+\]
+
+so
+
+\[
+11\mid n.
+\]
+
+This proves Fact 2.
+
+---
+
+Now suppose, for contradiction, that \(\sqrt{11}\) is rational. By Fact 1, there exist integers \(a,b\) with \(b\neq 0\) and \(\gcd(a,b)=1\) such that
+
+\[
+\sqrt{11}=\frac{a}{b}.
+\]
+
+Squaring both sides gives
+
+\[
+11=\frac{a^2}{b^2}.
+\]
+
+Multiplying by \(b^2\), which is nonzero because \(b\neq 0\), gives
+
+\[
+a^2=11b^2.
+\]
+
+Therefore
+
+\[
+11\mid a^2.
+\]
+
+By Fact 2, this implies
+
+\[
+11\mid a.
+\]
+
+So there exists an integer \(c\) such that
+
+\[
+a=11c.
+\]
+
+Substituting this into \(a^2=11b^2\), we get
+
+\[
+(11c)^2=11b^2.
+\]
+
+Thus
+
+\[
+121c^2=11b^2.
+\]
+
+Dividing both sides by \(11\), we obtain
+
+\[
+11c^2=b^2.
+\]
+
+Hence
+
+\[
+11\mid b^2.
+\]
+
+Again by Fact 2, this implies
+
+\[
+11\mid b.
+\]
+
+So \(11\) divides both \(a\) and \(b\). Therefore \(a\) and \(b\) have a common positive divisor greater than \(1\), contradicting
+
+\[
+\gcd(a,b)=1.
+\]
+
+This contradiction shows that our assumption was false. Hence
+
+\[
+\sqrt{11}
+\]
+
+is irrational.

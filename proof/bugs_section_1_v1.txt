@@ -1,0 +1,72 @@
+CONSOLIDATED BUG REPORT
+Solution: /data/projects/ZArcczxEFllfDg/DWuEVz2CAW_vrg/proof/section_1_sol_v1.tex
+Problem:  /data/projects/ZArcczxEFllfDg/DWuEVz2CAW_vrg/proof/problem.tex
+Mode: pessimistic (3 independent verifier runs)
+Verdict: ISSUES_FOUND
+
+All three verifier runs independently flagged the same two justification gaps.
+No run returned CLEAN. Total distinct issues: 2.
+
+========================================================
+ISSUES (each flagged by all 3 runs)
+========================================================
+
+ISSUE 1 [flagged by run1, run2, run3]
+  Anchor:   Lemma 1 (the residue / divisibility lemma)
+  Location: "Their squares modulo 11 are ... The only residue whose square is
+             congruent to 0 (mod 11) is 0. Hence, if n^2 == 0 (mod 11), then
+             n == 0 (mod 11)."
+  Type:     Justification Gap
+  Detail:   The proof constructs a residue table for representatives 0,...,10
+            and observes that none of their squares is == 0 (mod 11) except 0.
+            It then applies this table to an arbitrary integer n without stating
+            the required property that congruence is compatible with squaring,
+            i.e. that n == r (mod 11) implies n^2 == r^2 (mod 11). Without this
+            connecting property, the table applies only to the ten listed
+            representatives, not to arbitrary integers.
+
+ISSUE 2 [flagged by run1, run2, run3]
+  Anchor:   Global setup (hypothesis of the contradiction argument)
+  Location: "Then there exist integers a and b with b != 0 and gcd(a,b)=1 such
+             that sqrt(11) = a/b."
+  Type:     Justification Gap
+  Detail:   The assumption that sqrt(11) is rational entitles the proof to a
+            representation a/b with b != 0, but not automatically to one with
+            gcd(a,b)=1. The existence of a lowest-terms representation relies on
+            a theorem (every rational number has a representation in lowest
+            terms, obtained by dividing numerator and denominator by their GCD).
+            This theorem is invoked but never stated or cited, leaving the
+            reduction to lowest terms unjustified.
+
+========================================================
+APPENDIX A -- Full output of run 1
+========================================================
+Anchor: Lemma 1
+Location: "Their squares modulo \(11\) are ... The only residue whose square is congruent to \(0 \pmod{11}\) is \(0\). Hence, if \(n^2 \equiv 0 \pmod{11}\), then \(n \equiv 0 \pmod{11}\)."
+Description: Justification Gap: The inference from the residue table to an arbitrary integer \(n\) relies on the unstated property that congruence is preserved under squaring, i.e. if \(n \equiv r \pmod{11}\), then \(n^2 \equiv r^2 \pmod{11}\). This property is not explicitly stated or established.
+
+Anchor: global
+Location: "Then there exist integers \(a\) and \(b\) with \(b \neq 0\) and \(\gcd(a,b)=1\) such that \(\sqrt{11}=\frac{a}{b}\)."
+Description: Justification Gap: Rationality only gives a representation as a quotient of integers with nonzero denominator unless a lowest-terms representation theorem is invoked. The solution does not explicitly justify the existence of a representation with \(\gcd(a,b)=1\).
+
+========================================================
+APPENDIX B -- Full output of run 2
+========================================================
+Anchor: Lemma 1
+Location: "Their squares modulo \(11\) are ... The only residue whose square is congruent to \(0 \pmod{11}\) is \(0\). Hence, if \(n^2 \equiv 0 \pmod{11}\), then \(n \equiv 0 \pmod{11}\)."
+Description: Justification Gap -- The argument applies the residue table for representatives \(0,\dots,10\) to an arbitrary integer \(n\), but it does not explicitly justify the needed modular-arithmetic property that if \(n \equiv r \pmod{11}\), then \(n^2 \equiv r^2 \pmod{11}\). This compatibility of congruence with squaring is required for the conclusion.
+
+Anchor: global
+Location: "Then there exist integers \(a\) and \(b\) with \(b \neq 0\) and \(\gcd(a,b)=1\) such that \(\sqrt{11}=\frac{a}{b}\)."
+Description: Justification Gap -- Rationality gives a representation as a quotient of integers, but the proof does not justify the additional claim that the representation can be chosen with \(\gcd(a,b)=1\). The argument relies on the unstated lowest-terms theorem.
+
+========================================================
+APPENDIX C -- Full output of run 3
+========================================================
+Anchor: Lemma
+Location: "Their squares modulo \(11\) are ... The only residue whose square is congruent to \(0 \pmod{11}\) is \(0\). Hence, if \(n^2 \equiv 0 \pmod{11}\), then \(n \equiv 0 \pmod{11}\)."
+Description: Justification Gap -- The proof does not explicitly state the needed congruence property that if \(n \equiv r \pmod{11}\), then \(n^2 \equiv r^2 \pmod{11}\). Without this, the residue table for \(0,\dots,10\) has not been explicitly connected to an arbitrary integer \(n\).
+
+Anchor: global
+Location: "Then there exist integers \(a\) and \(b\) with \(b \neq 0\) and \(\gcd(a,b)=1\) such that \(\sqrt{11}=\frac{a}{b}\)."
+Description: Justification Gap -- From the assumption that \(\sqrt{11}\) is rational, the solution assumes without explicit justification that the fraction can be chosen in lowest terms. The existence of integers \(a,b\) with \(\gcd(a,b)=1\) requires a stated reduction-to-lowest-terms property or theorem.
