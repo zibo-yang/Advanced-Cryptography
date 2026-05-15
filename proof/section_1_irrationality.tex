@@ -1,0 +1,55 @@
+\begin{theorem}
+$\sqrt{11}$ is irrational.
+\end{theorem}
+
+\begin{proof}
+We first record two elementary facts needed in the proof.
+
+\medskip
+\noindent\textbf{Fact 1 (Lowest-terms representation).}
+If $x\in \mathbb{Q}$, then there exist integers $a,b$ with $b\neq 0$ and $\gcd(a,b)=1$ such that $x=\tfrac{a}{b}$.
+
+\begin{proof}[Proof of Fact 1]
+Since $x\in \mathbb{Q}$, there exist integers $m,n$ with $n\neq 0$ and $x=\tfrac{m}{n}$.
+Let $d=\gcd(m,n)>0$ and write $m=da$, $n=db$ for integers $a,b$.
+Since $n\neq 0$ we have $b\neq 0$, and $x=\tfrac{a}{b}$.
+If $e$ is any positive common divisor of $a$ and $b$, then $de$ divides both $m$ and $n$, so $de\le d$, hence $e\le 1$.
+Therefore $\gcd(a,b)=1$.
+\end{proof}
+
+\medskip
+\noindent\textbf{Fact 2.}
+For any integer $n$, if $11\mid n^2$ then $11\mid n$.
+
+\begin{proof}[Proof of Fact 2]
+By the division algorithm, $n\equiv r\pmod{11}$ for some $r\in\{0,1,2,\ldots,10\}$.
+Since $11\mid (n-r)$ we have $n^2-r^2=(n-r)(n+r)\equiv 0\pmod{11}$, so $n^2\equiv r^2\pmod{11}$.
+Computing the squares of all residues modulo $11$:
+\[
+\begin{array}{c|ccccccccccc}
+r & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+\hline
+r^2 \bmod 11 & 0 & 1 & 4 & 9 & 5 & 3 & 3 & 5 & 9 & 4 & 1
+\end{array}
+\]
+The only residue satisfying $r^2\equiv 0\pmod{11}$ is $r=0$.
+Hence if $11\mid n^2$ then $r=0$, so $n\equiv 0\pmod{11}$, i.e.\ $11\mid n$.
+\end{proof}
+
+\medskip
+Now suppose, for contradiction, that $\sqrt{11}$ is rational.
+By Fact~1, write $\sqrt{11}=\tfrac{a}{b}$ with $a,b\in\mathbb{Z}$, $b\neq 0$, and $\gcd(a,b)=1$.
+Squaring both sides and multiplying by $b^2\neq 0$ gives
+\[
+a^2 = 11b^2.
+\]
+Hence $11\mid a^2$, and by Fact~2, $11\mid a$.
+Write $a=11c$ for some integer $c$. Substituting:
+\[
+(11c)^2 = 11b^2 \implies 121c^2 = 11b^2 \implies 11c^2 = b^2.
+\]
+Hence $11\mid b^2$, and by Fact~2 again, $11\mid b$.
+
+So $11$ divides both $a$ and $b$, contradicting $\gcd(a,b)=1$.
+Therefore $\sqrt{11}$ is irrational.
+\end{proof}
