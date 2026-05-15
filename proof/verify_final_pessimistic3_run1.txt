@@ -1,0 +1,7 @@
+Anchor: Step 1  
+Location: “Thus every positive divisor \(d > 1\) of \(7\) satisfies \(2 \le d \le 7\). … Every positive divisor \(d > 1\) of \(7\) satisfies \(2 \le d \le 7\), and we have checked all cases \(d \in \{2,3,4,5,6,7\}\).”  
+Description: Justification Gap — The proof has shown \(d \le 7\), but it does not explicitly justify the discrete-integer step from \(d>1\) to \(d\ge 2\), nor that an integer satisfying \(2\le d\le 7\) must be one of the listed cases. This unstated discreteness/enumeration is needed for the exhaustive divisor check establishing that \(7\) is prime.
+
+Anchor: Step 5  
+Location: “Also, \(2m > m\) because \(2m - m = m > 0\).”  
+Description: Justification Gap — This relies on the order fact \(x-y>0 \Rightarrow x>y\), or equivalently order compatibility with addition/subtraction, but that property is not explicitly listed among the permitted facts or proved at this point. Therefore the strict inequality \(m<q_0\) is not fully justified.

@@ -1,0 +1,16 @@
+Anchor: Step 1  
+Location: “Since \(7 > 0\) and \(d > 0\), we have \(k > 0\), hence \(k \ge 1\), giving \(d = 7/k \le 7/1 = 7\).”  
+Description: Justification Gap: The proof uses several unstated order facts: from \(7=dk>0\) and \(d>0\) it infers \(k>0\); from \(k\in\mathbb Z\) and \(k>0\) it infers \(k\ge 1\); and from \(k\ge 1\) it infers \(7/k\le 7/1\). These facts are not explicitly stated among the permitted facts, but they are needed to make the divisor case split exhaustive.
+
+Anchor: Step 1  
+Location: “Replacing \((a, b)\) by \((-a, -b)\) if necessary—note that \((-a)/(-b) = a/b\), so the equality is preserved—we may assume \(b > 0\).”  
+Description: Justification Gap: The equality preservation is justified, but the proof does not explicitly justify that the replacement makes the denominator positive when \(b<0\). This requires the unstated order fact that if \(b\) is a negative integer, then \(-b>0\).
+
+Anchor: Step 1  
+Location: “Since \(b > 0\) and \(\sqrt{7} > 0\), the product \(a = b\sqrt{7}\) is a product of two positive numbers, hence \(a > 0\).”  
+Description: Justification Gap: The permitted “Product of positives” fact is stated only for integers or rationals, while \(\sqrt{7}\) is introduced as a real number and is not yet known to be rational. Thus the positivity of \(b\sqrt{7}\), and hence \(a>0\), is not justified by the listed facts.
+
+Anchor: Step 5  
+Location: “Finally, \(q_0 = 7m\) and \(7 \ge 2 > 1\), so \(1/7 < 1\), giving \(m = q_0/7 < q_0 \cdot 1 = q_0\).”  
+Description: Justification Gap: The proof does not explicitly justify the reciprocal inequality \(1/7<1\), nor the order comparison \(q_0/7<q_0\cdot 1\). These require unstated order properties about reciprocals and multiplication/comparison by a positive quantity. This inequality is essential for contradicting the minimality of \(q_0\).
+Bug report written to proof/verify_section_1_irrationality_run1.txt

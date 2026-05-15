@@ -1,0 +1,51 @@
+Bug Report: section_1_sol_v1.tex
+Problem: Prove sqrt(7) is irrational
+Mode: standard
+Verifier: OpenAI (via api_oai.py)
+Total issues found: 3 (all Justification Gaps)
+
+NOTE: The proof_verifier.py script crashed due to a known bug — Python's str.format() is
+incompatible with LaTeX curly braces in the solution (e.g. \pmod{7}, \frac{p}{q}). The
+verifier was executed via a safe direct-replacement workaround. Output is identical in
+content to what the script would have produced.
+
+--- ISSUES ---
+
+Issue 1
+Anchor: global
+Location: "and we may choose such a representation with $\gcd(p,q)=1$."
+Description: Justification Gap — The proof assumes without justification that a rational
+number can always be represented by integers p and q with gcd(p,q)=1. This reduced-form
+existence theorem (every rational has a representation in lowest terms) is required for
+the final contradiction but is never stated or proved.
+
+Issue 2
+Anchor: global
+Location: "Therefore, the only way for $p^2 \equiv 0 \pmod{7}$ is for $p \equiv 0 \pmod{7}$."
+Description: Justification Gap — The inference from the exhaustive table of squared
+residues to the conclusion relies on two unstated modular-arithmetic facts: (a) every
+integer is congruent modulo 7 to exactly one of 0,1,2,3,4,5,6, and (b) squaring
+preserves congruence classes modulo 7. Neither fact is explicitly justified in the proof.
+
+Issue 3
+Anchor: global
+Location: "Therefore $7 \mid q^2$. By the same argument as before, this implies $7 \mid q$."
+Description: Justification Gap — The earlier residue-table argument was stated specifically
+about p. Applying it to q by appeal to "the same argument as before" is informal and
+incomplete: the proof never establishes the result as a general lemma (e.g., "for any
+integer n, if 7 | n^2 then 7 | n"). Without such a general statement, re-use of the
+argument requires re-verification for q, which the proof omits.
+
+--- APPENDIX: Full Verifier Output ---
+
+**Anchor:** global
+**Location:** "and we may choose such a representation with $\gcd(p,q)=1$."
+**Description:** Justification Gap: The proof assumes without justification that a rational number can always be represented by integers $p,q$ with $\gcd(p,q)=1$. This reduced-form existence theorem is required for the final contradiction.
+
+**Anchor:** global
+**Location:** "Therefore, the only way for $p^2 \equiv 0 \pmod{7}$ is for $p \equiv 0 \pmod{7}$."
+**Description:** Justification Gap: The inference from the table of squared residues to the conclusion relies on unstated modular-arithmetic facts: that every integer has one of the listed residues modulo $7$, and that squaring preserves congruence classes modulo $7$. These facts are not explicitly justified.
+
+**Anchor:** global
+**Location:** "Therefore $7 \mid q^2$. By the same argument as before, this implies \[7 \mid q.\]"
+**Description:** Justification Gap: The earlier argument was stated for $p$, not as a general lemma applying to every integer. Applying it to $q$ requires explicitly stating the general result or verifying that the same hypotheses and reasoning apply.

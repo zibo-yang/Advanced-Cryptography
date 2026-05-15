@@ -1,0 +1,122 @@
+CONSOLIDATED BUG REPORT — PESSIMISTIC MODE
+Solution: /data/projects/ZArcczxEFllfDg/rgf9LU-TJ-fT_w/proof/section_1_irrationality.tex
+Problem:  /data/projects/ZArcczxEFllfDg/rgf9LU-TJ-fT_w/proof/problem.tex
+Runs: 3 of 3 flagged issues → ISSUES_FOUND
+
+=============================================================
+ISSUES (deduplicated, with run attribution)
+=============================================================
+
+ISSUE 1 [Runs 1, 2, 3]
+Anchor: Lemma lem:div / Step 1
+Location: "Since 7 > 0 and d > 0, we have k > 0, hence k >= 1, giving d = 7/k <= 7/1 = 7."
+Description: Justification Gap. The chain of inferences relies on three unstated facts:
+  (a) dk = 7 > 0 with d > 0 implies k > 0 — a sign/cancellation rule not on the permitted list;
+  (b) k > 0 and k integer implies k >= 1 — an integer-discreteness fact not on the permitted list;
+  (c) k >= 1 implies 7/k <= 7/1 — a reciprocal-monotonicity/order fact not on the permitted list.
+None of these appear explicitly in the stated six categories of permitted external facts.
+
+ISSUE 2 [Run 2 only]
+Anchor: Step 1
+Location: Division Algorithm remainder bounds for d = 2, 3, 4, 5, 6.
+Description: Justification Gap. The proof lists decompositions and asserts r_d != 0, but does not
+explicitly verify that the displayed remainders satisfy the required bounds 0 <= r_d < d needed to
+invoke the Division Algorithm uniqueness clause.
+
+ISSUE 3 [Run 2 only]
+Anchor: Step 1
+Location: "Thus every positive divisor d > 1 of 7 satisfies 2 <= d <= 7. … we have checked all
+cases d in {2,3,4,5,6,7}."
+Description: Justification Gap. The proof does not explicitly justify that an integer satisfying
+2 <= d <= 7 must be exactly one of {2, 3, 4, 5, 6, 7}. This relies on the discreteness/ordering
+of the integers, which is not stated as a permitted fact.
+
+ISSUE 4 [Runs 1, 2, 3]
+Anchor: Theorem thm:irrational / Step 1
+Location: "Replacing (a, b) by (-a, -b) if necessary—note that (-a)/(-b) = a/b, so the equality
+is preserved—we may assume b > 0."
+Description: Justification Gap. The proof justifies the equality (-a)/(-b) = a/b (covered by
+"negation preserves equality" / "fraction cancellation"), but does not justify the order step
+b < 0 => -b > 0, which is needed to confirm that the replacement actually makes the denominator
+positive. This order fact is not listed among the permitted facts.
+
+ISSUE 5 [Run 1 only]
+Anchor: Theorem thm:irrational / Step 1
+Location: "Since b > 0 and sqrt(7) > 0, the product a = b*sqrt(7) is a product of two positive
+numbers, hence a > 0."
+Description: Justification Gap. The permitted "Product of positives" fact applies to integers or
+rationals, but sqrt(7) is introduced as a real number not yet known to be rational. The positivity
+of b*sqrt(7) therefore cannot be justified by the listed permitted facts as stated.
+
+ISSUE 6 [Runs 1, 2, 3]
+Anchor: Step 5
+Location: "Finally, q_0 = 7m and 7 >= 2 > 1, so 1/7 < 1, giving m = q_0/7 < q_0 * 1 = q_0."
+Description: Justification Gap. The inequality m < q_0 depends on two unstated order steps:
+  (a) 7 > 1 implies 1/7 < 1 — a reciprocal-order fact not on the permitted list;
+  (b) multiplying that inequality by the positive quantity q_0 preserves it — an
+      "order and division/multiplication by positive" step not explicitly listed for this direction.
+This gap is critical: it is the step used to contradict the minimality of q_0, which drives the
+entire infinite-descent argument.
+
+=============================================================
+MOST CRITICAL ISSUE
+=============================================================
+Issue 6 (Step 5, 1/7 < 1 and q_0/7 < q_0): This is the pivotal step for the infinite-descent
+contradiction. Without it the minimality argument fails entirely and the proof collapses.
+
+=============================================================
+APPENDIX A — FULL OUTPUT: RUN 1
+=============================================================
+Anchor: Step 1
+Location: "Since \(7 > 0\) and \(d > 0\), we have \(k > 0\), hence \(k \ge 1\), giving \(d = 7/k \le 7/1 = 7\)."
+Description: Justification Gap: The proof uses several unstated order facts: from \(7=dk>0\) and \(d>0\) it infers \(k>0\); from \(k\in\mathbb Z\) and \(k>0\) it infers \(k\ge 1\); and from \(k\ge 1\) it infers \(7/k\le 7/1\). These facts are not explicitly stated among the permitted facts, but they are needed to make the divisor case split exhaustive.
+
+Anchor: Step 1
+Location: "Replacing \((a, b)\) by \((-a, -b)\) if necessary—note that \((-a)/(-b) = a/b\), so the equality is preserved—we may assume \(b > 0\)."
+Description: Justification Gap: The equality preservation is justified, but the proof does not explicitly justify that the replacement makes the denominator positive when \(b<0\). This requires the unstated order fact that if \(b\) is a negative integer, then \(-b>0\).
+
+Anchor: Step 1
+Location: "Since \(b > 0\) and \(\sqrt{7} > 0\), the product \(a = b\sqrt{7}\) is a product of two positive numbers, hence \(a > 0\)."
+Description: Justification Gap: The permitted "Product of positives" fact is stated only for integers or rationals, while \(\sqrt{7}\) is introduced as a real number and is not yet known to be rational. Thus the positivity of \(b\sqrt{7}\), and hence \(a>0\), is not justified by the listed facts.
+
+Anchor: Step 5
+Location: "Finally, \(q_0 = 7m\) and \(7 \ge 2 > 1\), so \(1/7 < 1\), giving \(m = q_0/7 < q_0 \cdot 1 = q_0\)."
+Description: Justification Gap: The proof does not explicitly justify the reciprocal inequality \(1/7<1\), nor the order comparison \(q_0/7<q_0\cdot 1\). These require unstated order properties about reciprocals and multiplication/comparison by a positive quantity. This inequality is essential for contradicting the minimality of \(q_0\).
+
+=============================================================
+APPENDIX B — FULL OUTPUT: RUN 2
+=============================================================
+Anchor: Step 1
+Location: "We verify that no integer \(d\) with \(2 \le d \le 6\) divides \(7\), using the Division Algorithm: ..."
+Description: Justification Gap. To use the Division Algorithm remainder criterion, the proof must establish that each displayed \(r_d\) is the unique remainder satisfying \(0 \le r_d < d\). The proof lists the decompositions and notes \(r_d\ne 0\), but does not explicitly verify the required remainder bounds for each \(d=2,3,4,5,6\).
+
+Anchor: Step 1
+Location: "Since \(7 > 0\) and \(d > 0\), we have \(k > 0\), hence \(k \ge 1\), giving \(d = 7/k \le 7/1 = 7\)."
+Description: Justification Gap. The inference from \(7=dk\), \(7>0\), and \(d>0\) to \(k>0\) is not explicitly justified by a stated sign rule or quotient argument. The subsequent implications \(k>0 \Rightarrow k\ge 1\) for an integer \(k\), and \(k\ge 1 \Rightarrow 7/k\le 7/1\), also rely on unstated order/discreteness and reciprocal-monotonicity facts.
+
+Anchor: Step 1
+Location: "Thus every positive divisor \(d > 1\) of \(7\) satisfies \(2 \le d \le 7\). … Every positive divisor \(d > 1\) of \(7\) satisfies \(2 \le d \le 7\), and we have checked all cases \(d \in \{2,3,4,5,6,7\}\)."
+Description: Justification Gap. The proof does not explicitly justify that an integer satisfying \(2 \le d \le 7\) must be one of \(2,3,4,5,6,7\). This uses the discreteness/order structure of the integers, which was not stated as a permitted fact.
+
+Anchor: Step 1
+Location: "Replacing \((a, b)\) by \((-a, -b)\) if necessary—note that \((-a)/(-b) = a/b\), so the equality is preserved—we may assume \(b > 0\)."
+Description: Justification Gap. The equality preservation is justified, but the proof does not explicitly justify that this replacement makes the denominator positive when \(b<0\). It relies on the unstated order fact that if \(b<0\), then \(-b>0\).
+
+Anchor: Step 5
+Location: "Finally, \(q_0 = 7m\) and \(7 \ge 2 > 1\), so \(1/7 < 1\), giving \(m = q_0/7 < q_0 \cdot 1 = q_0\)."
+Description: Justification Gap. The inequalities \(1/7<1\) and \(q_0/7<q_0\) rely on unstated reciprocal/order and multiplication-by-positive order properties. The permitted facts do not explicitly establish these steps, so the conclusion \(m<q_0\) is not fully justified.
+
+=============================================================
+APPENDIX C — FULL OUTPUT: RUN 3
+=============================================================
+Anchor: Lemma lem:div
+Location: "Since \(7 > 0\) and \(d > 0\), we have \(k > 0\), hence \(k \ge 1\), giving \(d = 7/k \le 7/1 = 7\). Thus every positive divisor \(d > 1\) of \(7\) satisfies \(2 \le d \le 7\)."
+Description: Justification Gap: The bound on possible divisors relies on unstated order/integer-discreteness facts: that \(dk=7>0\) with \(d>0\) implies \(k>0\), that a positive integer satisfies \(k\ge1\), and that this implies \(7/k\le7\). These properties are not explicitly stated or proved.
+
+Anchor: Theorem thm:irrational
+Location: "Replacing \((a, b)\) by \((-a, -b)\) if necessary—note that \((-a)/(-b) = a/b\), so the equality is preserved—we may assume \(b > 0\)."
+Description: Justification Gap: The equality preservation is stated, but the argument does not justify that the replacement actually makes the denominator positive when \(b<0\), i.e. it does not establish the needed order fact \(b<0 \Rightarrow -b>0\).
+
+Anchor: Step 5
+Location: "Finally, \(q_0 = 7m\) and \(7 \ge 2 > 1\), so \(1/7 < 1\), giving \(m = q_0/7 < q_0 \cdot 1 = q_0\)."
+Description: Justification Gap: The strict inequality \(m<q_0\) relies on unstated order properties: that \(7>1\) implies \(1/7<1\), and that multiplying the inequality by the positive number \(q_0\) preserves it. These are not explicitly stated or derived.

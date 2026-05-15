@@ -1,0 +1,79 @@
+CONSOLIDATED BUG REPORT (pessimistic mode)
+Solution: proof/section_1_sol_v5.tex
+Problem:  proof/problem.tex
+Date:     2026-05-15
+Verdict:  ISSUES_FOUND
+
+Run 1 was CLEAN. Runs 2 and 3 flagged issues. Under pessimistic mode, any flagged run yields ISSUES_FOUND.
+
+=== ISSUES LIST ===
+
+[run2, run3] ISSUE 1 — Justification Gap | Lemma 1 (primality of 7, remainder argument)
+  Location: The divisibility checks "7=2·3+1, 7=3·2+1, 7=4·1+3, 7=5·1+2, 7=6·1+1"
+  Description: The conclusion that these equations imply non-divisibility relies on an
+  unstated fact: that a representation 7=dq+r with nonzero remainder r rules out d|7.
+  The proof does not explicitly justify this criterion or establish the relevance of
+  the displayed quotients. The logical bridge between "nonzero remainder" and
+  "d does not divide 7" is missing.
+
+[run2, run3] ISSUE 2 — Justification Gap | Lemma 1 (upper bound on divisors)
+  Location: "Any divisor d>1 of 7 satisfies d≤7; the cases d=7 (trivially a divisor)
+  and 2≤d≤6 are exhausted above."
+  Description: The assertion that every positive divisor d>1 of 7 must satisfy d≤7
+  uses an unstated divisibility/order property (i.e., that a divisor of n cannot
+  exceed n for positive n). Without explicitly justifying this, the proof has not
+  ruled out divisors larger than 7.
+
+[run3] ISSUE 3 — Justification Gap | Theorem 1 (positivity of a)
+  Location: "Since √7>0 (as 7>0 and the square root of a positive number is positive),
+  it follows that a>0."
+  Description: The sign inference from √7=a/b and b>0 to a>0 relies on an unstated
+  order property of quotients/products (i.e., that a product/quotient of positives is
+  positive). This step is asserted without explicit justification.
+
+=== SUMMARY ===
+Total distinct issues: 3
+Most critical issue: Lemma 1 remainder argument — the proof leaves unjustified the
+  logical step from "7=dq+r with r≠0" to "d does not divide 7", which is the core
+  of the primality verification and underpins the entire Lemma.
+
+=== APPENDIX A: Full output of run1 ===
+The solution is correct.
+
+=== APPENDIX B: Full output of run2 ===
+Anchor: Lemma 1
+Location: "The number \(7\) is prime: by definition a prime is an integer greater than
+\(1\) whose only positive divisors are \(1\) and itself. We verify that no integer \(d\)
+with \(2 \le d \le 6\) divides \(7\): \[\cdots\] so none of \(2,3,4,5,6\) divides \(7\).
+Any divisor \(d>1\) of \(7\) satisfies \(d\le 7\); the cases \(d=7\) ... and \(2\le d\le 6\)
+are exhausted above. Hence \(7\) is prime."
+Description: Justification Gap — The proof does not explicitly justify why the displayed
+equations with nonzero remainders prove that none of 2,3,4,5,6 divides 7. It also uses
+without justification the fact that any positive divisor d>1 of 7 must satisfy d≤7.
+These are needed to establish that 7 is prime.
+
+=== APPENDIX C: Full output of run3 ===
+Anchor: Lemma 1
+Location: "We verify that no integer \(d\) with \(2 \le d \le 6\) divides \(7\):
+\[
+7 = 2\cdot3+1,\quad 7=3\cdot2+1,\quad 7=4\cdot1+3,\quad 7=5\cdot1+2,\quad 7=6\cdot1+1,
+\]
+so none of \(2,3,4,5,6\) divides \(7\)."
+Description: Justification Gap. The conclusion that these equations imply non-divisibility
+relies on an unstated fact: that a representation 7=dq+r with nonzero remainder r rules
+out d|7. The proof does not explicitly justify this criterion or establish
+uniqueness/relevance of the displayed quotients.
+
+Anchor: Lemma 1
+Location: "Any divisor \(d>1\) of \(7\) satisfies \(d\le 7\); the cases \(d=7\)
+(trivially a divisor) and \(2\le d\le 6\) are exhausted above."
+Description: Justification Gap. The assertion that every positive divisor d>1 of 7 must
+satisfy d≤7 uses an unstated divisibility/order property. Without explicitly justifying
+this, the proof has not ruled out divisors larger than 7.
+
+Anchor: Theorem 1
+Location: "Since \(\sqrt{7}>0\) (as \(7>0\) and the square root of a positive number is
+positive), it follows that \(a>0\)."
+Description: Justification Gap. The proof does not explicitly justify the sign inference
+from \(\sqrt{7}=a/b\) and \(b>0\) to \(a>0\). This relies on an unstated order property
+of quotients/products.

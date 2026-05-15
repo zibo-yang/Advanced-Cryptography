@@ -1,0 +1,19 @@
+**Anchor:** Lemma 1  
+**Location:** “If \(7\mid n^2\), then \(7\mid n\).” / “Since \(7\) is prime and \(7\mid n^2=n\cdot n\), Euclid's lemma implies that \(7\mid n\).”  
+**Description:** Justification Gap: The lemma does not explicitly state that \(n\in\mathbb Z\), but the cited Euclid’s lemma applies to integer factors. The proof also asserts, without proof or prior establishment, that \(7\) is prime, which is a required hypothesis for Euclid’s lemma. ([proofwiki.org](https://proofwiki.org/wiki/Euclid%27s_Lemma_for_Prime_Divisors?utm_source=openai))
+
+**Anchor:** Theorem 1  
+**Location:** “Replacing both \(a\) and \(b\) by their negatives if necessary, we may assume that \(b>0\). Since \(\sqrt{7}>0\), it follows that \(a>0\).”  
+**Description:** Justification Gap: The sign normalization and the inference \(a>0\) rely on unstated order and fraction properties, as well as the positivity of \(\sqrt7\). These facts are not explicitly justified.
+
+**Anchor:** Theorem 1  
+**Location:** “Squaring both sides gives \[p_0^2=7q_0^2.\]”  
+**Description:** Justification Gap: This step uses the defining property \((\sqrt7)^2=7\) and algebraic manipulation of \(\sqrt7=p_0/q_0\), but these properties are not explicitly stated or justified.
+
+**Anchor:** Theorem 1  
+**Location:** “Since \(p_0>0\), we have \(k\in \mathbb{Z}_{>0}\).” / “Since \(q_0>0\), we have \(m\in \mathbb{Z}_{>0}\).”  
+**Description:** Justification Gap: The conclusions \(k>0\) and \(m>0\) from \(p_0=7k\), \(q_0=7m\), and positivity of \(p_0,q_0\) require unstated order facts about multiplication or division by the positive integer \(7\).
+
+**Anchor:** Theorem 1  
+**Location:** “But \(q_0=7m\) and \(m>0\), so \[m<7m=q_0.\]”  
+**Description:** Justification Gap: The inequality \(m<7m\) relies on unstated order facts, including that \(1<7\) and that multiplying a strict inequality by a positive integer preserves the inequality.

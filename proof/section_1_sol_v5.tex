@@ -1,0 +1,115 @@
+The only standard external facts used below are \textbf{Euclid's lemma} and the \textbf{Well-Ordering Principle}. Euclid's lemma says that if a prime $p$ divides a product $ab$, then $p\mid a$ or $p\mid b$; the Well-Ordering Principle says that every nonempty set of positive integers has a least element. ([proofwiki.org](https://proofwiki.org/wiki/Euclid%27s_Lemma_for_Prime_Divisors?utm_source=openai))
+
+\begin{lemma}
+For any integer $n$, if $7\mid n^2$, then $7\mid n$.
+\end{lemma}
+
+\begin{proof}
+The number $7$ is prime: by definition a prime is an integer greater than $1$ whose only positive divisors are $1$ and itself. We verify that no integer $d$ with $2 \le d \le 6$ divides $7$:
+\[
+7 = 2\cdot3+1,\quad 7=3\cdot2+1,\quad 7=4\cdot1+3,\quad 7=5\cdot1+2,\quad 7=6\cdot1+1,
+\]
+Recall that $d \mid 7$ means $7 = d\cdot q$ for some integer $q$, i.e.\ the remainder upon dividing $7$ by $d$ is $0$. Each equation above exhibits a remainder of $1, 1, 3, 2, 1$ respectively, all nonzero, so none of $2,3,4,5,6$ divides $7$.
+
+It remains to check that no integer $d > 7$ can divide $7$: if $d \mid 7$ then $7 = d\cdot k$ for some positive integer $k \ge 1$, giving $d = 7/k \le 7/1 = 7$. So any divisor $d > 1$ of $7$ satisfies $d \le 7$, and we have checked all such $d \in \{2,3,4,5,6,7\}$ above (with $d=7$ being a trivial divisor). Hence $7$ is prime.
+Since $7$ is prime and $7\mid n^2 = n\cdot n$, Euclid's lemma (if a prime $p$ divides a product $ab$ then $p\mid a$ or $p\mid b$) implies $7\mid n$ or $7\mid n$; in either case $7\mid n$.
+\end{proof}
+
+\begin{theorem}
+$\sqrt{7}$ is irrational.
+\end{theorem}
+
+\begin{proof}
+Assume, for contradiction, that $\sqrt{7}$ is rational.
+
+Then there exist integers $a$ and $b$ with $b\neq 0$ such that
+\[
+\sqrt{7}=\frac{a}{b}.
+\]
+Replacing both $a$ and $b$ by their negatives if necessary, we may assume that $b>0$. Since $\sqrt{7}>0$ (as $7>0$ and the square root of a positive number is positive) and $b>0$, multiplying $\sqrt{7}=a/b$ through by $b$ gives $a = b\sqrt{7}$, which is a product of two positive numbers, so $a>0$. Therefore
+\[
+b\sqrt{7}=a\in \mathbb{Z}_{>0}.
+\]
+Thus the set
+\[
+S=\{q\in \mathbb{Z}_{>0}: q\sqrt{7}\in \mathbb{Z}_{>0}\}
+\]
+is nonempty.
+
+By the Well-Ordering Principle, $S$ has a least element. Let $q_0$ be the least element of $S$, and define
+\[
+p_0=q_0\sqrt{7}.
+\]
+Then $p_0\in \mathbb{Z}_{>0}$, and since $q_0>0$ we have $p_0=q_0\sqrt{7}>0$, so $p_0>0$. Moreover
+\[
+\sqrt{7}=\frac{p_0}{q_0}.
+\]
+
+Squaring both sides and using $(\sqrt{7})^2=7$ gives
+\[
+7 = \left(\frac{p_0}{q_0}\right)^2 = \frac{p_0^2}{q_0^2},
+\]
+so
+\[
+p_0^2=7q_0^2.
+\]
+Hence
+\[
+7\mid p_0^2.
+\]
+By the lemma (applied to the integer $n=p_0$), $7\mid p_0$. Therefore there exists an integer $k$ such that
+\[
+p_0=7k.
+\]
+Since $p_0>0$ and $7>0$, we have $k=p_0/7>0$, so $k\in \mathbb{Z}_{>0}$.
+
+Substituting $p_0=7k$ into $p_0^2=7q_0^2$, we get
+\[
+(7k)^2=7q_0^2.
+\]
+Thus
+\[
+49k^2=7q_0^2.
+\]
+Dividing by $7$ gives
+\[
+7k^2=q_0^2.
+\]
+Equivalently,
+\[
+q_0^2=7k^2.
+\]
+Hence
+\[
+7\mid q_0^2.
+\]
+By the lemma (applied to the integer $n=q_0$), $7\mid q_0$. Therefore there exists an integer $m$ such that
+\[
+q_0=7m.
+\]
+Since $q_0>0$ and $7>0$, we have $m=q_0/7>0$, so $m\in \mathbb{Z}_{>0}$.
+
+Now
+\[
+\sqrt{7}=\frac{p_0}{q_0}
+=\frac{7k}{7m}
+=\frac{k}{m}.
+\]
+Therefore
+\[
+m\sqrt{7}=k.
+\]
+Since $k\in \mathbb{Z}_{>0}$, this shows that
+\[
+m\sqrt{7}\in \mathbb{Z}_{>0}.
+\]
+Hence $m\in S$.
+
+But since $7\geq 2>1$, we have $m=q_0/7<q_0$, i.e.,
+\[
+m<7m=q_0.
+\]
+Thus $m$ is an element of $S$ smaller than $q_0$, contradicting the choice of $q_0$ as the least element of $S$.
+
+Therefore the assumption that $\sqrt{7}$ is rational is false. Hence $\sqrt{7}$ is irrational.
+\end{proof}

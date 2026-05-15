@@ -1,0 +1,14 @@
+Anchor: Lemma 1  
+Location: “Since \(7 \mid n^2\) and \(7 \mid (n^2-r^2)\), it follows that \[ 7 \mid r^2. \]”  
+Description: Justification Gap: This inference relies on the divisibility property that if \(d\mid A\) and \(d\mid(A-B)\), then \(d\mid B\), but that property is not explicitly stated or justified.
+
+Anchor: global  
+Location: “Since \(q>0\), we have \(\ell>0\). Also, because \(q=7\ell\), we have \[ \ell=\frac{q}{7}<q. \]”  
+Description: Justification Gap: The proof asserts \(\ell>0\) and \(\ell<q\) without explicitly justifying the required order facts from \(q=7\ell\), \(q>0\), and \(7>1\). This inequality is essential for the minimal-denominator contradiction.
+Anchor: Lemma 1  
+Location: “Since \(7 \mid n^2\) and \(7 \mid (n^2-r^2)\), it follows that \[ 7 \mid r^2. \]”  
+Description: Justification Gap: This inference relies on the divisibility property that if \(d\mid A\) and \(d\mid(A-B)\), then \(d\mid B\), but that property is not explicitly stated or justified.
+
+Anchor: global  
+Location: “Since \(q>0\), we have \(\ell>0\). Also, because \(q=7\ell\), we have \[ \ell=\frac{q}{7}<q. \]”  
+Description: Justification Gap: The proof asserts \(\ell>0\) and \(\ell<q\) without explicitly justifying the required order facts from \(q=7\ell\), \(q>0\), and \(7>1\). This inequality is essential for the minimal-denominator contradiction.

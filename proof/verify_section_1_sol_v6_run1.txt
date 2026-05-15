@@ -1,0 +1,19 @@
+Anchor: Step 1  
+Location: “If $d=7$, then $7\mid 7$ trivially. Thus the only positive divisors of $7$ are $1$ and $7$, so $7$ is prime.”  
+Description: Justification Gap: The proof uses “trivially” as justification for $7\mid 7$, and it does not explicitly justify the exhaustive conclusion that the only positive divisors are $1$ and $7$; in particular, the $d=1$ case and the requirement $7>1$ in the definition of prime are not explicitly established.
+
+Anchor: Step 3  
+Location: “Write \[ p_0=7k. \] Since $p_0>0$ and $7>0$, we have \[ k=\frac{p_0}{7}>0, \] so $k\in\mathbb{Z}_{>0}$.”  
+Description: Justification Gap: From $7\mid p_0$, the proof must explicitly state that there exists an integer $k$ such that $p_0=7k$. The integrality of $k$ is needed to conclude $k\in\mathbb{Z}_{>0}$, but it is not explicitly justified.
+
+Anchor: Step 4  
+Location: “Also, $k^2=k\cdot k$ is a positive integer by closure.”  
+Description: Justification Gap: Closure of the integers under multiplication only justifies that $k^2$ is an integer. It does not by itself justify positivity; the proof would need to explicitly invoke the order property that the product of positive numbers is positive.
+
+Anchor: Step 4  
+Location: “Write \[ q_0=7m. \] Since $q_0>0$ and $7>0$, we have \[ m=\frac{q_0}{7}>0, \] so $m\in\mathbb{Z}_{>0}$.”  
+Description: Justification Gap: From $7\mid q_0$, the proof must explicitly state that there exists an integer $m$ such that $q_0=7m$. The integrality of $m$ is needed to conclude $m\in\mathbb{Z}_{>0}$, but it is not explicitly justified.
+
+Anchor: Step 5  
+Location: “Since $m>0$, we have $m\neq 0$, so we may cancel the common factor $7$: \[ \sqrt{7}=\frac{k}{m}. \]”  
+Description: Justification Gap: The cancellation of the common factor $7$ in $\frac{7k}{7m}$ relies on a fraction-cancellation property and the nonvanishing of the denominator $7m$. These facts are not explicitly stated or justified.

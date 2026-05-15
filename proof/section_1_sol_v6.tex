@@ -1,0 +1,217 @@
+```latex
+\documentclass{article}
+\usepackage{amsmath,amssymb,amsthm,xcolor}
+\input{_macros}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+
+\begin{document}
+
+\section*{Permitted external facts}
+
+We shall use the following permitted external facts.
+
+\begin{enumerate}
+    \item \textbf{The Division Algorithm:} for any integers $a$ and $d$ with $d>0$, there exist unique integers $q$ and $r$ with
+    \[
+        a=dq+r
+        \quad\text{and}\quad
+        0\le r<d.
+    \]
+    Uniqueness implies that $r=0$ if and only if $d\mid a$, and $r\neq 0$ if and only if $d\nmid a$.
+
+    \item \textbf{Euclid's Lemma:} if $p$ is prime and $p\mid ab$, then $p\mid a$ or $p\mid b$.
+
+    \item \textbf{The Well-Ordering Principle:} every nonempty set of positive integers has a least element.
+
+    \item \textbf{Closure:} the integers are closed under addition, subtraction, and multiplication.
+\end{enumerate}
+
+\begin{lemma}
+For any integer $n$, if $7\mid n^2$, then $7\mid n$.
+\end{lemma}
+
+\begin{proof}
+\textbf{Step 1. Primality of $7$.}
+
+A positive integer is prime if it is greater than $1$ and has no divisors except $1$ and itself. By the Division Algorithm, for each $d\in\{2,3,4,5,6\}$, divide $7$ by $d$ to obtain remainder $r_d$:
+\[
+    7=2\cdot 3+1.
+\]
+Thus $r_2=1\neq 0$, hence $2\nmid 7$ by the Division Algorithm.
+
+\[
+    7=3\cdot 2+1.
+\]
+Thus $r_3=1\neq 0$, hence $3\nmid 7$ by the Division Algorithm.
+
+\[
+    7=4\cdot 1+3.
+\]
+Thus $r_4=3\neq 0$, hence $4\nmid 7$ by the Division Algorithm.
+
+\[
+    7=5\cdot 1+2.
+\]
+Thus $r_5=2\neq 0$, hence $5\nmid 7$ by the Division Algorithm.
+
+\[
+    7=6\cdot 1+1.
+\]
+Thus $r_6=1\neq 0$, hence $6\nmid 7$ by the Division Algorithm.
+
+If $d>7$ and $d\mid 7$, then $7=dk$ for some positive integer $k$, giving
+\[
+    d=\frac{7}{k}\le \frac{7}{1}=7,
+\]
+a contradiction. The positivity of $k$ follows because $7>0$ and $d>0$, so $k=7/d>0$, and hence $k\ge 1$. If $d=7$, then $7\mid 7$ trivially. Thus the only positive divisors of $7$ are $1$ and $7$, so $7$ is prime.
+
+\textbf{Step 2. Apply Euclid's Lemma.}
+
+Suppose $7\mid n^2$. Since the integers are closed under multiplication,
+\[
+    n^2=n\cdot n
+\]
+is an integer. Since $7$ is prime by Step $1$ and $7\mid (n\cdot n)$, Euclid's Lemma gives $7\mid n$ or $7\mid n$; in either case, $7\mid n$.
+\end{proof}
+
+\begin{theorem}
+$\sqrt{7}$ is irrational.
+\end{theorem}
+
+\begin{proof}
+\textbf{Step 1. Setup.}
+
+Assume for contradiction that $\sqrt{7}$ is rational. By definition, there exist integers $a,b$ with $b\neq 0$ such that
+\[
+    \sqrt{7}=\frac{a}{b}.
+\]
+Replacing $a$ by $-a$ and $b$ by $-b$ if necessary, noting that
+\[
+    \frac{-a}{-b}=\frac{a}{b},
+\]
+preserves the equality, so we may assume $b>0$. Since $\sqrt{7}$ is the positive square root of $7$ and $7>0$, we have $\sqrt{7}>0$. Multiplying both sides of
+\[
+    \sqrt{7}=\frac{a}{b}
+\]
+by $b>0$ gives
+\[
+    a=b\sqrt{7}.
+\]
+Since $b>0$ and $\sqrt{7}>0$, $a$ is a product of two positive numbers, so $a>0$.
+
+\textbf{Step 2. Well-ordering.}
+
+Therefore $b$ is a positive integer with
+\[
+    b\sqrt{7}=a\in\mathbb{Z}_{>0}.
+\]
+Define
+\[
+    S=\{q\in\mathbb{Z}_{>0}:q\sqrt{7}\in\mathbb{Z}_{>0}\}.
+\]
+Since $b\in S$, the set $S$ is nonempty. By the Well-Ordering Principle, $S$ has a least element $q_0$. Set
+\[
+    p_0=q_0\sqrt{7}\in\mathbb{Z}_{>0}.
+\]
+Then
+\[
+    \sqrt{7}=\frac{p_0}{q_0}.
+\]
+
+\textbf{Step 3. $7$ divides $p_0$.}
+
+Squaring both sides of
+\[
+    \sqrt{7}=\frac{p_0}{q_0}
+\]
+gives
+\[
+    (\sqrt{7})^2=\left(\frac{p_0}{q_0}\right)^2,
+\]
+that is,
+\[
+    7=\frac{p_0^2}{q_0^2}.
+\]
+Multiplying both sides by $q_0^2$, which is a positive integer since $q_0>0$ and the integers are closed under multiplication, gives
+\[
+    p_0^2=7q_0^2.
+\]
+Hence $7\mid p_0^2$. By the Lemma, with $n=p_0$ and noting that $p_0\in\mathbb{Z}$, we get
+\[
+    7\mid p_0.
+\]
+Write
+\[
+    p_0=7k.
+\]
+Since $p_0>0$ and $7>0$, we have
+\[
+    k=\frac{p_0}{7}>0,
+\]
+so $k\in\mathbb{Z}_{>0}$.
+
+\textbf{Step 4. $7$ divides $q_0$.}
+
+Substituting $p_0=7k$ into
+\[
+    p_0^2=7q_0^2
+\]
+gives
+\[
+    (7k)^2=7q_0^2,
+\]
+so
+\[
+    49k^2=7q_0^2.
+\]
+Since $7\neq 0$, divide both sides by $7$ to obtain
+\[
+    7k^2=q_0^2.
+\]
+Also, $k^2=k\cdot k$ is a positive integer by closure. Hence
+\[
+    7\mid q_0^2.
+\]
+By the Lemma, with $n=q_0$ and noting that $q_0\in\mathbb{Z}$, we get
+\[
+    7\mid q_0.
+\]
+Write
+\[
+    q_0=7m.
+\]
+Since $q_0>0$ and $7>0$, we have
+\[
+    m=\frac{q_0}{7}>0,
+\]
+so $m\in\mathbb{Z}_{>0}$.
+
+\textbf{Step 5. Contradiction.}
+
+Now
+\[
+    \sqrt{7}=\frac{p_0}{q_0}=\frac{7k}{7m}.
+\]
+Since $m>0$, we have $m\neq 0$, so we may cancel the common factor $7$:
+\[
+    \sqrt{7}=\frac{k}{m}.
+\]
+Multiplying both sides by $m>0$ gives
+\[
+    m\sqrt{7}=k\in\mathbb{Z}_{>0}.
+\]
+Thus $m\in S$. But $q_0=7m$ and $7\ge 2>1$, so
+\[
+    m=\frac{q_0}{7}<q_0,
+\]
+since $7>1$ implies $1/7<1$, which implies
+\[
+    m=\frac{q_0}{7}<q_0\cdot 1=q_0.
+\]
+This contradicts $q_0$ being the least element of $S$. Therefore the assumption that $\sqrt{7}$ is rational is false. Hence $\sqrt{7}$ is irrational.
+\end{proof}
+
+\end{document}
+```

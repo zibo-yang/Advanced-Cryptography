@@ -1,0 +1,261 @@
+### Improved solution
+
+We will avoid Euclid’s lemma entirely by proving the needed divisibility fact directly. The only general principle used is the **Well-Ordering Principle**: every nonempty subset of \(\mathbb Z_{>0}\) has a least element. It applies below because we explicitly construct a nonempty subset of \(\mathbb Z_{>0}\).
+
+\[
+\textbf{Lemma.}\quad \text{For every } n\in \mathbb Z,\ \text{if } 7\mid n^2,\text{ then }7\mid n.
+\]
+
+\[
+\textbf{Proof of the lemma.}
+\]
+Let \(n\in \mathbb Z\). By the division algorithm, there exist \(s\in\mathbb Z\) and \(r\in\{0,1,2,3,4,5,6\}\) such that
+
+\[
+n=7s+r.
+\]
+
+Thus \(n\equiv r\pmod 7\), so
+
+\[
+n^2\equiv r^2\pmod 7.
+\]
+
+Now compute the possible nonzero square residues modulo \(7\):
+
+\[
+\begin{array}{c|cccccc}
+r & 1 & 2 & 3 & 4 & 5 & 6\\
+\hline
+r^2 \bmod 7 & 1 & 4 & 2 & 2 & 4 & 1
+\end{array}
+\]
+
+None of these residues is \(0\). Therefore, if \(7\mid n^2\), then \(n^2\equiv 0\pmod 7\), so the remainder \(r\) cannot be one of \(1,2,3,4,5,6\). Hence \(r=0\), which means
+
+\[
+n=7s.
+\]
+
+Therefore \(7\mid n\). \(\square\)
+
+Now we prove the theorem.
+
+\[
+\textbf{Theorem.}\quad \sqrt 7 \text{ is irrational.}
+\]
+
+\[
+\textbf{Proof.}
+\]
+By definition, \(\sqrt 7\) is the nonnegative real number whose square is \(7\). Since \(7>0\), we have
+
+\[
+\sqrt 7>0
+\]
+
+and
+
+\[
+(\sqrt 7)^2=7.
+\]
+
+Assume, for contradiction, that \(\sqrt 7\) is rational. Then there exist integers \(a,b\in\mathbb Z\) with \(b\neq 0\) such that
+
+\[
+\sqrt 7=\frac{a}{b}.
+\]
+
+If \(b<0\), replace \(a,b\) by \(-a,-b\). This does not change the quotient because
+
+\[
+\frac{-a}{-b}=\frac{a}{b},
+\]
+
+and it makes the denominator positive. Thus we may assume
+
+\[
+b>0.
+\]
+
+Since
+
+\[
+a=b\sqrt 7,
+\]
+
+and both \(b>0\) and \(\sqrt 7>0\), it follows that \(a>0\). Hence \(a\in\mathbb Z_{>0}\).
+
+Define
+
+\[
+S=\{q\in\mathbb Z_{>0}: q\sqrt 7\in\mathbb Z_{>0}\}.
+\]
+
+The set \(S\) is nonempty because \(b\in S\), since
+
+\[
+b\sqrt 7=a\in\mathbb Z_{>0}.
+\]
+
+By the Well-Ordering Principle, \(S\) has a least element. Let \(q_0\) be the least element of \(S\), and define
+
+\[
+p_0=q_0\sqrt 7.
+\]
+
+Because \(q_0\in S\), we have
+
+\[
+p_0\in\mathbb Z_{>0}.
+\]
+
+Also, since \(q_0>0\), we may divide by \(q_0\) and get
+
+\[
+\sqrt 7=\frac{p_0}{q_0}.
+\]
+
+Equivalently,
+
+\[
+p_0=q_0\sqrt 7.
+\]
+
+Squaring both sides gives
+
+\[
+p_0^2=(q_0\sqrt 7)^2.
+\]
+
+Using \((xy)^2=x^2y^2\) and \((\sqrt 7)^2=7\), we obtain
+
+\[
+p_0^2=q_0^2(\sqrt 7)^2=7q_0^2.
+\]
+
+Thus
+
+\[
+7\mid p_0^2.
+\]
+
+Since \(p_0\in\mathbb Z\), the lemma applies, so
+
+\[
+7\mid p_0.
+\]
+
+Therefore there exists \(k\in\mathbb Z\) such that
+
+\[
+p_0=7k.
+\]
+
+Because \(p_0>0\) and \(7>0\), we must have \(k>0\). Indeed, if \(k\leq 0\), then \(7k\leq 0\), contradicting \(p_0=7k>0\). Hence
+
+\[
+k\in\mathbb Z_{>0}.
+\]
+
+Substitute \(p_0=7k\) into \(p_0^2=7q_0^2\):
+
+\[
+(7k)^2=7q_0^2.
+\]
+
+So
+
+\[
+49k^2=7q_0^2.
+\]
+
+Since \(7\neq 0\), we may divide both sides by \(7\), giving
+
+\[
+7k^2=q_0^2.
+\]
+
+Thus
+
+\[
+q_0^2=7k^2,
+\]
+
+so
+
+\[
+7\mid q_0^2.
+\]
+
+Since \(q_0\in\mathbb Z\), the lemma applies again, yielding
+
+\[
+7\mid q_0.
+\]
+
+Therefore there exists \(m\in\mathbb Z\) such that
+
+\[
+q_0=7m.
+\]
+
+Because \(q_0>0\) and \(7>0\), the same order argument shows that \(m>0\). Hence
+
+\[
+m\in\mathbb Z_{>0}.
+\]
+
+Now
+
+\[
+\sqrt 7=\frac{p_0}{q_0}
+=\frac{7k}{7m}
+=\frac{k}{m}.
+\]
+
+Therefore
+
+\[
+m\sqrt 7=k.
+\]
+
+Since \(k\in\mathbb Z_{>0}\), this shows that
+
+\[
+m\sqrt 7\in\mathbb Z_{>0}.
+\]
+
+Thus
+
+\[
+m\in S.
+\]
+
+But \(q_0=7m\), so
+
+\[
+q_0-m=7m-m=6m.
+\]
+
+Since \(m>0\), we have \(6m>0\). Therefore
+
+\[
+q_0-m>0,
+\]
+
+which means
+
+\[
+m<q_0.
+\]
+
+So \(m\in S\) and \(m<q_0\), contradicting the choice of \(q_0\) as the least element of \(S\).
+
+Therefore our assumption that \(\sqrt 7\) is rational must be false. Hence
+
+\[
+\sqrt 7
+\]
+
+is irrational. \(\square\)

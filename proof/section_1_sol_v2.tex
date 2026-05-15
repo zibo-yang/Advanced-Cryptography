@@ -1,0 +1,138 @@
+```latex
+\section*{Proof}
+
+We prove that $\sqrt{7}$ is irrational.
+
+First, we establish a lemma.
+
+\medskip
+
+\noindent\textbf{Lemma.} For every integer $n$, if $7 \mid n^2$, then $7 \mid n$.
+
+\begin{proof}
+Let $n$ be any integer. By the division algorithm, there exist integers $a$ and $r$ such that
+\[
+n=7a+r
+\]
+with
+\[
+r \in \{0,1,2,3,4,5,6\}.
+\]
+Then
+\[
+n^2=(7a+r)^2=49a^2+14ar+r^2=7(7a^2+2ar)+r^2.
+\]
+Hence
+\[
+n^2-r^2=7(7a^2+2ar),
+\]
+so
+\[
+7 \mid (n^2-r^2).
+\]
+
+Now suppose $7 \mid n^2$. Since $7 \mid n^2$ and $7 \mid (n^2-r^2)$, it follows that
+\[
+7 \mid r^2.
+\]
+But for the possible values of $r$, we have
+\[
+0^2=0,\quad 1^2=1,\quad 2^2=4,\quad 3^2=9,\quad 4^2=16,\quad 5^2=25,\quad 6^2=36.
+\]
+Among these numbers, the only one divisible by $7$ is $0$. Therefore
+\[
+r=0.
+\]
+Thus
+\[
+n=7a,
+\]
+so
+\[
+7 \mid n.
+\]
+This proves the lemma.
+\end{proof}
+
+\medskip
+
+Now suppose, for contradiction, that $\sqrt{7}$ is rational. Then there exist integers $m$ and $n$ with $n \neq 0$ such that
+\[
+\sqrt{7}=\frac{m}{n}.
+\]
+Replacing $n$ by $-n$ and $m$ by $-m$ if necessary, we may assume
+\[
+n>0.
+\]
+
+Among all positive denominators of fractions representing $\sqrt{7}$, choose the smallest one. This is possible by the well-ordering principle, since the set of such positive denominators is a nonempty subset of the positive integers. Thus choose integers $p$ and $q$ such that
+\[
+q>0,\qquad \sqrt{7}=\frac{p}{q},
+\]
+and such that $q$ is as small as possible among all positive denominators representing $\sqrt{7}$.
+
+Squaring both sides gives
+\[
+7=\frac{p^2}{q^2}.
+\]
+Multiplying by $q^2$ gives
+\[
+p^2=7q^2.
+\]
+Therefore
+\[
+7 \mid p^2.
+\]
+By the lemma, applied to the integer $p$, we get
+\[
+7 \mid p.
+\]
+Hence there exists an integer $k$ such that
+\[
+p=7k.
+\]
+Substituting this into $p^2=7q^2$, we obtain
+\[
+(7k)^2=7q^2.
+\]
+Thus
+\[
+49k^2=7q^2.
+\]
+Dividing by $7$ gives
+\[
+7k^2=q^2.
+\]
+Therefore
+\[
+7 \mid q^2.
+\]
+By the lemma, applied now to the integer $q$, we get
+\[
+7 \mid q.
+\]
+Hence there exists an integer $\ell$ such that
+\[
+q=7\ell.
+\]
+Since $q>0$, we have $\ell>0$. Also, because $q=7\ell$, we have
+\[
+\ell=\frac{q}{7}<q.
+\]
+
+Now
+\[
+\sqrt{7}=\frac{p}{q}=\frac{7k}{7\ell}=\frac{k}{\ell}.
+\]
+This represents $\sqrt{7}$ with positive denominator $\ell$, and
+\[
+0<\ell<q.
+\]
+This contradicts the choice of $q$ as the smallest positive denominator of any fraction representing $\sqrt{7}$.
+
+Therefore our assumption that $\sqrt{7}$ is rational was false. Hence
+\[
+\sqrt{7}
+\]
+is irrational. 
+```
