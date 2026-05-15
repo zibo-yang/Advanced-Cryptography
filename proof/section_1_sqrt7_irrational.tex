@@ -1,0 +1,154 @@
+\section{Irrationality of \texorpdfstring{$\sqrt{7}$}{sqrt(7)}}
+
+\begin{theorem}
+The number $\sqrt{7}$ is irrational.
+\end{theorem}
+
+\begin{proof}
+We first prove an elementary divisibility fact.
+
+\medskip
+
+\noindent
+\textbf{Claim 1.} If $n \in \mathbb{Z}$ and $7 \mid n^2$, then $7 \mid n$.
+
+\smallskip
+
+\noindent
+By the division algorithm, applied to the integer $n$ and the positive integer $7$, there exist $k \in \mathbb{Z}$ and
+\[
+r \in \{0,1,2,3,4,5,6\}
+\]
+such that
+\[
+n = 7k+r.
+\]
+Squaring gives
+\[
+n^2 = (7k+r)^2 = 49k^2+14kr+r^2 = 7(7k^2+2kr)+r^2.
+\]
+Now suppose $7 \mid n^2$. Then there exists $t \in \mathbb{Z}$ such that
+\[
+n^2 = 7t.
+\]
+Using the displayed formula for $n^2$, we get
+\[
+r^2
+= n^2 - 7(7k^2+2kr)
+= 7t - 7(7k^2+2kr)
+= 7\bigl(t-7k^2-2kr\bigr).
+\]
+Thus $7 \mid r^2$.
+
+But since
+\[
+r \in \{0,1,2,3,4,5,6\},
+\]
+the possible values of $r^2$ are
+\[
+0,1,4,9,16,25,36.
+\]
+Among these, the only number divisible by $7$ is $0$. Therefore $r^2=0$, so $r=0$. Hence
+\[
+n=7k,
+\]
+and therefore $7 \mid n$. This proves Claim 1.
+
+\medskip
+
+We also justify the use of a fraction in lowest terms.
+
+\medskip
+
+\noindent
+\textbf{Claim 2.} If a nonzero rational number $x$ is given, then there exist integers $p$ and $q$ with $q \neq 0$ and $\gcd(p,q)=1$ such that
+\[
+x=\frac{p}{q}.
+\]
+
+\smallskip
+
+\noindent
+Since $x$ is rational, there exist integers $a$ and $b$ with $b \neq 0$ such that
+\[
+x=\frac{a}{b}.
+\]
+Because $x \neq 0$, we also have $a \neq 0$. Let
+\[
+D=\{d \in \mathbb{Z}_{>0} : d \mid a \text{ and } d \mid b\}.
+\]
+The set $D$ is nonempty because $1 \in D$. Also, if $d \in D$, then $d \mid a$, so $d \leq |a|$. Thus $D$ is a nonempty finite set of positive integers, so it has a largest element. Let that largest element be $d$.
+
+Since $d \mid a$ and $d \mid b$, there exist integers $p$ and $q$ such that
+\[
+a=dp
+\qquad\text{and}\qquad
+b=dq.
+\]
+Because $b \neq 0$ and $d \neq 0$, we have $q \neq 0$. Also,
+\[
+\frac{a}{b}=\frac{dp}{dq}=\frac{p}{q}.
+\]
+We now show that $\gcd(p,q)=1$. Suppose $c$ is a positive integer dividing both $p$ and $q$. Then $cd$ divides both $dp=a$ and $dq=b$, so $cd \in D$. Since $d$ was chosen to be the largest element of $D$, we have
+\[
+cd \leq d.
+\]
+Because $d>0$, this implies $c \leq 1$. Since $c$ is positive, $c=1$. Therefore the only positive common divisor of $p$ and $q$ is $1$, so
+\[
+\gcd(p,q)=1.
+\]
+This proves Claim 2.
+
+\medskip
+
+Now suppose, for contradiction, that $\sqrt{7}$ is rational. Since $\sqrt{7}\neq 0$, Claim 2 gives integers $p$ and $q$ with $q \neq 0$ and
+\[
+\gcd(p,q)=1
+\]
+such that
+\[
+\sqrt{7}=\frac{p}{q}.
+\]
+Squaring both sides gives
+\[
+7=\frac{p^2}{q^2}.
+\]
+Since $q \neq 0$, we may multiply both sides by $q^2$ to obtain
+\[
+p^2=7q^2.
+\]
+Therefore $7 \mid p^2$. By Claim 1, it follows that
+\[
+7 \mid p.
+\]
+So there exists $m \in \mathbb{Z}$ such that
+\[
+p=7m.
+\]
+Substituting this into $p^2=7q^2$ gives
+\[
+(7m)^2=7q^2,
+\]
+so
+\[
+49m^2=7q^2.
+\]
+Dividing both sides by $7$ yields
+\[
+7m^2=q^2.
+\]
+Equivalently,
+\[
+q^2=7m^2.
+\]
+Thus $7 \mid q^2$. Applying Claim 1 again, we get
+\[
+7 \mid q.
+\]
+
+Hence $7$ divides both $p$ and $q$. This contradicts the fact that
+\[
+\gcd(p,q)=1.
+\]
+Therefore our assumption that $\sqrt{7}$ is rational must be false. Hence $\sqrt{7}$ is irrational.
+\end{proof}
