@@ -1,0 +1,19 @@
+Anchor: Lemma lem:divisibility  
+Location: "Then $n^2 \equiv r^2 \pmod{7}$."  
+Description: Justification Gap: This uses the unstated property that congruence is preserved under squaring, or equivalently that $n=7q+r$ implies $n^2-r^2$ is divisible by $7$. That property is not explicitly stated or derived.
+
+Anchor: Lemma lem:divisibility  
+Location: "Therefore, if $7 \mid n^2$ then $r = 0$"  
+Description: Justification Gap: The proof does not explicitly justify the chain from $7\mid n^2$ to $n^2\equiv 0\pmod 7$, then to $r^2\equiv 0\pmod 7$, and finally to $r=0$ using the residue table.
+
+Anchor: Theorem thm:sqrt7  
+Location: "We may assume $n > 0$."  
+Description: Justification Gap: The proof does not justify why the denominator in the rational representation may be assumed positive.
+
+Anchor: Theorem thm:sqrt7  
+Location: "Then $\sqrt{7} = ga/gb = a/b$."  
+Description: Justification Gap: This cancellation requires $g\neq 0$. The proof does not explicitly establish that $\gcd(m,n)$ is positive or nonzero before dividing by $g$.
+
+Anchor: Theorem thm:sqrt7  
+Location: "Squaring and clearing denominators gives $a^2 = 7b^2$."  
+Description: Justification Gap: The proof compresses several steps without explicitly justifying them: that squaring preserves the equality, that $(\sqrt 7)^2=7$, and that clearing denominators is valid using $b\neq 0$.

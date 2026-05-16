@@ -1,0 +1,7 @@
+Anchor: global  
+Location: “Assume, for contradiction, that $\sqrt{7}$ is rational. Then there exist integers $a$ and $b$ with $b \neq 0$ and $\gcd(a,b)=1$ such that $\sqrt{7}=\frac{a}{b}$.”  
+Description: Justification Gap: The proof assumes without justification that any rational number can be represented as a fraction of integers in lowest terms. The existence of $a,b$ with $\gcd(a,b)=1$ requires an explicitly stated reduction-to-lowest-terms theorem or argument.
+
+Anchor: global  
+Location: “We have shown that $7 \mid a$ and $7 \mid b$, contradicting $\gcd(a,b)=1$.”  
+Description: Justification Gap: The contradiction relies on the unstated fact that if an integer greater than $1$ divides both $a$ and $b$, then $\gcd(a,b)\neq 1$. The proof does not explicitly connect $7\mid a$ and $7\mid b$ to the claimed contradiction with $\gcd(a,b)=1$.

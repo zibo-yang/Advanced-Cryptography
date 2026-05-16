@@ -1,0 +1,7 @@
+Anchor: Lemma lem:divisibility  
+Location: “Then \(n^2 \equiv r^2 \pmod{7}\).”  
+Description: Justification Gap: The proof does not explicitly justify why \(n=7q+r\) implies \(n^2 \equiv r^2 \pmod 7\). This relies on compatibility of congruence with squaring, or on an explicit expansion showing \(n^2-r^2\) is divisible by \(7\), neither of which is stated.
+
+Anchor: Theorem thm:sqrt7  
+Location: “We may assume \(n > 0\).”  
+Description: Justification Gap: The proof does not justify the reduction from an arbitrary nonzero denominator \(n\) to a positive denominator. This requires explaining that if \(n<0\), one may replace \(m,n\) by \(-m,-n\) without changing the fraction.

@@ -1,0 +1,3 @@
+Anchor: global
+Location: "Assume, for contradiction, that $\sqrt{7}$ is rational. Then there exist integers $a$ and $b$ with $b \neq 0$ and $\gcd(a,b)=1$ such that \(\sqrt{7}=\frac{a}{b}\)."
+Description: Justification Gap: The proof assumes without justification that a rational number can be represented as a fraction of coprime integers. The definition of rationality only gives some integers \(a,b\) with \(b\neq 0\); obtaining \(\gcd(a,b)=1\) requires an additional lowest-terms argument or theorem, which is not stated.
