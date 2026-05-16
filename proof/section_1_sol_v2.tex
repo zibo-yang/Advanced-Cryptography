@@ -1,102 +1,179 @@
-```latex
-\begin{theorem}
-The number $\sqrt{7}$ is irrational.
-\end{theorem}
+Here is an improved solution. The gap identified in the bug report is fixed by proving the “lowest terms” step as a separate lemma.
 
-\begin{proof}
-We first justify the use of a fraction in lowest terms. If $r\in\mathbb{Q}$, then by definition there exist integers $a,b$ with $b\neq 0$ such that
 \[
-r=\frac{a}{b}.
+\text{For integers } m,n,\text{ write } m\mid n \text{ to mean that } n=mk \text{ for some } k\in\mathbb Z.
 \]
-Let
-\[
-d=\gcd(a,b).
-\]
-Then $d>0$, and since $d\mid a$ and $d\mid b$, there exist integers $p,q$ such that
-\[
-a=dp,\qquad b=dq.
-\]
-Since $b\neq 0$, we also have $q\neq 0$. Thus
-\[
-r=\frac{a}{b}=\frac{dp}{dq}=\frac{p}{q}.
-\]
-Moreover, $\gcd(p,q)=1$: indeed, if a positive integer $c$ divides both $p$ and $q$, then $dc$ divides both $a$ and $b$. Since $d=\gcd(a,b)$ is the greatest positive common divisor of $a$ and $b$, we must have $dc\le d$, hence $c\le 1$, so $c=1$.
 
-Now suppose, for contradiction, that $\sqrt{7}$ is rational. By the preceding argument, there exist integers $p,q$ such that
+**Lemma 1.** If \(n\in\mathbb Z\) and \(7\mid n^2\), then \(7\mid n\).
+
+**Proof.** By the division algorithm, since \(7>0\), there exist integers \(a\) and \(r\) such that
+
 \[
-q\neq 0,\qquad \gcd(p,q)=1,\qquad \sqrt{7}=\frac{p}{q}.
+n=7a+r
 \]
+
+with
+
+\[
+r\in\{0,1,2,3,4,5,6\}.
+\]
+
+Then
+
+\[
+n^2=(7a+r)^2=49a^2+14ar+r^2.
+\]
+
+Hence
+
+\[
+n^2-r^2=49a^2+14ar=7(7a^2+2ar),
+\]
+
+so \(7\mid(n^2-r^2)\). Therefore, if \(7\mid n^2\), then \(7\mid r^2\).
+
+Now check the possible values of \(r\):
+
+\[
+\begin{array}{c|ccccccc}
+r & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
+\hline
+r^2 \bmod 7 & 0 & 1 & 4 & 2 & 2 & 4 & 1
+\end{array}
+\]
+
+The only case in which \(7\mid r^2\) is \(r=0\). Thus \(r=0\), so
+
+\[
+n=7a.
+\]
+
+Therefore \(7\mid n\). \(\square\)
+
+---
+
+**Lemma 2.** If \(p,q\in\mathbb Z\) and \(q\neq 0\), then there exist integers \(a,b\) such that
+
+\[
+\frac{p}{q}=\frac{a}{b}, \qquad b\neq 0,
+\]
+
+and \(a\) and \(b\) have no positive common divisor greater than \(1\).
+
+**Proof.** Let
+
+\[
+D=\{d\in\mathbb Z_{>0}: d\mid p \text{ and } d\mid q\}.
+\]
+
+The set \(D\) is nonempty because \(1\in D\). Also, if \(d\in D\), then \(d\mid q\), so \(q=dt\) for some nonzero integer \(t\). Hence
+
+\[
+|q|=d|t|\ge d,
+\]
+
+so \(d\le |q|\). Therefore
+
+\[
+D\subseteq \{1,2,\dots,|q|\},
+\]
+
+which is a finite set. Thus \(D\) has a largest element; call it \(d\).
+
+Since \(d\mid p\) and \(d\mid q\), there exist integers \(a,b\) such that
+
+\[
+p=da,\qquad q=db.
+\]
+
+Because \(q\neq 0\) and \(d>0\), we have \(b\neq 0\). Also,
+
+\[
+\frac{p}{q}=\frac{da}{db}=\frac{a}{b}.
+\]
+
+We claim that \(a\) and \(b\) have no positive common divisor greater than \(1\). Suppose, for contradiction, that some integer \(c>1\) divides both \(a\) and \(b\). Then \(a=ca_1\) and \(b=cb_1\) for some integers \(a_1,b_1\). Hence
+
+\[
+p=da=dc a_1,
+\qquad
+q=db=dc b_1.
+\]
+
+Thus \(dc\mid p\) and \(dc\mid q\), so \(dc\in D\). But \(c>1\) and \(d>0\), so
+
+\[
+dc>d,
+\]
+
+contradicting the choice of \(d\) as the largest element of \(D\). Therefore \(a\) and \(b\) have no positive common divisor greater than \(1\). \(\square\)
+
+---
+
+**Theorem.** The real number \(\sqrt{7}\) is irrational.
+
+**Proof.** Suppose, for contradiction, that \(\sqrt{7}\) is not irrational. By the given definition, this means that there exist integers \(p,q\) with \(q\neq 0\) such that
+
+\[
+\sqrt{7}=\frac{p}{q}.
+\]
+
+By Lemma 2, we may choose integers \(a,b\) such that
+
+\[
+\sqrt{7}=\frac{a}{b}, \qquad b\neq 0,
+\]
+
+and \(a\) and \(b\) have no positive common divisor greater than \(1\).
+
 Squaring both sides gives
+
 \[
-7=\frac{p^2}{q^2}.
-\]
-Since $q\neq 0$, multiplying both sides by $q^2$ yields
-\[
-p^2=7q^2.
-\]
-Therefore
-\[
-7\mid p^2.
+7=\frac{a^2}{b^2}.
 \]
 
-We claim that for every integer $n$, if $7\mid n^2$, then $7\mid n$. To prove this, note that every integer is congruent modulo $7$ to exactly one of
-\[
-0,1,2,3,4,5,6.
-\]
-The corresponding squares modulo $7$ are
-\[
-0^2\equiv 0,\quad
-1^2\equiv 1,\quad
-2^2\equiv 4,\quad
-3^2\equiv 2,\quad
-4^2\equiv 2,\quad
-5^2\equiv 4,\quad
-6^2\equiv 1
-\pmod{7}.
-\]
-Thus the only residue class whose square is congruent to $0$ modulo $7$ is the residue class $0$. Hence, if
-\[
-n^2\equiv 0\pmod{7},
-\]
-then
-\[
-n\equiv 0\pmod{7},
-\]
-which means exactly that $7\mid n$.
+Since \(b\neq 0\), we may multiply by \(b^2\), obtaining
 
-Applying this claim to $p$, we get
 \[
-7\mid p.
-\]
-So there exists an integer $k$ such that
-\[
-p=7k.
-\]
-Substituting this into $p^2=7q^2$ gives
-\[
-(7k)^2=7q^2,
-\]
-so
-\[
-49k^2=7q^2.
-\]
-Dividing both sides by $7$ gives
-\[
-7k^2=q^2.
-\]
-Therefore
-\[
-7\mid q^2.
-\]
-Applying the same claim to $q$, we obtain
-\[
-7\mid q.
+7b^2=a^2.
 \]
 
-Thus $7$ divides both $p$ and $q$, so $p$ and $q$ have a common positive divisor greater than $1$. This contradicts
+Thus \(7\mid a^2\). By Lemma 1, it follows that
+
 \[
-\gcd(p,q)=1.
+7\mid a.
 \]
-Therefore our assumption that $\sqrt{7}$ is rational must be false. Hence $\sqrt{7}$ is irrational.
-\end{proof}
-```
+
+Therefore there exists an integer \(k\) such that
+
+\[
+a=7k.
+\]
+
+Substituting this into \(7b^2=a^2\), we get
+
+\[
+7b^2=(7k)^2=49k^2.
+\]
+
+Dividing both sides by \(7\), we obtain
+
+\[
+b^2=7k^2.
+\]
+
+Hence \(7\mid b^2\). By Lemma 1 again,
+
+\[
+7\mid b.
+\]
+
+So \(7\mid a\) and \(7\mid b\). Therefore the positive integer \(7>1\) is a common divisor of \(a\) and \(b\), contradicting the fact that \(a\) and \(b\) have no positive common divisor greater than \(1\).
+
+This contradiction shows that no integers \(p,q\) with \(q\neq 0\) satisfy
+
+\[
+\sqrt{7}=\frac{p}{q}.
+\]
+
+Therefore, by the given definition, \(\sqrt{7}\) is irrational. \(\square\)

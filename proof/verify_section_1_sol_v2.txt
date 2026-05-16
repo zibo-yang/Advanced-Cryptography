@@ -1,3 +1,7 @@
-Anchor: Theorem 1  
-Location: “The corresponding squares modulo \(7\) are … Thus the only residue class whose square is congruent to \(0\) modulo \(7\) is the residue class \(0\). Hence, if \(n^2\equiv 0\pmod{7}\), then \(n\equiv 0\pmod{7}\).”  
-Description: Justification Gap. The argument relies on the unstated property that congruence is preserved under squaring: if \(n\equiv r\pmod 7\), then \(n^2\equiv r^2\pmod 7\). This property is not explicitly stated or justified, so the transition from the residue list for \(n\) to conclusions about \(n^2\) is incomplete under the stated verification rules.
+Anchor: Lemma 1  
+Location: “Hence \(7\mid(n^2-r^2)\). Therefore, if \(7\mid n^2\), then \(7\mid r^2\).”  
+Description: Justification Gap. The proof uses the divisibility property that if \(7\mid n^2\) and \(7\mid(n^2-r^2)\), then \(7\mid r^2\), but this property is not stated or justified.
+
+Anchor: Lemma 2  
+Location: “Therefore \(D\subseteq \{1,2,\dots,|q|\}\), which is a finite set. Thus \(D\) has a largest element; call it \(d\).”  
+Description: Justification Gap. The proof relies on the unstated result that every nonempty finite subset of the positive integers has a largest element. Although \(D\) was shown nonempty and bounded inside a finite set, the existence-of-maximum property is not explicitly stated or justified.

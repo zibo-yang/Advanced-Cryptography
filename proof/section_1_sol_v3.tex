@@ -1,104 +1,350 @@
-The only standard external facts used below are **Euclid’s lemma** and the **Well-Ordering Principle**. Euclid’s lemma says that if a prime $p$ divides a product $ab$, then $p\mid a$ or $p\mid b$; the Well-Ordering Principle says that every nonempty set of positive integers has a least element. ([proofwiki.org](https://proofwiki.org/wiki/Euclid%27s_Lemma_for_Prime_Divisors?utm_source=openai))
+Here is a corrected proof with the two reported gaps filled explicitly.
 
-\begin{lemma}
-If $7\mid n^2$, then $7\mid n$.
-\end{lemma}
-
-\begin{proof}
-Since $7$ is prime and $7\mid n^2=n\cdot n$, Euclid's lemma implies that $7\mid n$.
-\end{proof}
-
-\begin{theorem}
-$\sqrt{7}$ is irrational.
-\end{theorem}
-
-\begin{proof}
-Assume, for contradiction, that $\sqrt{7}$ is rational.
-
-Then there exist integers $a$ and $b$ with $b\neq 0$ such that
 \[
-\sqrt{7}=\frac{a}{b}.
+\text{For integers } m,n,\text{ write } m\mid n \text{ to mean that } n=mk
+\text{ for some } k\in\mathbb Z.
 \]
-Replacing both $a$ and $b$ by their negatives if necessary, we may assume that $b>0$. Since $\sqrt{7}>0$, it follows that $a>0$. Therefore
-\[
-b\sqrt{7}=a\in \mathbb{Z}_{>0}.
-\]
-Thus the set
-\[
-S=\{q\in \mathbb{Z}_{>0}: q\sqrt{7}\in \mathbb{Z}_{>0}\}
-\]
-is nonempty.
 
-By the Well-Ordering Principle, $S$ has a least element. Let $q_0$ be the least element of $S$, and define
+We first record two elementary facts that will be used in the proof.
+
+---
+
+### Lemma 1: A divisibility subtraction property
+
+If \(c,x,y\in\mathbb Z\), \(c\mid x\), and \(c\mid y\), then
+
 \[
-p_0=q_0\sqrt{7}.
+c\mid (x-y).
 \]
-Then $p_0\in \mathbb{Z}_{>0}$, and
+
+**Proof.** Since \(c\mid x\) and \(c\mid y\), there exist integers \(u,v\) such that
+
 \[
-\sqrt{7}=\frac{p_0}{q_0}.
+x=cu,\qquad y=cv.
 \]
+
+Therefore
+
+\[
+x-y=cu-cv=c(u-v).
+\]
+
+Since \(u-v\in\mathbb Z\), we have \(c\mid (x-y)\). \(\square\)
+
+In particular, if \(c\mid x\) and \(c\mid (x-y)\), then
+
+\[
+y=x-(x-y),
+\]
+
+so Lemma 1 implies \(c\mid y\).
+
+---
+
+### Lemma 2: A finite maximum property
+
+If \(N\in\mathbb Z_{>0}\) and \(S\) is a nonempty subset of
+
+\[
+\{1,2,\dots,N\},
+\]
+
+then \(S\) has a largest element.
+
+**Proof.** We prove this by induction on \(N\).
+
+For \(N=1\), the only nonempty subset of \(\{1\}\) is \(\{1\}\), whose largest element is \(1\).
+
+Assume the result is true for some \(N\ge 1\). Let \(S\) be a nonempty subset of
+
+\[
+\{1,2,\dots,N,N+1\}.
+\]
+
+If \(N+1\in S\), then \(N+1\) is the largest element of \(S\). If \(N+1\notin S\), then
+
+\[
+S\subseteq \{1,2,\dots,N\}.
+\]
+
+Since \(S\) is nonempty, the induction hypothesis implies that \(S\) has a largest element.
+
+Thus the claim holds for \(N+1\). By induction, the lemma is proved. \(\square\)
+
+---
+
+### Lemma 3: If \(7\mid n^2\), then \(7\mid n\)
+
+Let \(n\in\mathbb Z\). Suppose
+
+\[
+7\mid n^2.
+\]
+
+By the division algorithm, since \(7>0\), there exist integers \(a\) and \(r\) such that
+
+\[
+n=7a+r
+\]
+
+with
+
+\[
+r\in\{0,1,2,3,4,5,6\}.
+\]
+
+Then
+
+\[
+n^2=(7a+r)^2=49a^2+14ar+r^2.
+\]
+
+Hence
+
+\[
+n^2-r^2=49a^2+14ar=7(7a^2+2ar).
+\]
+
+Since \(7a^2+2ar\in\mathbb Z\), we have
+
+\[
+7\mid (n^2-r^2).
+\]
+
+We also assumed that \(7\mid n^2\). Therefore, by Lemma 1 applied to \(n^2\) and \(n^2-r^2\),
+
+\[
+7\mid \bigl(n^2-(n^2-r^2)\bigr).
+\]
+
+But
+
+\[
+n^2-(n^2-r^2)=r^2.
+\]
+
+Thus
+
+\[
+7\mid r^2.
+\]
+
+Now check the possible values of \(r\):
+
+\[
+\begin{array}{c|ccccccc}
+r & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
+\hline
+r^2 & 0 & 1 & 4 & 9 & 16 & 25 & 36
+\end{array}
+\]
+
+Among these numbers, the only one divisible by \(7\) is \(0\). Therefore \(r=0\). Hence
+
+\[
+n=7a,
+\]
+
+so
+
+\[
+7\mid n.
+\]
+
+This proves the lemma. \(\square\)
+
+---
+
+### Lemma 4: Every rational expression can be put in lowest terms
+
+If \(p,q\in\mathbb Z\) and \(q\neq 0\), then there exist integers \(a,b\) such that
+
+\[
+\frac{p}{q}=\frac{a}{b}, \qquad b\neq 0,
+\]
+
+and \(a\) and \(b\) have no positive common divisor greater than \(1\).
+
+**Proof.** Define
+
+\[
+D=\{d\in\mathbb Z_{>0}: d\mid p \text{ and } d\mid q\}.
+\]
+
+The set \(D\) is nonempty because \(1\mid p\) and \(1\mid q\), so
+
+\[
+1\in D.
+\]
+
+Now let \(d\in D\). Since \(d\mid q\), there exists an integer \(t\) such that
+
+\[
+q=dt.
+\]
+
+Because \(q\neq 0\), we must have \(t\neq 0\). Therefore
+
+\[
+|t|\ge 1.
+\]
+
+Since \(d>0\), we get
+
+\[
+|q|=|dt|=d|t|\ge d.
+\]
+
+Thus every \(d\in D\) satisfies
+
+\[
+1\le d\le |q|.
+\]
+
+So
+
+\[
+D\subseteq \{1,2,\dots,|q|\}.
+\]
+
+Because \(q\neq 0\), \(|q|\in\mathbb Z_{>0}\). Therefore, by Lemma 2, the nonempty set \(D\) has a largest element. Call it \(d\).
+
+Since \(d\in D\), we have \(d\mid p\) and \(d\mid q\). Hence there exist integers \(a,b\) such that
+
+\[
+p=da,\qquad q=db.
+\]
+
+Because \(q\neq 0\), we have \(b\neq 0\). Also,
+
+\[
+\frac{p}{q}=\frac{da}{db}=\frac{a}{b}.
+\]
+
+We claim that \(a\) and \(b\) have no positive common divisor greater than \(1\). Suppose, for contradiction, that there exists an integer \(c>1\) such that
+
+\[
+c\mid a
+\qquad\text{and}\qquad
+c\mid b.
+\]
+
+Then there exist integers \(a_1,b_1\) such that
+
+\[
+a=ca_1,\qquad b=cb_1.
+\]
+
+Therefore
+
+\[
+p=da=dca_1,
+\qquad
+q=db=dcb_1.
+\]
+
+So
+
+\[
+dc\mid p
+\qquad\text{and}\qquad
+dc\mid q.
+\]
+
+Since \(d>0\) and \(c>1\), we have \(dc\in\mathbb Z_{>0}\) and
+
+\[
+dc>d.
+\]
+
+Thus \(dc\in D\), contradicting the fact that \(d\) was the largest element of \(D\).
+
+Therefore \(a\) and \(b\) have no positive common divisor greater than \(1\). \(\square\)
+
+---
+
+### Theorem: \(\sqrt 7\) is irrational
+
+Suppose, for contradiction, that \(\sqrt 7\) is not irrational. By the given definition, this means that there exist integers \(p,q\) with \(q\neq 0\) such that
+
+\[
+\sqrt 7=\frac{p}{q}.
+\]
+
+By Lemma 4, we may write the same number in lowest terms:
+
+\[
+\sqrt 7=\frac{a}{b},
+\]
+
+where \(a,b\in\mathbb Z\), \(b\neq 0\), and \(a\) and \(b\) have no positive common divisor greater than \(1\).
 
 Squaring both sides gives
-\[
-p_0^2=7q_0^2.
-\]
-Hence
-\[
-7\mid p_0^2.
-\]
-By the lemma, $7\mid p_0$. Therefore there exists an integer $k$ such that
-\[
-p_0=7k.
-\]
-Since $p_0>0$, we have $k\in \mathbb{Z}_{>0}$.
 
-Substituting $p_0=7k$ into $p_0^2=7q_0^2$, we get
 \[
-(7k)^2=7q_0^2.
+7=\frac{a^2}{b^2}.
 \]
+
+Since \(b\neq 0\), we may multiply both sides by \(b^2\), obtaining
+
+\[
+7b^2=a^2.
+\]
+
 Thus
+
 \[
-49k^2=7q_0^2.
+7\mid a^2.
 \]
-Dividing by $7$ gives
+
+By Lemma 3,
+
 \[
-7k^2=q_0^2.
+7\mid a.
 \]
-Equivalently,
+
+So there exists an integer \(k\) such that
+
 \[
-q_0^2=7k^2.
+a=7k.
 \]
+
+Substituting this into \(7b^2=a^2\), we get
+
+\[
+7b^2=(7k)^2=49k^2.
+\]
+
+Dividing both sides by \(7\), we obtain
+
+\[
+b^2=7k^2.
+\]
+
 Hence
-\[
-7\mid q_0^2.
-\]
-By the lemma, $7\mid q_0$. Therefore there exists an integer $m$ such that
-\[
-q_0=7m.
-\]
-Since $q_0>0$, we have $m\in \mathbb{Z}_{>0}$.
 
-Now
 \[
-\sqrt{7}=\frac{p_0}{q_0}
-=\frac{7k}{7m}
-=\frac{k}{m}.
+7\mid b^2.
 \]
-Therefore
-\[
-m\sqrt{7}=k.
-\]
-Since $k\in \mathbb{Z}_{>0}$, this shows that
-\[
-m\sqrt{7}\in \mathbb{Z}_{>0}.
-\]
-Hence $m\in S$.
 
-But $q_0=7m$ and $m>0$, so
-\[
-m<7m=q_0.
-\]
-Thus $m$ is an element of $S$ smaller than $q_0$, contradicting the choice of $q_0$ as the least element of $S$.
+By Lemma 3 again,
 
-Therefore the assumption that $\sqrt{7}$ is rational is false. Hence $\sqrt{7}$ is irrational.
-\end{proof}
+\[
+7\mid b.
+\]
+
+Therefore \(7\mid a\) and \(7\mid b\). So \(7\) is a positive common divisor of \(a\) and \(b\), and since
+
+\[
+7>1,
+\]
+
+this contradicts the choice of \(a\) and \(b\) as having no positive common divisor greater than \(1\).
+
+Thus no integers \(p,q\) with \(q\neq 0\) satisfy
+
+\[
+\sqrt 7=\frac{p}{q}.
+\]
+
+Therefore, by the given definition, \(\sqrt 7\) is irrational. \(\square\)

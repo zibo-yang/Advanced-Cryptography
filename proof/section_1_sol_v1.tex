@@ -1,59 +1,123 @@
 ```latex
+\documentclass{article}
+\usepackage{amsmath,amssymb,amsthm,xcolor}
+\input{_macros}
+
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{lemma}{Lemma}
+
+\begin{document}
+
+\section*{Problem}
+
+Prove that $\sqrt{7}$ is irrational.
+
+\bigskip
+
+\noindent\textbf{Definition.} A real number $r$ is \emph{irrational} if it cannot be written as $\frac{p}{q}$ where $p, q$ are integers and $q \neq 0$.
+
+\bigskip
+
+\begin{lemma}
+If $n$ is an integer and $7 \mid n^2$, then $7 \mid n$.
+\end{lemma}
+
+\begin{proof}
+Let $n$ be an integer. By the division algorithm, there exist integers $a$ and $r$ such that
+\[
+n = 7a + r
+\]
+and
+\[
+r \in \{0,1,2,3,4,5,6\}.
+\]
+We compute $n^2$ modulo $7$. Since $n = 7a+r$, we have
+\[
+n^2 = (7a+r)^2 = 49a^2 + 14ar + r^2.
+\]
+The terms $49a^2$ and $14ar$ are divisible by $7$, so $n^2$ is divisible by $7$ if and only if $r^2$ is divisible by $7$.
+
+Now we check the possible values of $r$:
+\[
+0^2 = 0,\qquad
+1^2 = 1,\qquad
+2^2 = 4,\qquad
+3^2 = 9,\qquad
+4^2 = 16,\qquad
+5^2 = 25,\qquad
+6^2 = 36.
+\]
+Reducing these values modulo $7$, we get
+\[
+0,1,4,2,2,4,1.
+\]
+Among these residues, the only one congruent to $0$ modulo $7$ occurs when $r=0$.
+
+Therefore, if $7 \mid n^2$, then $r=0$. Hence $n=7a$, so $7 \mid n$.
+\end{proof}
+
 \begin{theorem}
-The number $\sqrt{7}$ is irrational.
+The real number $\sqrt{7}$ is irrational.
 \end{theorem}
 
 \begin{proof}
-Suppose, for contradiction, that $\sqrt{7}$ is rational. Then there exist integers $p$ and $q$ such that $q \neq 0$, $\gcd(p,q)=1$, and
+We argue by contradiction. Suppose that $\sqrt{7}$ is rational. By the definition of rationality, there exist integers $p$ and $q$ such that
 \[
-\sqrt{7}=\frac{p}{q}.
+\sqrt{7} = \frac{p}{q}
 \]
-Squaring both sides gives
+and
 \[
-7=\frac{p^2}{q^2},
+q \neq 0.
 \]
-so
+Furthermore, we may choose such integers $p$ and $q$ with
 \[
-p^2=7q^2.
+\gcd(p,q)=1,
 \]
-Hence $7 \mid p^2$.
+because any common divisor of a numerator and denominator may be divided out to put the fraction in lowest terms.
 
-We claim that if $7 \mid n^2$ for an integer $n$, then $7 \mid n$. Indeed, every integer $n$ is congruent modulo $7$ to one of
+Starting from
 \[
-0,1,2,3,4,5,6.
+\sqrt{7} = \frac{p}{q},
 \]
-Squaring these residues modulo $7$ gives
+we square both sides to obtain
 \[
-0^2 \equiv 0,\quad
-1^2 \equiv 1,\quad
-2^2 \equiv 4,\quad
-3^2 \equiv 2,\quad
-4^2 \equiv 2,\quad
-5^2 \equiv 4,\quad
-6^2 \equiv 1 \pmod{7}.
+7 = \frac{p^2}{q^2}.
 \]
-Thus the only way for $n^2 \equiv 0 \pmod{7}$ is for $n \equiv 0 \pmod{7}$. Therefore, from $7 \mid p^2$, we get $7 \mid p$.
+Since $q \neq 0$, we have $q^2 \neq 0$, so multiplying both sides by $q^2$ gives
+\[
+7q^2 = p^2.
+\]
+Thus $7 \mid p^2$. By the lemma, this implies that
+\[
+7 \mid p.
+\]
+Therefore there exists an integer $k$ such that
+\[
+p = 7k.
+\]
+Substituting $p=7k$ into the equation $7q^2=p^2$, we get
+\[
+7q^2 = (7k)^2 = 49k^2.
+\]
+Dividing both sides by $7$, we obtain
+\[
+q^2 = 7k^2.
+\]
+Hence
+\[
+7 \mid q^2.
+\]
+By the lemma again, this implies that
+\[
+7 \mid q.
+\]
 
-So there exists an integer $k$ such that
+We have shown that $7 \mid p$ and $7 \mid q$. Therefore $p$ and $q$ have a common divisor greater than $1$, namely $7$. This contradicts the assumption that
 \[
-p=7k.
+\gcd(p,q)=1.
 \]
-Substituting this into $p^2=7q^2$ gives
-\[
-(7k)^2=7q^2,
-\]
-so
-\[
-49k^2=7q^2.
-\]
-Dividing by $7$, we obtain
-\[
-7k^2=q^2.
-\]
-Therefore $7 \mid q^2$, and by the same argument as above, $7 \mid q$.
-
-Thus $7 \mid p$ and $7 \mid q$, so $p$ and $q$ have a common divisor greater than $1$. This contradicts the assumption that $\gcd(p,q)=1$.
-
-Therefore our original assumption was false, and $\sqrt{7}$ is irrational.
+The contradiction arose from the assumption that $\sqrt{7}$ is rational. Therefore $\sqrt{7}$ is irrational.
 \end{proof}
+
+\end{document}
 ```

@@ -1,21 +1,33 @@
 CONSOLIDATED PESSIMISTIC VERIFICATION REPORT
-Solution: section_1_sqrt7_irrational.tex
-Problem:  problem.tex
-Mode:     pessimistic (3 independent verifier runs)
-Verdict:  CLEAN
+============================================
+Solution: /data/projects/ZArcczxEFllfDg/bqHZDdKhlad1kg/proof/section_1_sqrt7_irrational.tex
+Problem:  /data/projects/ZArcczxEFllfDg/bqHZDdKhlad1kg/proof/problem.tex
+Mode: pessimistic (3 independent verifier runs)
 
-No issues were found in any of the three verifier runs.
+VERDICT: CLEAN
+All three verifier runs independently found no issues.
 
 ---
 
-APPENDIX A — Run 1 output (verify_section_1_sqrt7_irrational_run1.txt)
------------------------------------------------------------------------
+ISSUES PER RUN
+--------------
+Run 1: No issues found. Verifier output: "The solution is correct."
+Run 2: No issues found. Verifier output: "The solution is correct."
+Run 3: No issues found. Verifier output: "The solution is correct."
+
+---
+
+APPENDIX A: Run 1 Full Output
+------------------------------
+The solution is correct.
 The solution is correct.
 
-APPENDIX B — Run 2 output (verify_section_1_sqrt7_irrational_run2.txt)
------------------------------------------------------------------------
+APPENDIX B: Run 2 Full Output
+------------------------------
+The solution is correct.
 The solution is correct.
 
-APPENDIX C — Run 3 output (verify_section_1_sqrt7_irrational_run3.txt)
------------------------------------------------------------------------
+APPENDIX C: Run 3 Full Output
+------------------------------
+The solution is correct.
 The solution is correct.
