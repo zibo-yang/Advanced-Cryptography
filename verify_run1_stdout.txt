@@ -1,0 +1,12 @@
+Anchor: Theorem 1
+Location: “and we may choose $p$ and $q$ so that $\gcd(p,q)=1$.”
+Description: Justification Gap: The solution assumes without justification that any rational representation can be chosen in lowest terms. This relies on the reduced-fraction property for rational numbers, which is neither stated nor proved.
+
+Anchor: Theorem 1
+Location: “Therefore $7 \mid p^2$. Since $7$ is prime, it follows that $7 \mid p$.”
+Description: Justification Gap: This step relies on the theorem that if a prime divides a square, then it divides the base, equivalently Euclid’s lemma applied to $p \cdot p$. That theorem is not explicitly stated or proved.
+
+Anchor: Theorem 1
+Location: “Hence $7 \mid q^2$. Again, since $7$ is prime, it follows that $7 \mid q$.”
+Description: Justification Gap: This repeats the same unstated use of the theorem that if a prime divides a square, then it divides the base. The required result is not explicitly stated or proved.
+Bug report written to verify_section_1_irrationality_run1.txt

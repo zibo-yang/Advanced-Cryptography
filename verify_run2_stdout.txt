@@ -1,0 +1,16 @@
+Anchor: Theorem 1  
+Location: “and we may choose $p$ and $q$ so that $\gcd(p,q)=1$.”  
+Description: Justification Gap. The solution uses the fact that every rational number can be represented as a fraction of integers in lowest terms, but this theorem/property is not explicitly stated or justified.
+
+Anchor: Theorem 1  
+Location: “Therefore $7 \mid p^2$. Since $7$ is prime, it follows that $7 \mid p$.”  
+Description: Justification Gap. The argument relies on the prime-divisor property/Euclid’s lemma that if a prime divides a square, then it divides the base. This result is not explicitly stated or justified.
+
+Anchor: Theorem 1  
+Location: “Hence $7 \mid q^2$. Again, since $7$ is prime, it follows that $7 \mid q$.”  
+Description: Justification Gap. The same unstated prime-divisor property/Euclid’s lemma is used again without being explicitly stated or justified.
+
+Anchor: Theorem 1  
+Location: “Thus $7 \mid p$ and $7 \mid q$, which contradicts the assumption that $\gcd(p,q)=1$.”  
+Description: Justification Gap. The solution does not explicitly justify why divisibility of both $p$ and $q$ by $7$ contradicts $\gcd(p,q)=1$, e.g. by stating that a common divisor greater than $1$ would force the gcd to be greater than $1$.
+Bug report written to verify_section_1_irrationality_run2.txt

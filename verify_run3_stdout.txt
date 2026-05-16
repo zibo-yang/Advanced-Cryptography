@@ -1,0 +1,16 @@
+Anchor: Theorem 1
+Location: "and we may choose $p$ and $q$ so that $\gcd(p,q)=1$."
+Description: Justification Gap: The proof uses the reduced-fraction property for rational numbers without stating or proving it. From the prior existence of some integers \(p,q\) with \(q\ne0\), coprimality does not follow without this additional result.
+
+Anchor: Theorem 1
+Location: "Therefore $7 \mid p^2$. Since $7$ is prime, it follows that $7 \mid p$."
+Description: Justification Gap: The implication \(7\mid p^2 \Rightarrow 7\mid p\) relies on the unstated prime-divisibility lemma that a prime dividing a square divides the base. The proof does not state or justify this lemma.
+
+Anchor: Theorem 1
+Location: "Hence $7 \mid q^2$. Again, since $7$ is prime, it follows that $7 \mid q$."
+Description: Justification Gap: The same unstated prime-divisibility lemma is applied again without being stated or justified.
+
+Anchor: Theorem 1
+Location: "Thus $7 \mid p$ and $7 \mid q$, which contradicts the assumption that $\gcd(p,q)=1$."
+Description: Justification Gap: The proof does not explicitly justify why a common divisor \(7\) of \(p\) and \(q\) contradicts \(\gcd(p,q)=1\). This uses a property or definition of gcd that is not stated.
+Bug report written to verify_section_1_irrationality_run3.txt
