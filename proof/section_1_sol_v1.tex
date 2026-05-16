@@ -1,0 +1,59 @@
+```latex
+\begin{theorem}
+The number $\sqrt{7}$ is irrational.
+\end{theorem}
+
+\begin{proof}
+Suppose, for contradiction, that $\sqrt{7}$ is rational. Then there exist integers $p$ and $q$ such that $q \neq 0$, $\gcd(p,q)=1$, and
+\[
+\sqrt{7}=\frac{p}{q}.
+\]
+Squaring both sides gives
+\[
+7=\frac{p^2}{q^2},
+\]
+so
+\[
+p^2=7q^2.
+\]
+Hence $7 \mid p^2$.
+
+We claim that if $7 \mid n^2$ for an integer $n$, then $7 \mid n$. Indeed, every integer $n$ is congruent modulo $7$ to one of
+\[
+0,1,2,3,4,5,6.
+\]
+Squaring these residues modulo $7$ gives
+\[
+0^2 \equiv 0,\quad
+1^2 \equiv 1,\quad
+2^2 \equiv 4,\quad
+3^2 \equiv 2,\quad
+4^2 \equiv 2,\quad
+5^2 \equiv 4,\quad
+6^2 \equiv 1 \pmod{7}.
+\]
+Thus the only way for $n^2 \equiv 0 \pmod{7}$ is for $n \equiv 0 \pmod{7}$. Therefore, from $7 \mid p^2$, we get $7 \mid p$.
+
+So there exists an integer $k$ such that
+\[
+p=7k.
+\]
+Substituting this into $p^2=7q^2$ gives
+\[
+(7k)^2=7q^2,
+\]
+so
+\[
+49k^2=7q^2.
+\]
+Dividing by $7$, we obtain
+\[
+7k^2=q^2.
+\]
+Therefore $7 \mid q^2$, and by the same argument as above, $7 \mid q$.
+
+Thus $7 \mid p$ and $7 \mid q$, so $p$ and $q$ have a common divisor greater than $1$. This contradicts the assumption that $\gcd(p,q)=1$.
+
+Therefore our original assumption was false, and $\sqrt{7}$ is irrational.
+\end{proof}
+```

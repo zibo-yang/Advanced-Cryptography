@@ -1,0 +1,102 @@
+```latex
+\begin{theorem}
+The number $\sqrt{7}$ is irrational.
+\end{theorem}
+
+\begin{proof}
+We first justify the use of a fraction in lowest terms. If $r\in\mathbb{Q}$, then by definition there exist integers $a,b$ with $b\neq 0$ such that
+\[
+r=\frac{a}{b}.
+\]
+Let
+\[
+d=\gcd(a,b).
+\]
+Then $d>0$, and since $d\mid a$ and $d\mid b$, there exist integers $p,q$ such that
+\[
+a=dp,\qquad b=dq.
+\]
+Since $b\neq 0$, we also have $q\neq 0$. Thus
+\[
+r=\frac{a}{b}=\frac{dp}{dq}=\frac{p}{q}.
+\]
+Moreover, $\gcd(p,q)=1$: indeed, if a positive integer $c$ divides both $p$ and $q$, then $dc$ divides both $a$ and $b$. Since $d=\gcd(a,b)$ is the greatest positive common divisor of $a$ and $b$, we must have $dc\le d$, hence $c\le 1$, so $c=1$.
+
+Now suppose, for contradiction, that $\sqrt{7}$ is rational. By the preceding argument, there exist integers $p,q$ such that
+\[
+q\neq 0,\qquad \gcd(p,q)=1,\qquad \sqrt{7}=\frac{p}{q}.
+\]
+Squaring both sides gives
+\[
+7=\frac{p^2}{q^2}.
+\]
+Since $q\neq 0$, multiplying both sides by $q^2$ yields
+\[
+p^2=7q^2.
+\]
+Therefore
+\[
+7\mid p^2.
+\]
+
+We claim that for every integer $n$, if $7\mid n^2$, then $7\mid n$. To prove this, note that every integer is congruent modulo $7$ to exactly one of
+\[
+0,1,2,3,4,5,6.
+\]
+The corresponding squares modulo $7$ are
+\[
+0^2\equiv 0,\quad
+1^2\equiv 1,\quad
+2^2\equiv 4,\quad
+3^2\equiv 2,\quad
+4^2\equiv 2,\quad
+5^2\equiv 4,\quad
+6^2\equiv 1
+\pmod{7}.
+\]
+Thus the only residue class whose square is congruent to $0$ modulo $7$ is the residue class $0$. Hence, if
+\[
+n^2\equiv 0\pmod{7},
+\]
+then
+\[
+n\equiv 0\pmod{7},
+\]
+which means exactly that $7\mid n$.
+
+Applying this claim to $p$, we get
+\[
+7\mid p.
+\]
+So there exists an integer $k$ such that
+\[
+p=7k.
+\]
+Substituting this into $p^2=7q^2$ gives
+\[
+(7k)^2=7q^2,
+\]
+so
+\[
+49k^2=7q^2.
+\]
+Dividing both sides by $7$ gives
+\[
+7k^2=q^2.
+\]
+Therefore
+\[
+7\mid q^2.
+\]
+Applying the same claim to $q$, we obtain
+\[
+7\mid q.
+\]
+
+Thus $7$ divides both $p$ and $q$, so $p$ and $q$ have a common positive divisor greater than $1$. This contradicts
+\[
+\gcd(p,q)=1.
+\]
+Therefore our assumption that $\sqrt{7}$ is rational must be false. Hence $\sqrt{7}$ is irrational.
+\end{proof}
+```

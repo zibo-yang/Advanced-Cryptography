@@ -1,0 +1,12 @@
+Anchor: Lemma lem:div  
+Location: “Since \(7 > 0\) and \(d > 0\), we have \(k > 0\), hence \(k \ge 1\), giving \(d = 7/k \le 7/1 = 7\). Thus every positive divisor \(d > 1\) of \(7\) satisfies \(2 \le d \le 7\).”  
+Description: Justification Gap: The bound on possible divisors relies on unstated order/integer-discreteness facts: that \(dk=7>0\) with \(d>0\) implies \(k>0\), that a positive integer satisfies \(k\ge1\), and that this implies \(7/k\le7\). These properties are not explicitly stated or proved.
+
+Anchor: Theorem thm:irrational  
+Location: “Replacing \((a, b)\) by \((-a, -b)\) if necessary—note that \((-a)/(-b) = a/b\), so the equality is preserved—we may assume \(b > 0\).”  
+Description: Justification Gap: The equality preservation is stated, but the argument does not justify that the replacement actually makes the denominator positive when \(b<0\), i.e. it does not establish the needed order fact \(b<0 \Rightarrow -b>0\).
+
+Anchor: Step 5  
+Location: “Finally, \(q_0 = 7m\) and \(7 \ge 2 > 1\), so \(1/7 < 1\), giving \(m = q_0/7 < q_0 \cdot 1 = q_0\).”  
+Description: Justification Gap: The strict inequality \(m<q_0\) relies on unstated order properties: that \(7>1\) implies \(1/7<1\), and that multiplying the inequality by the positive number \(q_0\) preserves it. These are not explicitly stated or derived.
+Bug report written to proof/verify_section_1_irrationality_run3.txt

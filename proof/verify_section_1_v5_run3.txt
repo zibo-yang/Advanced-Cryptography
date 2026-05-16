@@ -1,0 +1,3 @@
+Anchor: Lemma 1  
+Location: "Since $7$ is prime (we take this as given) and $7\mid n^2=n\cdot n$, Euclid's lemma implies that $7\mid n$ or $7\mid n$; in either case $7\mid n$."  
+Description: Justification Gap. The proof invokes that $7$ is prime but does not prove it or establish that it is an allowed assumption. Saying “we take this as given” is not a justification under the stated rules, and Euclid’s lemma only applies after the primality condition on $7$ is established.

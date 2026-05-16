@@ -1,0 +1,27 @@
+Anchor: Lemma 1  
+Location: “Each equation above exhibits a remainder of \(1, 1, 3, 2, 1\) respectively, all nonzero, so none of \(2,3,4,5,6\) divides \(7\).”  
+Description: Justification Gap. This inference relies on the division algorithm/uniqueness of quotient and remainder, or on a proved criterion that a number divides another iff the division remainder is \(0\). That property is not justified or listed among the allowed external facts.
+
+Anchor: Lemma 1  
+Location: “if \(d \mid 7\) then \(7 = d\cdot k\) for some positive integer \(k \ge 1\)”  
+Description: Justification Gap. The definition of divisibility gives \(7=d\cdot k\) for some integer \(k\), but the positivity of \(k\) is asserted without justification.
+
+Anchor: Theorem 1  
+Location: “Replacing both \(a\) and \(b\) by their negatives if necessary, we may assume that \(b>0\).”  
+Description: Justification Gap. The solution does not justify that this replacement preserves the equality \(\sqrt{7}=a/b\) and always produces a positive denominator when \(b\neq 0\).
+
+Anchor: Theorem 1  
+Location: “Hence \[7\mid p_0^2.\]”  
+Description: Justification Gap. From \(p_0^2=7q_0^2\), divisibility follows only after establishing that \(q_0^2\) is an integer. The solution does not explicitly justify the needed closure of integers under multiplication.
+
+Anchor: Theorem 1  
+Location: “Hence \[7\mid q_0^2.\]”  
+Description: Justification Gap. From \(q_0^2=7k^2\), divisibility follows only after establishing that \(k^2\) is an integer. The solution does not explicitly justify the needed closure of integers under multiplication.
+
+Anchor: Theorem 1  
+Location: “\[
+\sqrt{{7}}=\frac{{p_0}}{{q_0}}
+=\frac{{7k}}{{7m}}
+=\frac{{k}}{{m}}.
+\]”  
+Description: Justification Gap. The cancellation \(\frac{7k}{7m}=\frac{k}{m}\) is used without explicitly justifying that \(m\neq 0\) and that cancellation by the nonzero factor \(7\) is valid.

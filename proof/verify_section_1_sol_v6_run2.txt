@@ -1,0 +1,23 @@
+Anchor: Step 1  
+Location: “Thus the only positive divisors of $7$ are $1$ and $7$, so $7$ is prime.”  
+Description: Justification Gap: The step defines prime as “greater than $1$ and has no divisors except $1$ and itself,” but it does not explicitly establish the required condition $7>1$. It also concludes from checking positive divisors that $7$ is prime without explicitly stating that only positive divisors are relevant under the definition being used.
+
+Anchor: Step 1  
+Location: “If $d=7$, then $7\mid 7$ trivially. Thus the only positive divisors of $7$ are $1$ and $7$”  
+Description: Justification Gap: The word “trivially” is not a justification under the grading rules. The proof does not explicitly exhibit the divisibility witnesses for $1\mid 7$ and $7\mid 7$ before concluding that these are positive divisors.
+
+Anchor: global  
+Location: “Multiplying both sides by $b>0$ gives …”; “Squaring both sides …”; “Multiplying both sides by $q_0^2$ …”; “we may cancel the common factor $7$”; “$7>1$ implies $1/7<1$”  
+Description: Justification Gap: The proof repeatedly relies on unstated real-number field laws, order laws, and fraction-manipulation rules. These include multiplying equalities, squaring equalities, clearing denominators, canceling common nonzero factors, positivity of products, and reciprocal/order properties. None of these are among the listed permitted external facts or explicitly proved.
+
+Anchor: Step 3  
+Location: “Write \[ p_0=7k. \] Since $p_0>0$ and $7>0$, we have \[ k=\frac{p_0}{7}>0, \] so $k\in\mathbb{Z}_{>0}$.”  
+Description: Justification Gap: After $7\mid p_0$, the proof does not explicitly state that divisibility supplies an integer witness $k\in\mathbb{Z}$ with $p_0=7k$. The conclusion $k\in\mathbb{Z}_{>0}$ depends on that unstated integer-witness condition and on unstated order properties.
+
+Anchor: Step 4  
+Location: “Also, $k^2=k\cdot k$ is a positive integer by closure.”  
+Description: Justification Gap: Closure of the integers under multiplication only justifies that $k^2$ is an integer. It does not justify positivity. The positivity of $k^2$ requires an additional order property, which is not stated or proved.
+
+Anchor: Step 4  
+Location: “Write \[ q_0=7m. \] Since $q_0>0$ and $7>0$, we have \[ m=\frac{q_0}{7}>0, \] so $m\in\mathbb{Z}_{>0}$.”  
+Description: Justification Gap: After $7\mid q_0$, the proof does not explicitly state that divisibility supplies an integer witness $m\in\mathbb{Z}$ with $q_0=7m$. The conclusion $m\in\mathbb{Z}_{>0}$ depends on that unstated integer-witness condition and on unstated order properties.

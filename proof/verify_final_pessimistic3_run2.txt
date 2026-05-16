@@ -1,0 +1,39 @@
+Anchor: Step 1  
+Location: “Since $7 > 0$ and $d > 0$, by the quotient-of-positives property $k = 7/d > 0$, so $k$ is a positive integer.”  
+Description: Justification Gap. The quotient-of-positives property only gives $7/d>0$; it does not justify the equality $k=7/d$. That requires applying the cancellation/division property to $7=dk$ with $d\ne0$, which is not explicitly done here.
+
+Anchor: Step 1  
+Location: “Thus every positive divisor $d > 1$ of $7$ satisfies $2 \le d \le 7$.”  
+Description: Justification Gap. The lower bound $2\le d$ is not explicitly justified. From $d>1$ and $d\in\mathbb Z$, the proof would need an explicit discreteness argument, but none is given.
+
+Anchor: Step 1  
+Location: “For $2 \le d \le 6$ we checked above that $d \nmid 7$.”  
+Description: Justification Gap. The proof checks only $d=2,3,4,5,6$, but it does not explicitly justify that these are all the integers satisfying $2\le d\le6$.
+
+Anchor: Step 1  
+Location: “Therefore the only positive divisors of $7$ are $1$ and $7$, confirming that $7$ is prime.”  
+Description: Justification Gap. The conclusion requires an explicit exhaustive argument for every positive divisor, including why a positive divisor not satisfying $d>1$ must be $d=1$. The proof shows $1\mid7$ and $7\mid7$, but does not explicitly close this remaining case.
+
+Anchor: Step 1  
+Location: “If $b < 0$, replace $(a, b)$ by $(-a, -b)$”  
+Description: Justification Gap. The proof does not explicitly justify that $-a$ and $-b$ are still integers, which is required for the replacement pair to remain a valid rational representation.
+
+Anchor: Step 2  
+Location: “Set $p_0 = q_0 \sqrt{7} \in \mathbb{Z}_{>0}$. Then $p_0 > 0$ … and $\sqrt{7} = p_0/q_0$.”  
+Description: Justification Gap. The equality $\sqrt{7}=p_0/q_0$ requires dividing $p_0=q_0\sqrt7$ by $q_0$ and using $q_0\ne0$. This cancellation/division step is not explicitly justified.
+
+Anchor: Step 3  
+Location: “Since $q_0 \in \mathbb{Z}_{>0}$, the square $q_0^2 = q_0 \cdot q_0$ is a positive integer by closure.”  
+Description: Justification Gap. Closure under multiplication justifies that $q_0^2$ is an integer, but it does not justify positivity. Positivity would require invoking the product-of-positives property, which is not explicitly done here.
+
+Anchor: Step 3  
+Location: “Since $p_0 > 0$ and $7 > 0$, we have $k = p_0/7 > 0$, so $k \in \mathbb{Z}_{>0}$.”  
+Description: Justification Gap. From $p_0=7k$, the equality $k=p_0/7$ requires an explicit cancellation/division step. The quotient-of-positives property alone only gives $p_0/7>0$.
+
+Anchor: Step 4  
+Location: “Since $q_0 > 0$ and $7 > 0$, we have $m = q_0/7 > 0$, so $m \in \mathbb{Z}_{>0}$.”  
+Description: Justification Gap. From $q_0=7m$, the equality $m=q_0/7$ requires an explicit cancellation/division step. The quotient-of-positives property alone only gives $q_0/7>0$.
+
+Anchor: Step 5  
+Location: “Also, $2m > m$ because $2m - m = m > 0$.”  
+Description: Justification Gap. The argument uses the unstated order fact that $x-y>0$ implies $x>y$. This property is not among the explicitly stated permitted facts and is not justified here.

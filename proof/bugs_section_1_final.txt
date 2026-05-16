@@ -1,0 +1,54 @@
+CONSOLIDATED BUG REPORT
+Solution: proof/section_1_sol_v5.tex
+Mode: pessimistic (3 runs)
+Verdict: ISSUES_FOUND
+
+All three verifier runs independently flagged issues. Per pessimistic mode rules, ALL runs must be CLEAN for a CLEAN result.
+
+==============================================================
+ISSUES LIST
+==============================================================
+
+[Run 1] Lemma 1 — Justification Gap: The proof relies on an unstated primality-testing theorem: that to prove an integer n>1 is prime, it suffices to check divisibility by integers up to floor(sqrt(n)). This theorem is not stated or proved, and its conditions are not established.
+
+[Run 1] Lemma 1 — Justification Gap: The value floor(sqrt(7))=2 is asserted without justification (e.g., by proving 2 <= sqrt(7) < 3). Under the stated grading rules, this calculation cannot simply be assumed.
+
+[Run 2] Lemma 1 — Justification Gap: The proof invokes an unstated primality-testing criterion: that to prove an integer is prime it suffices to check divisibility by integers up to floor(sqrt(n)). This theorem is not listed among the allowed external facts, stated, or proved. The assertion floor(sqrt(7))=2 is also not justified. Since the later application of Euclid's lemma requires 7 to be prime, the primality condition is not fully established.
+
+[Run 3] Lemma 1 — Justification Gap: The proof relies on the unstated primality test that, to prove an integer N is prime, it suffices to check divisibility by integers up to floor(sqrt(N)). This theorem is not among the stated external facts and is not proved or explicitly justified here, so the conclusion that checking only divisibility by 2 confirms that 7 is prime is incomplete.
+
+==============================================================
+SUMMARY OF DISTINCT ISSUES
+==============================================================
+
+Issue A (flagged by all 3 runs): The trial-division primality criterion — "it suffices to check divisors up to floor(sqrt(n))" — is invoked without being stated as an allowed external fact or proved within the solution. Because the proof of the Lemma and, in turn, the Theorem depends on 7 being prime (for Euclid's lemma), this gap undermines the entire argument.
+
+Issue B (flagged by runs 1 and 2): The specific numerical claim floor(sqrt(7))=2 is asserted without proof or citation. No bounds on sqrt(7) are established to justify the floor value.
+
+==============================================================
+APPENDIX A — Full output of Run 1
+==============================================================
+
+Anchor: Lemma 1
+Location: "The number 7 is prime: since floor(sqrt(7)) = 2, it suffices to verify that no integer in {2} divides 7"
+Description: Justification Gap. The proof relies on an unstated primality-testing theorem: that to prove an integer n>1 is prime, it suffices to check divisibility by integers up to floor(sqrt(n)). This theorem is not stated or proved, and its conditions are not established.
+
+Anchor: Lemma 1
+Location: "since floor(sqrt(7)) = 2"
+Description: Justification Gap. The value floor(sqrt(7))=2 is asserted without justification, e.g. by proving 2 <= sqrt(7) < 3. Under the stated grading rules, this calculation cannot simply be assumed.
+
+==============================================================
+APPENDIX B — Full output of Run 2
+==============================================================
+
+Anchor: Lemma 1
+Location: "The number 7 is prime: since floor(sqrt(7)) = 2, it suffices to verify that no integer in {2} divides 7; indeed 7 = 2*3 + 1, so 2 does not divide 7, confirming 7 is prime."
+Description: Justification Gap. The proof invokes an unstated primality-testing criterion: that to prove an integer is prime it suffices to check divisibility by integers up to floor(sqrt(n)). This theorem is not listed among the allowed external facts, stated, or proved. The assertion floor(sqrt(7))=2 is also not justified. Since the later application of Euclid's lemma requires 7 to be prime, the primality condition is not fully established.
+
+==============================================================
+APPENDIX C — Full output of Run 3
+==============================================================
+
+Anchor: Lemma 1
+Location: "The number 7 is prime: since floor(sqrt(7)) = 2, it suffices to verify that no integer in {2} divides 7; indeed 7 = 2*3 + 1, so 2 does not divide 7, confirming 7 is prime."
+Description: Justification Gap — The proof relies on the unstated primality test that, to prove an integer N is prime, it suffices to check divisibility by integers up to floor(sqrt(N)). This theorem is not among the stated external facts and is not proved or explicitly justified here, so the conclusion that checking only divisibility by 2 confirms that 7 is prime is incomplete.

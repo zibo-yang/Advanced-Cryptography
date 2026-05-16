@@ -1,0 +1,7 @@
+Anchor: Lemma 1  
+Location: “Their squares modulo \(11\) are … The only residue whose square is congruent to \(0 \pmod{11}\) is \(0\). Hence, if \(n^2 \equiv 0 \pmod{11}\), then \(n \equiv 0 \pmod{11}\).”  
+Description: Justification Gap — The argument applies the residue table for representatives \(0,\dots,10\) to an arbitrary integer \(n\), but it does not explicitly justify the needed modular-arithmetic property that if \(n \equiv r \pmod{11}\), then \(n^2 \equiv r^2 \pmod{11}\). This compatibility of congruence with squaring is required for the conclusion.
+
+Anchor: global  
+Location: “Then there exist integers \(a\) and \(b\) with \(b \neq 0\) and \(\gcd(a,b)=1\) such that \(\sqrt{11}=\frac{a}{b}\).”  
+Description: Justification Gap — Rationality gives a representation as a quotient of integers, but the proof does not justify the additional claim that the representation can be chosen with \(\gcd(a,b)=1\). The argument relies on the unstated lowest-terms theorem.

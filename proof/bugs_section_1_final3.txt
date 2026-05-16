@@ -1,0 +1,190 @@
+CONSOLIDATED BUG REPORT
+Solution: /data/projects/ZArcczxEFllfDg/rgf9LU-TJ-fT_w/proof/section_1_sol_v5.tex
+Problem:  /data/projects/ZArcczxEFllfDg/rgf9LU-TJ-fT_w/proof/problem.tex
+Mode: pessimistic (3 runs)
+Result: ISSUES_FOUND
+
+All three verifier runs flagged issues. Under pessimistic mode, a single run with issues
+is sufficient to conclude ISSUES_FOUND. No run was CLEAN.
+
+=============================================================================
+ISSUES BY RUN
+=============================================================================
+
+[RUN 1] — 1 issue flagged
+
+RUN1-1 [CRITICAL ERROR] Lemma 1 — Euclid's lemma applied without assuming antecedent
+  Location: "Since 7 is prime and 7|n^2 = n·n, Euclid's lemma … implies 7|n"
+  The proof never explicitly assumes the antecedent 7|n^2. As written it
+  asserts 7|n^2 for an arbitrary integer n, which is false in general.
+  The application of Euclid's lemma is therefore unsupported, invalidating
+  the proof of the lemma.
+
+-----------------------------------------------------------------------------
+
+[RUN 2] — 6 issues flagged
+
+RUN2-1 [JUSTIFICATION GAP] Lemma 1 — Nonzero remainder criterion not justified
+  Location: "Each equation above exhibits a remainder of 1,1,3,2,1 respectively,
+             all nonzero, so none of 2,3,4,5,6 divides 7."
+  Relies on the division algorithm / uniqueness of remainder (nonzero remainder
+  implies non-divisibility), which is not justified or listed among allowed
+  external facts.
+
+RUN2-2 [JUSTIFICATION GAP] Lemma 1 — Positivity of quotient k asserted without proof
+  Location: "if d|7 then 7 = d·k for some positive integer k ≥ 1"
+  The definition of divisibility only gives 7=d·k for some integer k.
+  The positivity of k is asserted without justification.
+
+RUN2-3 [JUSTIFICATION GAP] Theorem 1 — Sign-flip preservation not justified
+  Location: "Replacing both a and b by their negatives if necessary, we may
+             assume that b > 0."
+  The solution does not justify that this replacement preserves the equality
+  sqrt(7)=a/b and always produces a positive denominator when b≠0.
+
+RUN2-4 [JUSTIFICATION GAP] Theorem 1 — Closure of integers under multiplication not cited (p_0^2)
+  Location: "Hence 7|p_0^2."
+  From p_0^2 = 7q_0^2, divisibility follows only after establishing q_0^2 is
+  an integer. Closure of integers under multiplication is not explicitly
+  justified.
+
+RUN2-5 [JUSTIFICATION GAP] Theorem 1 — Closure of integers under multiplication not cited (q_0^2)
+  Location: "Hence 7|q_0^2."
+  From q_0^2 = 7k^2, same gap: k^2 being an integer is not explicitly
+  justified.
+
+RUN2-6 [JUSTIFICATION GAP] Theorem 1 — Cancellation by 7 not justified; m≠0 not stated
+  Location: "sqrt(7) = p_0/q_0 = 7k/7m = k/m"
+  The cancellation 7k/7m = k/m is used without explicitly justifying that
+  m≠0 and that cancellation by the nonzero factor 7 is valid.
+
+-----------------------------------------------------------------------------
+
+[RUN 3] — 3 issues flagged
+
+RUN3-1 [JUSTIFICATION GAP] Lemma 1 — Nonzero remainder criterion not justified
+  Location: "Each equation above exhibits a remainder of 1,1,3,2,1 respectively,
+             all nonzero, so none of 2,3,4,5,6 divides 7."
+  The proof relies on the unstated fact that the remainder upon division is
+  unique / that exhibiting a nonzero remainder rules out any expression 7=dq.
+  Division-algorithm uniqueness is not stated or justified.
+
+RUN3-2 [JUSTIFICATION GAP] Lemma 1 — Positivity of quotient k asserted without proof
+  Location: "if d|7 then 7 = d·k for some positive integer k ≥ 1"
+  Same gap as RUN2-2: divisibility definition only gives an integer k; the
+  proof does not justify why k must be positive.
+
+RUN3-3 [JUSTIFICATION GAP] Lemma 1 — Euclid's lemma applied without assuming antecedent
+  Location: "Since 7 is prime and 7|n^2 = n·n, Euclid's lemma … implies 7|n"
+  Same gap as RUN1-1: the hypothesis 7|n^2 is not explicitly assumed before
+  Euclid's lemma is invoked.
+
+=============================================================================
+DEDUPLICATED ISSUE SUMMARY (7 distinct issues across all runs)
+=============================================================================
+
+D1 [CRITICAL] Lemma 1: Euclid's lemma invoked without explicitly assuming 7|n^2
+   (flagged by RUN1, RUN3)
+
+D2 [GAP] Lemma 1: Nonzero-remainder → non-divisibility relies on unproved
+   division-algorithm uniqueness (flagged by RUN2, RUN3)
+
+D3 [GAP] Lemma 1: Positivity of quotient k in "7 = d·k, k ≥ 1" is unjustified
+   (flagged by RUN2, RUN3)
+
+D4 [GAP] Theorem 1: Sign-flip "replace a,b by negatives" does not explicitly
+   verify the equality sqrt(7)=a/b is preserved (flagged by RUN2)
+
+D5 [GAP] Theorem 1: 7|p_0^2 step does not cite closure of integers under
+   multiplication for q_0^2 (flagged by RUN2)
+
+D6 [GAP] Theorem 1: 7|q_0^2 step does not cite closure of integers under
+   multiplication for k^2 (flagged by RUN2)
+
+D7 [GAP] Theorem 1: Cancellation 7k/7m = k/m omits justification that m≠0 and
+   that cancellation by 7 is valid (flagged by RUN2)
+
+=============================================================================
+APPENDIX A — Full output: Run 1
+=============================================================================
+
+Anchor: Lemma 1
+Location: "Since \(7\) is prime and \(7\mid n^2 = n\cdot n\), Euclid's lemma
+  ... implies \(7\mid n\)"
+Description: Critical Error: The proof of the implication never explicitly
+  assumes the antecedent \(7\mid n^2\). As written, it asserts \(7\mid n^2\)
+  for an arbitrary integer \(n\), which is false in general. Therefore the
+  application of Euclid's lemma is unsupported, invalidating the proof of
+  the lemma.
+
+=============================================================================
+APPENDIX B — Full output: Run 2
+=============================================================================
+
+Anchor: Lemma 1
+Location: "Each equation above exhibits a remainder of \(1, 1, 3, 2, 1\)
+  respectively, all nonzero, so none of \(2,3,4,5,6\) divides \(7\)."
+Description: Justification Gap. This inference relies on the division
+  algorithm/uniqueness of quotient and remainder, or on a proved criterion
+  that a number divides another iff the division remainder is \(0\). That
+  property is not justified or listed among the allowed external facts.
+
+Anchor: Lemma 1
+Location: "if \(d \mid 7\) then \(7 = d\cdot k\) for some positive integer
+  \(k \ge 1\)"
+Description: Justification Gap. The definition of divisibility gives
+  \(7=d\cdot k\) for some integer \(k\), but the positivity of \(k\) is
+  asserted without justification.
+
+Anchor: Theorem 1
+Location: "Replacing both \(a\) and \(b\) by their negatives if necessary,
+  we may assume that \(b>0\)."
+Description: Justification Gap. The solution does not justify that this
+  replacement preserves the equality \(\sqrt{7}=a/b\) and always produces a
+  positive denominator when \(b\neq 0\).
+
+Anchor: Theorem 1
+Location: "Hence \[7\mid p_0^2.\]"
+Description: Justification Gap. From \(p_0^2=7q_0^2\), divisibility follows
+  only after establishing that \(q_0^2\) is an integer. The solution does not
+  explicitly justify the needed closure of integers under multiplication.
+
+Anchor: Theorem 1
+Location: "Hence \[7\mid q_0^2.\]"
+Description: Justification Gap. From \(q_0^2=7k^2\), divisibility follows
+  only after establishing that \(k^2\) is an integer. The solution does not
+  explicitly justify the needed closure of integers under multiplication.
+
+Anchor: Theorem 1
+Location: "\[\sqrt{{7}}=\frac{{p_0}}{{q_0}}=\frac{{7k}}{{7m}}=\frac{{k}}{{m}}.\]"
+Description: Justification Gap. The cancellation \(\frac{7k}{7m}=\frac{k}{m}\)
+  is used without explicitly justifying that \(m\neq 0\) and that cancellation
+  by the nonzero factor \(7\) is valid.
+
+=============================================================================
+APPENDIX C — Full output: Run 3
+=============================================================================
+
+Anchor: Lemma 1
+Location: "Each equation above exhibits a remainder of \(1, 1, 3, 2, 1\)
+  respectively, all nonzero, so none of \(2,3,4,5,6\) divides \(7\)."
+Description: Justification Gap: The proof relies on the unstated fact that
+  the remainder upon division is unique, or equivalently that exhibiting one
+  division expression with nonzero remainder rules out any expression
+  \(7=dq\). This division-algorithm/uniqueness property is not stated or
+  justified.
+
+Anchor: Lemma 1
+Location: "if \(d \mid 7\) then \(7 = d\cdot k\) for some positive integer
+  \(k \ge 1\)"
+Description: Justification Gap: By the stated definition of divisibility,
+  \(d\mid 7\) only gives \(7=d\cdot k\) for some integer \(k\). The proof
+  does not justify why \(k\) must be positive before using \(k\ge 1\).
+
+Anchor: Lemma 1
+Location: "Since \(7\) is prime and \(7\mid n^2 = n\cdot n\), Euclid's
+  lemma … implies \(7\mid n\)"
+Description: Justification Gap: The proof does not explicitly assume the
+  hypothesis \(7\mid n^2\) of the conditional lemma before applying Euclid's
+  lemma. As written, the line asserts \(7\mid n^2\) without justification for
+  an arbitrary integer \(n\).

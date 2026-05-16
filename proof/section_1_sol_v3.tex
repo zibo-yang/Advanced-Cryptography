@@ -1,0 +1,104 @@
+The only standard external facts used below are **Euclid’s lemma** and the **Well-Ordering Principle**. Euclid’s lemma says that if a prime $p$ divides a product $ab$, then $p\mid a$ or $p\mid b$; the Well-Ordering Principle says that every nonempty set of positive integers has a least element. ([proofwiki.org](https://proofwiki.org/wiki/Euclid%27s_Lemma_for_Prime_Divisors?utm_source=openai))
+
+\begin{lemma}
+If $7\mid n^2$, then $7\mid n$.
+\end{lemma}
+
+\begin{proof}
+Since $7$ is prime and $7\mid n^2=n\cdot n$, Euclid's lemma implies that $7\mid n$.
+\end{proof}
+
+\begin{theorem}
+$\sqrt{7}$ is irrational.
+\end{theorem}
+
+\begin{proof}
+Assume, for contradiction, that $\sqrt{7}$ is rational.
+
+Then there exist integers $a$ and $b$ with $b\neq 0$ such that
+\[
+\sqrt{7}=\frac{a}{b}.
+\]
+Replacing both $a$ and $b$ by their negatives if necessary, we may assume that $b>0$. Since $\sqrt{7}>0$, it follows that $a>0$. Therefore
+\[
+b\sqrt{7}=a\in \mathbb{Z}_{>0}.
+\]
+Thus the set
+\[
+S=\{q\in \mathbb{Z}_{>0}: q\sqrt{7}\in \mathbb{Z}_{>0}\}
+\]
+is nonempty.
+
+By the Well-Ordering Principle, $S$ has a least element. Let $q_0$ be the least element of $S$, and define
+\[
+p_0=q_0\sqrt{7}.
+\]
+Then $p_0\in \mathbb{Z}_{>0}$, and
+\[
+\sqrt{7}=\frac{p_0}{q_0}.
+\]
+
+Squaring both sides gives
+\[
+p_0^2=7q_0^2.
+\]
+Hence
+\[
+7\mid p_0^2.
+\]
+By the lemma, $7\mid p_0$. Therefore there exists an integer $k$ such that
+\[
+p_0=7k.
+\]
+Since $p_0>0$, we have $k\in \mathbb{Z}_{>0}$.
+
+Substituting $p_0=7k$ into $p_0^2=7q_0^2$, we get
+\[
+(7k)^2=7q_0^2.
+\]
+Thus
+\[
+49k^2=7q_0^2.
+\]
+Dividing by $7$ gives
+\[
+7k^2=q_0^2.
+\]
+Equivalently,
+\[
+q_0^2=7k^2.
+\]
+Hence
+\[
+7\mid q_0^2.
+\]
+By the lemma, $7\mid q_0$. Therefore there exists an integer $m$ such that
+\[
+q_0=7m.
+\]
+Since $q_0>0$, we have $m\in \mathbb{Z}_{>0}$.
+
+Now
+\[
+\sqrt{7}=\frac{p_0}{q_0}
+=\frac{7k}{7m}
+=\frac{k}{m}.
+\]
+Therefore
+\[
+m\sqrt{7}=k.
+\]
+Since $k\in \mathbb{Z}_{>0}$, this shows that
+\[
+m\sqrt{7}\in \mathbb{Z}_{>0}.
+\]
+Hence $m\in S$.
+
+But $q_0=7m$ and $m>0$, so
+\[
+m<7m=q_0.
+\]
+Thus $m$ is an element of $S$ smaller than $q_0$, contradicting the choice of $q_0$ as the least element of $S$.
+
+Therefore the assumption that $\sqrt{7}$ is rational is false. Hence $\sqrt{7}$ is irrational.
+\end{proof}

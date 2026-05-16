@@ -1,0 +1,117 @@
+VERDICT: ISSUES_FOUND
+Mode: pessimistic (3 runs)
+Run 1: ISSUES_FOUND (2 gaps)
+Run 2: ISSUES_FOUND (9 gaps)
+Run 3: CLEAN
+
+Pessimistic rule: ANY run flagging issues => ISSUES_FOUND. Runs 1 and 2 both flagged issues.
+
+==============================================================
+CONSOLIDATED ISSUE LIST
+==============================================================
+
+[Run 1 & Run 2] Step 1 — Discreteness/enumeration gap in primality check
+  Location: "Thus every positive divisor d>1 of 7 satisfies 2 <= d <= 7. ... Every positive divisor d>1 of 7 satisfies 2<=d<=7, and we have checked all cases d in {2,3,4,5,6,7}."
+  Description: The proof shows d<=7 but does not explicitly invoke integer discreteness to justify the lower bound d>=2 from d>1. Additionally, it does not explicitly justify that every integer with 2<=d<=7 is one of the listed cases {2,3,4,5,6,7}. This is the enumeration/exhaustiveness argument needed to confirm 7 is prime.
+
+[Run 1 & Run 2] Step 5 — Missing order-compatibility-with-addition/subtraction for 2m > m
+  Location: "Also, 2m > m because 2m - m = m > 0."
+  Description: The argument that m > 0 and 2m - m = m > 0 implies 2m > m relies on the order fact x - y > 0 => x > y (equivalently, order compatibility with addition/subtraction). This property is not listed among the explicitly permitted facts and is not justified within the proof.
+
+[Run 2 only] Step 1 — quotient-of-positives does not establish k = 7/d
+  Location: "Since 7 > 0 and d > 0, by the quotient-of-positives property k = 7/d > 0, so k is a positive integer."
+  Description: The quotient-of-positives property establishes 7/d > 0 but not the equality k = 7/d itself. Deriving k = 7/d from 7 = dk with d != 0 requires an explicit cancellation/division step not provided.
+
+[Run 2 only] Step 1 — lower bound d >= 2 not explicitly justified
+  Location: "Thus every positive divisor d > 1 of 7 satisfies 2 <= d <= 7."
+  Description: The transition from d > 1 (with d an integer) to d >= 2 requires an explicit invocation of integer discreteness; the proof does not state this.
+
+[Run 2 only] Step 1 — exhaustiveness of cases d in {2,3,4,5,6} not justified
+  Location: "For 2 <= d <= 6 we checked above that d does not divide 7."
+  Description: The proof checks d = 2, 3, 4, 5, 6 but does not explicitly justify that these are all integers satisfying 2 <= d <= 6.
+
+[Run 2 only] Step 1 — exhaustive closure of divisor cases not shown
+  Location: "Therefore the only positive divisors of 7 are 1 and 7, confirming that 7 is prime."
+  Description: The proof does not explicitly address why a positive divisor that does not satisfy d > 1 must equal 1. The case d = 1 is assumed without a discrete-integer argument.
+
+[Run 2 only] Step 1 — negation of integers not explicitly justified
+  Location: "If b < 0, replace (a, b) by (-a, -b)"
+  Description: The proof does not explicitly justify that -a and -b remain integers, which is required for the replacement pair to be a valid rational representation.
+
+[Run 2 only] Step 2 — cancellation step for sqrt(7) = p_0/q_0 not explicit
+  Location: "Set p_0 = q_0 * sqrt(7) in Z_{>0}. Then p_0 > 0 ... and sqrt(7) = p_0/q_0."
+  Description: The equality sqrt(7) = p_0/q_0 is obtained by dividing p_0 = q_0 * sqrt(7) by q_0, but the cancellation/division step (using q_0 != 0) is not explicitly stated.
+
+[Run 2 only] Step 3 — product-of-positives not cited for q_0^2 > 0
+  Location: "Since q_0 in Z_{>0}, the square q_0^2 = q_0 * q_0 is a positive integer by closure."
+  Description: Integer closure under multiplication establishes that q_0^2 is an integer but does not establish positivity. An explicit citation of the product-of-positives property is required but absent.
+
+[Run 2 only] Step 3 — cancellation step for k = p_0/7 not explicit
+  Location: "Since p_0 > 0 and 7 > 0, we have k = p_0/7 > 0, so k in Z_{>0}."
+  Description: Deriving k = p_0/7 from p_0 = 7k requires an explicit cancellation/division step; quoting quotient-of-positives only gives p_0/7 > 0.
+
+[Run 2 only] Step 4 — cancellation step for m = q_0/7 not explicit
+  Location: "Since q_0 > 0 and 7 > 0, we have m = q_0/7 > 0, so m in Z_{>0}."
+  Description: Deriving m = q_0/7 from q_0 = 7m requires an explicit cancellation/division step; quoting quotient-of-positives only gives q_0/7 > 0.
+
+==============================================================
+APPENDIX A — Full output of Run 1
+==============================================================
+
+Anchor: Step 1
+Location: "Thus every positive divisor \(d > 1\) of \(7\) satisfies \(2 \le d \le 7\). ... Every positive divisor \(d > 1\) of \(7\) satisfies \(2 \le d \le 7\), and we have checked all cases \(d \in \{2,3,4,5,6,7\}\)."
+Description: Justification Gap -- The proof has shown \(d \le 7\), but it does not explicitly justify the discrete-integer step from \(d>1\) to \(d\ge 2\), nor that an integer satisfying \(2\le d\le 7\) must be one of the listed cases. This unstated discreteness/enumeration is needed for the exhaustive divisor check establishing that \(7\) is prime.
+
+Anchor: Step 5
+Location: "Also, \(2m > m\) because \(2m - m = m > 0\)."
+Description: Justification Gap -- This relies on the order fact \(x-y>0 \Rightarrow x>y\), or equivalently order compatibility with addition/subtraction, but that property is not explicitly listed among the permitted facts or proved at this point. Therefore the strict inequality \(m<q_0\) is not fully justified.
+
+==============================================================
+APPENDIX B — Full output of Run 2
+==============================================================
+
+Anchor: Step 1
+Location: "Since $7 > 0$ and $d > 0$, by the quotient-of-positives property $k = 7/d > 0$, so $k$ is a positive integer."
+Description: Justification Gap. The quotient-of-positives property only gives $7/d>0$; it does not justify the equality $k=7/d$. That requires applying the cancellation/division property to $7=dk$ with $d\ne0$, which is not explicitly done here.
+
+Anchor: Step 1
+Location: "Thus every positive divisor $d > 1$ of $7$ satisfies $2 \le d \le 7$."
+Description: Justification Gap. The lower bound $2\le d$ is not explicitly justified. From $d>1$ and $d\in\mathbb Z$, the proof would need an explicit discreteness argument, but none is given.
+
+Anchor: Step 1
+Location: "For $2 \le d \le 6$ we checked above that $d \nmid 7$."
+Description: Justification Gap. The proof checks only $d=2,3,4,5,6$, but it does not explicitly justify that these are all the integers satisfying $2\le d\le6$.
+
+Anchor: Step 1
+Location: "Therefore the only positive divisors of $7$ are $1$ and $7$, confirming that $7$ is prime."
+Description: Justification Gap. The conclusion requires an explicit exhaustive argument for every positive divisor, including why a positive divisor not satisfying $d>1$ must be $d=1$. The proof shows $1\mid7$ and $7\mid7$, but does not explicitly close this remaining case.
+
+Anchor: Step 1
+Location: "If $b < 0$, replace $(a, b)$ by $(-a, -b)$"
+Description: Justification Gap. The proof does not explicitly justify that $-a$ and $-b$ are still integers, which is required for the replacement pair to remain a valid rational representation.
+
+Anchor: Step 2
+Location: "Set $p_0 = q_0 \sqrt{7} \in \mathbb{Z}_{>0}$. Then $p_0 > 0$ ... and $\sqrt{7} = p_0/q_0$."
+Description: Justification Gap. The equality $\sqrt{7}=p_0/q_0$ requires dividing $p_0=q_0\sqrt7$ by $q_0$ and using $q_0\ne0$. This cancellation/division step is not explicitly justified.
+
+Anchor: Step 3
+Location: "Since $q_0 \in \mathbb{Z}_{>0}$, the square $q_0^2 = q_0 \cdot q_0$ is a positive integer by closure."
+Description: Justification Gap. Closure under multiplication justifies that $q_0^2$ is an integer, but it does not justify positivity. Positivity would require invoking the product-of-positives property, which is not explicitly done here.
+
+Anchor: Step 3
+Location: "Since $p_0 > 0$ and $7 > 0$, we have $k = p_0/7 > 0$, so $k \in \mathbb{Z}_{>0}$."
+Description: Justification Gap. From $p_0=7k$, the equality $k=p_0/7$ requires an explicit cancellation/division step. The quotient-of-positives property alone only gives $p_0/7>0$.
+
+Anchor: Step 4
+Location: "Since $q_0 > 0$ and $7 > 0$, we have $m = q_0/7 > 0$, so $m \in \mathbb{Z}_{>0}$."
+Description: Justification Gap. From $q_0=7m$, the equality $m=q_0/7$ requires an explicit cancellation/division step. The quotient-of-positives property alone only gives $q_0/7>0$.
+
+Anchor: Step 5
+Location: "Also, $2m > m$ because $2m - m = m > 0$."
+Description: Justification Gap. The argument uses the unstated order fact that $x-y>0$ implies $x>y$. This property is not among the explicitly stated permitted facts and is not justified here.
+
+==============================================================
+APPENDIX C — Full output of Run 3
+==============================================================
+
+The solution is correct.

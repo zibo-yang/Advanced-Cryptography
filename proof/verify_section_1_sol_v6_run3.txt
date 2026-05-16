@@ -1,0 +1,31 @@
+**Anchor:** Lemma 1  
+**Location:** “Thus the only positive divisors of $7$ are $1$ and $7$, so $7$ is prime.”  
+**Description:** Justification Gap: The proof does not explicitly justify that the checked cases exhaust all possible positive divisors of $7$. In particular, it does not state why every positive integer divisor must fall into one of the cases $d=1$, $d\in\{2,3,4,5,6\}$, $d=7$, or $d>7$. It also does not explicitly verify the “greater than $1$” condition in the stated definition of prime.
+
+**Anchor:** Step 1  
+**Location:** “Replacing $a$ by $-a$ and $b$ by $-b$ if necessary … so we may assume $b>0$.”  
+**Description:** Justification Gap: This relies on unstated sign/order facts for nonzero integers, namely that if $b\neq 0$ then either $b>0$ or $-b>0$, and on the unstated fraction identity $\frac{-a}{-b}=\frac{a}{b}$.
+
+**Anchor:** Step 1  
+**Location:** “Multiplying both sides of … $\sqrt{7}=\frac{a}{b}$ by $b>0$ gives $a=b\sqrt{7}$. Since $b>0$ and $\sqrt{7}>0$, $a$ is a product of two positive numbers, so $a>0$.”  
+**Description:** Justification Gap: The step uses unstated real-number/fraction algebra and order properties: multiplication preserving equality, cancellation of $b$ in $b\cdot(a/b)=a$, and the fact that a product of positive real numbers is positive.
+
+**Anchor:** Step 2  
+**Location:** “Set \[ p_0=q_0\sqrt{7}\in\mathbb{Z}_{>0}. \] Then \[ \sqrt{7}=\frac{p_0}{q_0}. \]”  
+**Description:** Justification Gap: The conclusion requires dividing by $q_0$ and cancelling $q_0$ from $p_0=q_0\sqrt{7}$. Although $q_0>0$ is implicit from $q_0\in S$, the required cancellation/division property is not explicitly stated or justified.
+
+**Anchor:** Step 3  
+**Location:** “Squaring both sides … gives … \[ 7=\frac{p_0^2}{q_0^2}. \] Multiplying both sides by $q_0^2$ … gives \[ p_0^2=7q_0^2. \]”  
+**Description:** Justification Gap: This uses several unstated facts: that equality may be squared, that $(\sqrt{7})^2=7$, that $\left(\frac{p_0}{q_0}\right)^2=\frac{p_0^2}{q_0^2}$, and that multiplying by $q_0^2$ cancels the denominator. The statement that $q_0^2$ is positive “since $q_0>0$ and the integers are closed under multiplication” is also incomplete, because closure only gives integrality, not positivity.
+
+**Anchor:** Step 4  
+**Location:** “Since $7\neq 0$, divide both sides by $7$ to obtain \[ 7k^2=q_0^2. \] Also, $k^2=k\cdot k$ is a positive integer by closure.”  
+**Description:** Justification Gap: Dividing/cancelling by $7$ relies on an unstated algebraic cancellation law. Also, closure under multiplication only establishes that $k^2$ is an integer; it does not justify that $k^2$ is positive.
+
+**Anchor:** Step 5  
+**Location:** “Since $m>0$, we have $m\neq 0$, so we may cancel the common factor $7$: \[ \sqrt{7}=\frac{k}{m}. \] Multiplying both sides by $m>0$ gives \[ m\sqrt{7}=k\in\mathbb{Z}_{>0}. \]”  
+**Description:** Justification Gap: Cancelling the common factor $7$ in the fraction and then multiplying by $m$ both rely on unstated fraction/cancellation laws.
+
+**Anchor:** Step 5  
+**Location:** “But $q_0=7m$ and $7\ge 2>1$, so \[ m=\frac{q_0}{7}<q_0, \] since $7>1$ implies $1/7<1$ …”  
+**Description:** Justification Gap: The inequality $m<q_0$ relies on unstated order properties: division by a positive number, the reciprocal inequality $7>1\Rightarrow 1/7<1$, and preservation of strict inequality when multiplying by the positive number $q_0$.
