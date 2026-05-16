@@ -8,7 +8,9 @@ from prompts import PROOF_VERIFIER_PROMPT
 
 def verify(problem, solution):
     import api_oai as api
-    prompt = PROOF_VERIFIER_PROMPT.format(problem=problem, solution=solution)
+    # LaTeX content contains bare { } — str.format() mis-parses them as placeholders.
+    # Use replace() like brainstorm.py does.
+    prompt = PROOF_VERIFIER_PROMPT.replace("{problem}", problem).replace("{solution}", solution)
     return api.call_llm("", prompt)
 
 
