@@ -1,29 +1,28 @@
 ```latex
-\section*{Proof}
+\begin{theorem}
+The number $\sqrt{7}$ is irrational.
+\end{theorem}
 
-We prove that $\sqrt{7}$ is irrational.
-
-Suppose, for the sake of contradiction, that $\sqrt{7}$ is rational. Then there exist integers $p$ and $q$ with $q \neq 0$ such that
+\begin{proof}
+Suppose, for contradiction, that $\sqrt{7}$ is rational. Then there exist integers $p$ and $q$ such that $q \neq 0$, $\gcd(p,q)=1$, and
 \[
-\sqrt{7}=\frac{p}{q},
+\sqrt{7}=\frac{p}{q}.
 \]
-and we may choose such a representation with $\gcd(p,q)=1$.
-
 Squaring both sides gives
 \[
-7=\frac{p^2}{q^2}.
+7=\frac{p^2}{q^2},
 \]
-Multiplying by $q^2$, we obtain
+so
 \[
 p^2=7q^2.
 \]
-Thus $7 \mid p^2$.
+Hence $7 \mid p^2$.
 
-We claim that if $7 \mid p^2$, then $7 \mid p$. Indeed, since $7$ is prime, the only possible remainders of an integer modulo $7$ are
+We claim that if $7 \mid n^2$ for an integer $n$, then $7 \mid n$. Indeed, every integer $n$ is congruent modulo $7$ to one of
 \[
 0,1,2,3,4,5,6.
 \]
-Squaring these modulo $7$ gives
+Squaring these residues modulo $7$ gives
 \[
 0^2 \equiv 0,\quad
 1^2 \equiv 1,\quad
@@ -33,33 +32,28 @@ Squaring these modulo $7$ gives
 5^2 \equiv 4,\quad
 6^2 \equiv 1 \pmod{7}.
 \]
-Therefore, the only way for $p^2 \equiv 0 \pmod{7}$ is for $p \equiv 0 \pmod{7}$. Hence $7 \mid p$.
+Thus the only way for $n^2 \equiv 0 \pmod{7}$ is for $n \equiv 0 \pmod{7}$. Therefore, from $7 \mid p^2$, we get $7 \mid p$.
 
-So we may write
+So there exists an integer $k$ such that
 \[
-p=7k
+p=7k.
 \]
-for some integer $k$. Substituting this into $p^2=7q^2$ gives
+Substituting this into $p^2=7q^2$ gives
 \[
-(7k)^2=7q^2.
+(7k)^2=7q^2,
 \]
-Thus
+so
 \[
 49k^2=7q^2.
 \]
-Dividing both sides by $7$, we get
+Dividing by $7$, we obtain
 \[
 7k^2=q^2.
 \]
-Therefore $7 \mid q^2$. By the same argument as before, this implies
-\[
-7 \mid q.
-\]
+Therefore $7 \mid q^2$, and by the same argument as above, $7 \mid q$.
 
-We have shown that $7 \mid p$ and $7 \mid q$. Hence $p$ and $q$ have a common divisor greater than $1$, namely $7$. This contradicts the assumption that
-\[
-\gcd(p,q)=1.
-\]
+Thus $7 \mid p$ and $7 \mid q$, so $p$ and $q$ have a common divisor greater than $1$. This contradicts the assumption that $\gcd(p,q)=1$.
 
-Therefore our supposition was false, and $\sqrt{7}$ is irrational.
+Therefore our original assumption was false, and $\sqrt{7}$ is irrational.
+\end{proof}
 ```

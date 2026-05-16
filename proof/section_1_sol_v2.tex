@@ -1,138 +1,102 @@
 ```latex
-\section*{Proof}
-
-We prove that $\sqrt{7}$ is irrational.
-
-First, we establish a lemma.
-
-\medskip
-
-\noindent\textbf{Lemma.} For every integer $n$, if $7 \mid n^2$, then $7 \mid n$.
+\begin{theorem}
+The number $\sqrt{7}$ is irrational.
+\end{theorem}
 
 \begin{proof}
-Let $n$ be any integer. By the division algorithm, there exist integers $a$ and $r$ such that
+We first justify the use of a fraction in lowest terms. If $r\in\mathbb{Q}$, then by definition there exist integers $a,b$ with $b\neq 0$ such that
 \[
-n=7a+r
+r=\frac{a}{b}.
 \]
-with
+Let
 \[
-r \in \{0,1,2,3,4,5,6\}.
+d=\gcd(a,b).
 \]
-Then
+Then $d>0$, and since $d\mid a$ and $d\mid b$, there exist integers $p,q$ such that
 \[
-n^2=(7a+r)^2=49a^2+14ar+r^2=7(7a^2+2ar)+r^2.
+a=dp,\qquad b=dq.
 \]
-Hence
+Since $b\neq 0$, we also have $q\neq 0$. Thus
 \[
-n^2-r^2=7(7a^2+2ar),
+r=\frac{a}{b}=\frac{dp}{dq}=\frac{p}{q}.
 \]
-so
-\[
-7 \mid (n^2-r^2).
-\]
+Moreover, $\gcd(p,q)=1$: indeed, if a positive integer $c$ divides both $p$ and $q$, then $dc$ divides both $a$ and $b$. Since $d=\gcd(a,b)$ is the greatest positive common divisor of $a$ and $b$, we must have $dc\le d$, hence $c\le 1$, so $c=1$.
 
-Now suppose $7 \mid n^2$. Since $7 \mid n^2$ and $7 \mid (n^2-r^2)$, it follows that
+Now suppose, for contradiction, that $\sqrt{7}$ is rational. By the preceding argument, there exist integers $p,q$ such that
 \[
-7 \mid r^2.
+q\neq 0,\qquad \gcd(p,q)=1,\qquad \sqrt{7}=\frac{p}{q}.
 \]
-But for the possible values of $r$, we have
-\[
-0^2=0,\quad 1^2=1,\quad 2^2=4,\quad 3^2=9,\quad 4^2=16,\quad 5^2=25,\quad 6^2=36.
-\]
-Among these numbers, the only one divisible by $7$ is $0$. Therefore
-\[
-r=0.
-\]
-Thus
-\[
-n=7a,
-\]
-so
-\[
-7 \mid n.
-\]
-This proves the lemma.
-\end{proof}
-
-\medskip
-
-Now suppose, for contradiction, that $\sqrt{7}$ is rational. Then there exist integers $m$ and $n$ with $n \neq 0$ such that
-\[
-\sqrt{7}=\frac{m}{n}.
-\]
-Replacing $n$ by $-n$ and $m$ by $-m$ if necessary, we may assume
-\[
-n>0.
-\]
-
-Among all positive denominators of fractions representing $\sqrt{7}$, choose the smallest one. This is possible by the well-ordering principle, since the set of such positive denominators is a nonempty subset of the positive integers. Thus choose integers $p$ and $q$ such that
-\[
-q>0,\qquad \sqrt{7}=\frac{p}{q},
-\]
-and such that $q$ is as small as possible among all positive denominators representing $\sqrt{7}$.
-
 Squaring both sides gives
 \[
 7=\frac{p^2}{q^2}.
 \]
-Multiplying by $q^2$ gives
+Since $q\neq 0$, multiplying both sides by $q^2$ yields
 \[
 p^2=7q^2.
 \]
 Therefore
 \[
-7 \mid p^2.
+7\mid p^2.
 \]
-By the lemma, applied to the integer $p$, we get
+
+We claim that for every integer $n$, if $7\mid n^2$, then $7\mid n$. To prove this, note that every integer is congruent modulo $7$ to exactly one of
 \[
-7 \mid p.
+0,1,2,3,4,5,6.
 \]
-Hence there exists an integer $k$ such that
+The corresponding squares modulo $7$ are
+\[
+0^2\equiv 0,\quad
+1^2\equiv 1,\quad
+2^2\equiv 4,\quad
+3^2\equiv 2,\quad
+4^2\equiv 2,\quad
+5^2\equiv 4,\quad
+6^2\equiv 1
+\pmod{7}.
+\]
+Thus the only residue class whose square is congruent to $0$ modulo $7$ is the residue class $0$. Hence, if
+\[
+n^2\equiv 0\pmod{7},
+\]
+then
+\[
+n\equiv 0\pmod{7},
+\]
+which means exactly that $7\mid n$.
+
+Applying this claim to $p$, we get
+\[
+7\mid p.
+\]
+So there exists an integer $k$ such that
 \[
 p=7k.
 \]
-Substituting this into $p^2=7q^2$, we obtain
+Substituting this into $p^2=7q^2$ gives
 \[
-(7k)^2=7q^2.
+(7k)^2=7q^2,
 \]
-Thus
+so
 \[
 49k^2=7q^2.
 \]
-Dividing by $7$ gives
+Dividing both sides by $7$ gives
 \[
 7k^2=q^2.
 \]
 Therefore
 \[
-7 \mid q^2.
+7\mid q^2.
 \]
-By the lemma, applied now to the integer $q$, we get
+Applying the same claim to $q$, we obtain
 \[
-7 \mid q.
-\]
-Hence there exists an integer $\ell$ such that
-\[
-q=7\ell.
-\]
-Since $q>0$, we have $\ell>0$. Also, because $q=7\ell$, we have
-\[
-\ell=\frac{q}{7}<q.
+7\mid q.
 \]
 
-Now
+Thus $7$ divides both $p$ and $q$, so $p$ and $q$ have a common positive divisor greater than $1$. This contradicts
 \[
-\sqrt{7}=\frac{p}{q}=\frac{7k}{7\ell}=\frac{k}{\ell}.
+\gcd(p,q)=1.
 \]
-This represents $\sqrt{7}$ with positive denominator $\ell$, and
-\[
-0<\ell<q.
-\]
-This contradicts the choice of $q$ as the smallest positive denominator of any fraction representing $\sqrt{7}$.
-
-Therefore our assumption that $\sqrt{7}$ is rational was false. Hence
-\[
-\sqrt{7}
-\]
-is irrational. 
+Therefore our assumption that $\sqrt{7}$ is rational must be false. Hence $\sqrt{7}$ is irrational.
+\end{proof}
 ```
