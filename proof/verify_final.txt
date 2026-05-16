@@ -1,50 +1,125 @@
-PESSIMISTIC MODE CONSOLIDATED VERIFICATION REPORT
-==================================================
-Problem:  /data/projects/ZArcczxEFllfDg/DWuEVz2CAW_vrg/proof/problem.tex
-Solution: /data/projects/ZArcczxEFllfDg/DWuEVz2CAW_vrg/proof/section_1_irrationality.tex
-Mode:     pessimistic (3 independent verifier runs)
-Date:     2026-05-15
+CONSOLIDATED BUG REPORT — PESSIMISTIC MODE
+Problem:  /data/projects/ZArcczxEFllfDg/Z11mkStadKy_gg/proof/problem.tex
+Solution: /data/projects/ZArcczxEFllfDg/Z11mkStadKy_gg/proof/section_1_irrational.tex
+Verifier runs: 3
+Verdict: ISSUES_FOUND (runs 1 and 3 flagged issues; run 2 returned CLEAN)
 
-VERDICT: CLEAN
+NOTE: In pessimistic mode, ANY run flagging issues is sufficient to yield ISSUES_FOUND.
+      Run 2 returning "The solution is correct." does NOT override runs 1 and 3.
 
-All three verifier runs independently returned no critical errors and no justification gaps.
-Under pessimistic rules, ALL runs must be clean for a CLEAN verdict — that condition is met.
+===========================================================================
+ISSUES — deduplicated, with runs that raised each issue
+===========================================================================
 
-----------------------------------------------------------------------
-PER-RUN SUMMARIES
-----------------------------------------------------------------------
+ISSUE 1 [runs 1, 3]
+  Anchor:   Lemma lem:divisibility
+  Location: "Then n^2 ≡ r^2 (mod 7)."
+  Gap:      The proof does not explicitly justify that n = 7q + r implies
+            n^2 ≡ r^2 (mod 7). This requires either (a) citing compatibility of
+            congruence with squaring, or (b) explicitly expanding n^2 - r^2 =
+            (7q+r)^2 - r^2 = 7(7q^2 + 2qr) to show 7 | n^2 - r^2. Neither is
+            present in the proof.
 
-Run 1 (/data/projects/ZArcczxEFllfDg/DWuEVz2CAW_vrg/proof/verify_irrationality_run1.txt):
-  Verdict: CLEAN
-  Issues flagged: none
-  Verifier output: "The solution is correct."
+ISSUE 2 [run 3 only]
+  Anchor:   Lemma lem:divisibility
+  Location: "Therefore, if 7 | n^2 then r = 0"
+  Gap:      The chain from 7 | n^2 → n^2 ≡ 0 (mod 7) → r^2 ≡ 0 (mod 7) →
+            r = 0 via the residue table is not explicitly laid out. Each arrow
+            is an unstated inference.
 
-Run 2 (/data/projects/ZArcczxEFllfDg/DWuEVz2CAW_vrg/proof/verify_irrationality_run2.txt):
-  Verdict: CLEAN
-  Issues flagged: none
-  Verifier output: "The solution is correct."
+ISSUE 3 [runs 1, 3]
+  Anchor:   Theorem thm:sqrt7
+  Location: "We may assume n > 0."
+  Gap:      The proof does not justify the sign-reduction step. If the
+            denominator n in the rational representation m/n could be negative,
+            the proof must explain that replacing (m, n) with (-m, -n) leaves
+            the fraction unchanged. This substitution is silent.
 
-Run 3 (/data/projects/ZArcczxEFllfDg/DWuEVz2CAW_vrg/proof/verify_irrationality_run3.txt):
-  Verdict: CLEAN
-  Issues flagged: none
-  Verifier output: "The solution is correct. No Critical Errors or Justification Gaps found."
+ISSUE 4 [run 3 only]
+  Anchor:   Theorem thm:sqrt7
+  Location: "Then sqrt(7) = ga/gb = a/b."
+  Gap:      The cancellation of g requires g ≠ 0. The proof does not explicitly
+            state that gcd(m, n) is positive (or even nonzero) before performing
+            the division by g.
 
-----------------------------------------------------------------------
-CONSOLIDATED ISSUE LIST
-----------------------------------------------------------------------
-(none — no issues were flagged by any run)
+ISSUE 5 [run 3 only]
+  Anchor:   Theorem thm:sqrt7
+  Location: "Squaring and clearing denominators gives a^2 = 7b^2."
+  Gap:      Several sub-steps are compressed without justification: (a) squaring
+            preserves equality; (b) (sqrt(7))^2 = 7 is used but not cited; (c)
+            clearing denominators requires b ≠ 0, which is not explicitly
+            asserted at this point.
 
-----------------------------------------------------------------------
-APPENDIX A — Full output, Run 1
-----------------------------------------------------------------------
+===========================================================================
+SUMMARY TABLE
+===========================================================================
+
+  Issue | Run 1 | Run 2 | Run 3
+  ------|-------|-------|------
+    1   |  YES  |  no   |  YES
+    2   |  no   |  no   |  YES
+    3   |  YES  |  no   |  YES
+    4   |  no   |  no   |  YES
+    5   |  no   |  no   |  YES
+
+Total distinct issues: 5
+Most critical: ISSUE 1 — the congruence-preservation step in the divisibility
+               lemma is the load-bearing step of the whole proof; its missing
+               justification undermines every subsequent appeal to the lemma.
+
+===========================================================================
+APPENDIX A — Full output of Run 1
+===========================================================================
+
+Anchor: Lemma lem:divisibility
+Location: "Then \(n^2 \equiv r^2 \pmod{7}\)."
+Description: Justification Gap: The proof does not explicitly justify why
+\(n=7q+r\) implies \(n^2 \equiv r^2 \pmod 7\). This relies on compatibility of
+congruence with squaring, or on an explicit expansion showing \(n^2-r^2\) is
+divisible by \(7\), neither of which is stated.
+
+Anchor: Theorem thm:sqrt7
+Location: "We may assume \(n > 0\)."
+Description: Justification Gap: The proof does not justify the reduction from
+an arbitrary nonzero denominator \(n\) to a positive denominator. This requires
+explaining that if \(n<0\), one may replace \(m,n\) by \(-m,-n\) without
+changing the fraction.
+
+===========================================================================
+APPENDIX B — Full output of Run 2
+===========================================================================
+
 The solution is correct.
 
-----------------------------------------------------------------------
-APPENDIX B — Full output, Run 2
-----------------------------------------------------------------------
-The solution is correct.
+===========================================================================
+APPENDIX C — Full output of Run 3
+===========================================================================
 
-----------------------------------------------------------------------
-APPENDIX C — Full output, Run 3
-----------------------------------------------------------------------
-The solution is correct. No Critical Errors or Justification Gaps found.
+Anchor: Lemma lem:divisibility
+Location: "Then $n^2 \equiv r^2 \pmod{7}$."
+Description: Justification Gap: This uses the unstated property that congruence
+is preserved under squaring, or equivalently that $n=7q+r$ implies $n^2-r^2$
+is divisible by $7$. That property is not explicitly stated or derived.
+
+Anchor: Lemma lem:divisibility
+Location: "Therefore, if $7 \mid n^2$ then $r = 0$"
+Description: Justification Gap: The proof does not explicitly justify the chain
+from $7\mid n^2$ to $n^2\equiv 0\pmod 7$, then to $r^2\equiv 0\pmod 7$, and
+finally to $r=0$ using the residue table.
+
+Anchor: Theorem thm:sqrt7
+Location: "We may assume $n > 0$."
+Description: Justification Gap: The proof does not justify why the denominator
+in the rational representation may be assumed positive.
+
+Anchor: Theorem thm:sqrt7
+Location: "Then $\sqrt{7} = ga/gb = a/b$."
+Description: Justification Gap: This cancellation requires $g\neq 0$. The proof
+does not explicitly establish that $\gcd(m,n)$ is positive or nonzero before
+dividing by $g$.
+
+Anchor: Theorem thm:sqrt7
+Location: "Squaring and clearing denominators gives $a^2 = 7b^2$."
+Description: Justification Gap: The proof compresses several steps without
+explicitly justifying them: that squaring preserves the equality, that
+$(\sqrt 7)^2=7$, and that clearing denominators is valid using $b\neq 0$.

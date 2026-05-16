@@ -1,130 +1,71 @@
-Here is an improved solution. The gap identified in the bug report is fixed by proving the “lowest terms” step as a separate lemma.
+**Claim.** \(\sqrt{7}\) is irrational.
+
+**Proof.** We prove the claim by contradiction.
+
+First, we record the following elementary fact.
+
+**Lemma.** If \(n\in \mathbb Z\) and \(7\mid n^2\), then \(7\mid n\).
+
+**Proof of lemma.** By the division algorithm, every integer \(n\) can be written as
 
 \[
-\text{For integers } m,n,\text{ write } m\mid n \text{ to mean that } n=mk \text{ for some } k\in\mathbb Z.
+n=7q+r
 \]
 
-**Lemma 1.** If \(n\in\mathbb Z\) and \(7\mid n^2\), then \(7\mid n\).
-
-**Proof.** By the division algorithm, since \(7>0\), there exist integers \(a\) and \(r\) such that
+for some \(q\in \mathbb Z\) and some \(r\in \{0,1,2,3,4,5,6\}\). Then
 
 \[
-n=7a+r
+n^2 \equiv r^2 \pmod 7.
 \]
 
-with
+Checking the possible residues,
 
 \[
-r\in\{0,1,2,3,4,5,6\}.
+0^2\equiv 0,\quad 1^2\equiv 1,\quad 2^2\equiv 4,\quad 3^2\equiv 2,
+\]
+\[
+4^2\equiv 2,\quad 5^2\equiv 4,\quad 6^2\equiv 1 \pmod 7.
 \]
 
-Then
+Thus \(r^2\equiv 0\pmod 7\) only when \(r=0\). Therefore, if \(7\mid n^2\), then \(r=0\), so \(n=7q\), and hence \(7\mid n\). \(\square\)
+
+Now assume, for contradiction, that \(\sqrt{7}\) is rational. By definition of rationality, there exist integers \(m,n\) with \(n\neq 0\) such that
 
 \[
-n^2=(7a+r)^2=49a^2+14ar+r^2.
+\sqrt{7}=\frac{m}{n}.
 \]
 
-Hence
+We may assume \(n>0\) by replacing both \(m\) and \(n\) by \(-m\) and \(-n\) if necessary.
+
+Let
 
 \[
-n^2-r^2=49a^2+14ar=7(7a^2+2ar),
+g=\gcd(m,n).
 \]
 
-so \(7\mid(n^2-r^2)\). Therefore, if \(7\mid n^2\), then \(7\mid r^2\).
-
-Now check the possible values of \(r\):
+Since \(g\mid m\) and \(g\mid n\), there exist integers \(a,b\) such that
 
 \[
-\begin{array}{c|ccccccc}
-r & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
-\hline
-r^2 \bmod 7 & 0 & 1 & 4 & 2 & 2 & 4 & 1
-\end{array}
+m=ga,\qquad n=gb.
 \]
 
-The only case in which \(7\mid r^2\) is \(r=0\). Thus \(r=0\), so
+Then \(b\neq 0\), and
 
 \[
-n=7a.
+\sqrt{7}=\frac{m}{n}=\frac{ga}{gb}=\frac{a}{b}.
 \]
 
-Therefore \(7\mid n\). \(\square\)
-
----
-
-**Lemma 2.** If \(p,q\in\mathbb Z\) and \(q\neq 0\), then there exist integers \(a,b\) such that
+Moreover, \(\gcd(a,b)=1\). Indeed, if some positive integer \(d\) divides both \(a\) and \(b\), then \(dg\) divides both \(m=ga\) and \(n=gb\). Since \(g=\gcd(m,n)\) is the greatest positive common divisor of \(m\) and \(n\), we must have
 
 \[
-\frac{p}{q}=\frac{a}{b}, \qquad b\neq 0,
+dg\le g.
 \]
 
-and \(a\) and \(b\) have no positive common divisor greater than \(1\).
-
-**Proof.** Let
+Because \(g>0\), this implies \(d\le 1\). Hence \(d=1\), so \(\gcd(a,b)=1\). Thus we have written \(\sqrt{7}\) in lowest terms:
 
 \[
-D=\{d\in\mathbb Z_{>0}: d\mid p \text{ and } d\mid q\}.
+\sqrt{7}=\frac{a}{b},\qquad \gcd(a,b)=1.
 \]
-
-The set \(D\) is nonempty because \(1\in D\). Also, if \(d\in D\), then \(d\mid q\), so \(q=dt\) for some nonzero integer \(t\). Hence
-
-\[
-|q|=d|t|\ge d,
-\]
-
-so \(d\le |q|\). Therefore
-
-\[
-D\subseteq \{1,2,\dots,|q|\},
-\]
-
-which is a finite set. Thus \(D\) has a largest element; call it \(d\).
-
-Since \(d\mid p\) and \(d\mid q\), there exist integers \(a,b\) such that
-
-\[
-p=da,\qquad q=db.
-\]
-
-Because \(q\neq 0\) and \(d>0\), we have \(b\neq 0\). Also,
-
-\[
-\frac{p}{q}=\frac{da}{db}=\frac{a}{b}.
-\]
-
-We claim that \(a\) and \(b\) have no positive common divisor greater than \(1\). Suppose, for contradiction, that some integer \(c>1\) divides both \(a\) and \(b\). Then \(a=ca_1\) and \(b=cb_1\) for some integers \(a_1,b_1\). Hence
-
-\[
-p=da=dc a_1,
-\qquad
-q=db=dc b_1.
-\]
-
-Thus \(dc\mid p\) and \(dc\mid q\), so \(dc\in D\). But \(c>1\) and \(d>0\), so
-
-\[
-dc>d,
-\]
-
-contradicting the choice of \(d\) as the largest element of \(D\). Therefore \(a\) and \(b\) have no positive common divisor greater than \(1\). \(\square\)
-
----
-
-**Theorem.** The real number \(\sqrt{7}\) is irrational.
-
-**Proof.** Suppose, for contradiction, that \(\sqrt{7}\) is not irrational. By the given definition, this means that there exist integers \(p,q\) with \(q\neq 0\) such that
-
-\[
-\sqrt{7}=\frac{p}{q}.
-\]
-
-By Lemma 2, we may choose integers \(a,b\) such that
-
-\[
-\sqrt{7}=\frac{a}{b}, \qquad b\neq 0,
-\]
-
-and \(a\) and \(b\) have no positive common divisor greater than \(1\).
 
 Squaring both sides gives
 
@@ -132,48 +73,48 @@ Squaring both sides gives
 7=\frac{a^2}{b^2}.
 \]
 
-Since \(b\neq 0\), we may multiply by \(b^2\), obtaining
+Multiplying by \(b^2\), we obtain
 
 \[
-7b^2=a^2.
+a^2=7b^2.
 \]
 
-Thus \(7\mid a^2\). By Lemma 1, it follows that
-
-\[
-7\mid a.
-\]
-
-Therefore there exists an integer \(k\) such that
+Therefore \(7\mid a^2\). By the lemma, \(7\mid a\). Hence there exists \(k\in \mathbb Z\) such that
 
 \[
 a=7k.
 \]
 
-Substituting this into \(7b^2=a^2\), we get
+Substituting into \(a^2=7b^2\), we get
 
 \[
-7b^2=(7k)^2=49k^2.
+(7k)^2=7b^2.
 \]
 
-Dividing both sides by \(7\), we obtain
+So
 
 \[
-b^2=7k^2.
+49k^2=7b^2.
 \]
 
-Hence \(7\mid b^2\). By Lemma 1 again,
+Dividing by \(7\), we obtain
 
 \[
-7\mid b.
+7k^2=b^2.
 \]
 
-So \(7\mid a\) and \(7\mid b\). Therefore the positive integer \(7>1\) is a common divisor of \(a\) and \(b\), contradicting the fact that \(a\) and \(b\) have no positive common divisor greater than \(1\).
+Thus \(7\mid b^2\). By the lemma again, \(7\mid b\).
 
-This contradiction shows that no integers \(p,q\) with \(q\neq 0\) satisfy
+We have shown that \(7\mid a\) and \(7\mid b\). Therefore \(7\) is a positive common divisor of \(a\) and \(b\). Since \(7>1\), this implies
 
 \[
-\sqrt{7}=\frac{p}{q}.
+\gcd(a,b)\ge 7,
 \]
 
-Therefore, by the given definition, \(\sqrt{7}\) is irrational. \(\square\)
+contradicting the earlier conclusion that \(\gcd(a,b)=1\).
+
+Hence our assumption that \(\sqrt{7}\) is rational must be false. Therefore,
+
+\[
+\boxed{\sqrt{7}\text{ is irrational}.}
+\]

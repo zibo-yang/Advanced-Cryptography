@@ -1,123 +1,55 @@
-```latex
-\documentclass{article}
-\usepackage{amsmath,amssymb,amsthm,xcolor}
-\input{_macros}
+**Claim:** $\sqrt{7}$ is irrational.
 
-\newtheorem*{theorem}{Theorem}
-\newtheorem*{lemma}{Lemma}
+**Proof.** I will use **Euclid’s lemma**: if $p$ is prime and $p \mid xy$, then $p \mid x$ or $p \mid y$. In particular, if $p \mid x^2$, then $p \mid x$. ([proofwiki.org](https://proofwiki.org/wiki/Euclid%27s_Lemma_for_Prime_Divisors?utm_source=openai))
 
-\begin{document}
+Assume, for contradiction, that $\sqrt{7}$ is rational. Then there exist integers $a$ and $b$ with $b \neq 0$ and $\gcd(a,b)=1$ such that
 
-\section*{Problem}
+\[
+\sqrt{7}=\frac{a}{b}.
+\]
 
-Prove that $\sqrt{7}$ is irrational.
+Squaring both sides gives
 
-\bigskip
+\[
+7=\frac{a^2}{b^2},
+\]
 
-\noindent\textbf{Definition.} A real number $r$ is \emph{irrational} if it cannot be written as $\frac{p}{q}$ where $p, q$ are integers and $q \neq 0$.
+so
 
-\bigskip
+\[
+a^2=7b^2.
+\]
 
-\begin{lemma}
-If $n$ is an integer and $7 \mid n^2$, then $7 \mid n$.
-\end{lemma}
+Thus $7 \mid a^2$. Since $7$ is prime, Euclid’s lemma implies that $7 \mid a$. Therefore, for some integer $k$,
 
-\begin{proof}
-Let $n$ be an integer. By the division algorithm, there exist integers $a$ and $r$ such that
 \[
-n = 7a + r
+a=7k.
 \]
-and
-\[
-r \in \{0,1,2,3,4,5,6\}.
-\]
-We compute $n^2$ modulo $7$. Since $n = 7a+r$, we have
-\[
-n^2 = (7a+r)^2 = 49a^2 + 14ar + r^2.
-\]
-The terms $49a^2$ and $14ar$ are divisible by $7$, so $n^2$ is divisible by $7$ if and only if $r^2$ is divisible by $7$.
 
-Now we check the possible values of $r$:
-\[
-0^2 = 0,\qquad
-1^2 = 1,\qquad
-2^2 = 4,\qquad
-3^2 = 9,\qquad
-4^2 = 16,\qquad
-5^2 = 25,\qquad
-6^2 = 36.
-\]
-Reducing these values modulo $7$, we get
-\[
-0,1,4,2,2,4,1.
-\]
-Among these residues, the only one congruent to $0$ modulo $7$ occurs when $r=0$.
+Substitute this into $a^2=7b^2$:
 
-Therefore, if $7 \mid n^2$, then $r=0$. Hence $n=7a$, so $7 \mid n$.
-\end{proof}
+\[
+(7k)^2=7b^2.
+\]
 
-\begin{theorem}
-The real number $\sqrt{7}$ is irrational.
-\end{theorem}
-
-\begin{proof}
-We argue by contradiction. Suppose that $\sqrt{7}$ is rational. By the definition of rationality, there exist integers $p$ and $q$ such that
-\[
-\sqrt{7} = \frac{p}{q}
-\]
-and
-\[
-q \neq 0.
-\]
-Furthermore, we may choose such integers $p$ and $q$ with
-\[
-\gcd(p,q)=1,
-\]
-because any common divisor of a numerator and denominator may be divided out to put the fraction in lowest terms.
-
-Starting from
-\[
-\sqrt{7} = \frac{p}{q},
-\]
-we square both sides to obtain
-\[
-7 = \frac{p^2}{q^2}.
-\]
-Since $q \neq 0$, we have $q^2 \neq 0$, so multiplying both sides by $q^2$ gives
-\[
-7q^2 = p^2.
-\]
-Thus $7 \mid p^2$. By the lemma, this implies that
-\[
-7 \mid p.
-\]
-Therefore there exists an integer $k$ such that
-\[
-p = 7k.
-\]
-Substituting $p=7k$ into the equation $7q^2=p^2$, we get
-\[
-7q^2 = (7k)^2 = 49k^2.
-\]
-Dividing both sides by $7$, we obtain
-\[
-q^2 = 7k^2.
-\]
 Hence
+
 \[
-7 \mid q^2.
-\]
-By the lemma again, this implies that
-\[
-7 \mid q.
+49k^2=7b^2.
 \]
 
-We have shown that $7 \mid p$ and $7 \mid q$. Therefore $p$ and $q$ have a common divisor greater than $1$, namely $7$. This contradicts the assumption that
-\[
-\gcd(p,q)=1.
-\]
-The contradiction arose from the assumption that $\sqrt{7}$ is rational. Therefore $\sqrt{7}$ is irrational.
-\end{proof}
+Dividing both sides by $7$ gives
 
-\end{document}
-```
+\[
+7k^2=b^2.
+\]
+
+So $7 \mid b^2$. Again, since $7$ is prime, Euclid’s lemma implies that $7 \mid b$.
+
+We have shown that $7 \mid a$ and $7 \mid b$, contradicting $\gcd(a,b)=1$. Therefore the assumption that $\sqrt{7}$ is rational is false.
+
+Hence,
+
+\[
+\boxed{\sqrt{7}\text{ is irrational}.}
+\]

@@ -1,51 +1,78 @@
-Bug Report: section_1_sol_v1.tex
-Problem: Prove sqrt(7) is irrational
-Mode: standard
-Verifier: OpenAI (via api_oai.py)
-Total issues found: 3 (all Justification Gaps)
+CONSOLIDATED BUG REPORT
+Solution: proof/section_1_sol_v1.tex
+Problem:  proof/problem.tex
+Mode:     pessimistic (3 independent verifier runs)
+Verdict:  ISSUES_FOUND
 
-NOTE: The proof_verifier.py script crashed due to a known bug — Python's str.format() is
-incompatible with LaTeX curly braces in the solution (e.g. \pmod{7}, \frac{p}{q}). The
-verifier was executed via a safe direct-replacement workaround. Output is identical in
-content to what the script would have produced.
+All three verifier runs independently flagged at least one justification gap.
+Any single run flagging an issue is sufficient to classify the solution as ISSUES_FOUND.
 
---- ISSUES ---
+=== ISSUES LIST ===
 
-Issue 1
+[Run 1] Justification Gap — Location: initial assumption of coprime representation.
+  The proof asserts the existence of a coprime integer representation (gcd(a,b)=1) from
+  rationality without explicitly stating or justifying the reduced-fraction theorem.
+  Rationality alone gives a/b with b≠0; the additional condition gcd(a,b)=1 requires
+  a separate reduction-to-lowest-terms argument.
+
+[Run 2] Justification Gap — Location: initial assumption of coprime representation.
+  The proof assumes without justification that a rational number can be represented as
+  a fraction of coprime integers. The definition of rationality only gives integers a,b
+  with b≠0; obtaining gcd(a,b)=1 requires an additional lowest-terms argument or theorem,
+  which is not stated.
+
+[Run 3, Issue 1] Justification Gap — Location: initial assumption of coprime representation.
+  The proof assumes without justification that any rational number can be represented as a
+  fraction of integers in lowest terms. The existence of a,b with gcd(a,b)=1 requires an
+  explicitly stated reduction-to-lowest-terms theorem or argument.
+
+[Run 3, Issue 2] Justification Gap — Location: final contradiction step.
+  The contradiction relies on the unstated fact that if an integer greater than 1 divides
+  both a and b, then gcd(a,b)≠1. The proof does not explicitly connect "7∣a and 7∣b" to
+  the claimed contradiction with gcd(a,b)=1.
+
+=== SUMMARY OF DISTINCT ISSUES ===
+
+Issue A (flagged by all 3 runs): The move from "sqrt(7) is rational" to "there exist a,b
+  with gcd(a,b)=1 and sqrt(7)=a/b" is unjustified. The proof silently invokes the
+  fundamental theorem that every rational number has a representation in lowest terms,
+  but never states or proves this reduction step.
+
+Issue B (flagged by run 3 only): The final contradiction step — "7∣a and 7∣b contradicts
+  gcd(a,b)=1" — is stated without justification. The logical connection between a common
+  divisor greater than 1 and the condition gcd(a,b)=1 is assumed but not established.
+
+=== APPENDIX: FULL VERIFIER OUTPUTS ===
+
+--- Run 1 (proof/verify_section_1_v1_run1.txt) ---
 Anchor: global
-Location: "and we may choose such a representation with $\gcd(p,q)=1$."
-Description: Justification Gap — The proof assumes without justification that a rational
-number can always be represented by integers p and q with gcd(p,q)=1. This reduced-form
-existence theorem (every rational has a representation in lowest terms) is required for
-the final contradiction but is never stated or proved.
+Location: "Assume, for contradiction, that sqrt(7) is rational. Then there exist integers
+  a and b with b≠0 and gcd(a,b)=1 such that sqrt(7)=a/b."
+Description: Justification Gap: The proof asserts the existence of a coprime integer
+  representation from rationality without explicitly stating or justifying the
+  reduced-fraction theorem. Rationality alone directly gives a representation as a/b with
+  b≠0; the additional condition gcd(a,b)=1 requires justification under the stated rules.
 
-Issue 2
+--- Run 2 (proof/verify_section_1_v1_run2.txt) ---
 Anchor: global
-Location: "Therefore, the only way for $p^2 \equiv 0 \pmod{7}$ is for $p \equiv 0 \pmod{7}$."
-Description: Justification Gap — The inference from the exhaustive table of squared
-residues to the conclusion relies on two unstated modular-arithmetic facts: (a) every
-integer is congruent modulo 7 to exactly one of 0,1,2,3,4,5,6, and (b) squaring
-preserves congruence classes modulo 7. Neither fact is explicitly justified in the proof.
+Location: "Assume, for contradiction, that sqrt(7) is rational. Then there exist integers
+  a and b with b≠0 and gcd(a,b)=1 such that sqrt(7)=a/b."
+Description: Justification Gap: The proof assumes without justification that a rational
+  number can be represented as a fraction of coprime integers. The definition of rationality
+  only gives some integers a,b with b≠0; obtaining gcd(a,b)=1 requires an additional
+  lowest-terms argument or theorem, which is not stated.
 
-Issue 3
+--- Run 3 (proof/verify_section_1_v1_run3.txt) ---
 Anchor: global
-Location: "Therefore $7 \mid q^2$. By the same argument as before, this implies $7 \mid q$."
-Description: Justification Gap — The earlier residue-table argument was stated specifically
-about p. Applying it to q by appeal to "the same argument as before" is informal and
-incomplete: the proof never establishes the result as a general lemma (e.g., "for any
-integer n, if 7 | n^2 then 7 | n"). Without such a general statement, re-use of the
-argument requires re-verification for q, which the proof omits.
+Location: "Assume, for contradiction, that sqrt(7) is rational. Then there exist integers
+  a and b with b≠0 and gcd(a,b)=1 such that sqrt(7)=a/b."
+Description: Justification Gap: The proof assumes without justification that any rational
+  number can be represented as a fraction of integers in lowest terms. The existence of
+  a,b with gcd(a,b)=1 requires an explicitly stated reduction-to-lowest-terms theorem or
+  argument.
 
---- APPENDIX: Full Verifier Output ---
-
-**Anchor:** global
-**Location:** "and we may choose such a representation with $\gcd(p,q)=1$."
-**Description:** Justification Gap: The proof assumes without justification that a rational number can always be represented by integers $p,q$ with $\gcd(p,q)=1$. This reduced-form existence theorem is required for the final contradiction.
-
-**Anchor:** global
-**Location:** "Therefore, the only way for $p^2 \equiv 0 \pmod{7}$ is for $p \equiv 0 \pmod{7}$."
-**Description:** Justification Gap: The inference from the table of squared residues to the conclusion relies on unstated modular-arithmetic facts: that every integer has one of the listed residues modulo $7$, and that squaring preserves congruence classes modulo $7$. These facts are not explicitly justified.
-
-**Anchor:** global
-**Location:** "Therefore $7 \mid q^2$. By the same argument as before, this implies \[7 \mid q.\]"
-**Description:** Justification Gap: The earlier argument was stated for $p$, not as a general lemma applying to every integer. Applying it to $q$ requires explicitly stating the general result or verifying that the same hypotheses and reasoning apply.
+Anchor: global
+Location: "We have shown that 7∣a and 7∣b, contradicting gcd(a,b)=1."
+Description: Justification Gap: The contradiction relies on the unstated fact that if an
+  integer greater than 1 divides both a and b, then gcd(a,b)≠1. The proof does not
+  explicitly connect 7∣a and 7∣b to the claimed contradiction with gcd(a,b)=1.
