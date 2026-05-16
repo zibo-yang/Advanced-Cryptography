@@ -1,154 +1,83 @@
-\section{Irrationality of \texorpdfstring{$\sqrt{7}$}{sqrt(7)}}
+\section*{Irrationality of $\sqrt{7}$}
 
-\begin{theorem}
-The number $\sqrt{7}$ is irrational.
+\noindent\textbf{Definition.}
+A real number $r$ is \emph{irrational} if there do not exist integers $p, q$ with $q \neq 0$ such that $r = p/q$.
+
+\bigskip
+
+We first record three elementary lemmas that will be used in the proof.
+
+\begin{lemma}[Divisibility of a difference]\label{lem:div-sub}
+If $c, x, y \in \mathbb{Z}$, $c \mid x$, and $c \mid y$, then $c \mid (x - y)$.
+\end{lemma}
+
+\begin{proof}
+Since $c \mid x$ and $c \mid y$, there exist integers $u, v$ such that $x = cu$ and $y = cv$.
+Therefore $x - y = cu - cv = c(u - v)$. Since $u - v \in \mathbb{Z}$, we have $c \mid (x - y)$.
+\end{proof}
+
+\begin{lemma}[Finite maximum]\label{lem:fin-max}
+If $N \in \mathbb{Z}_{>0}$ and $S$ is a nonempty subset of $\{1, 2, \ldots, N\}$, then $S$ has a largest element.
+\end{lemma}
+
+\begin{proof}
+We prove this by induction on $N$.
+
+\textit{Base case.} For $N = 1$, the only nonempty subset of $\{1\}$ is $\{1\}$, which has largest element $1$.
+
+\textit{Inductive step.} Assume the result holds for some $N \geq 1$. Let $S$ be a nonempty subset of $\{1, 2, \ldots, N, N+1\}$. If $N+1 \in S$, then $N+1$ is the largest element of $S$. If $N+1 \notin S$, then $S \subseteq \{1, \ldots, N\}$, so by the induction hypothesis $S$ has a largest element.
+
+By induction, the lemma holds for all $N \in \mathbb{Z}_{>0}$.
+\end{proof}
+
+\begin{lemma}[Lowest-terms reduction]\label{lem:low-terms}
+If $p, q \in \mathbb{Z}$ and $q \neq 0$, then there exist integers $a, b$ with $b \neq 0$ such that $p/q = a/b$ and $a, b$ have no positive common divisor greater than $1$.
+\end{lemma}
+
+\begin{proof}
+Define $D = \{d \in \mathbb{Z}_{>0} : d \mid p \text{ and } d \mid q\}$. Since $1 \mid p$ and $1 \mid q$, we have $1 \in D$, so $D$ is nonempty.
+
+For any $d \in D$, since $d \mid q$ there exists $t \in \mathbb{Z}$ with $q = dt$. Since $q \neq 0$, we have $t \neq 0$, so $|t| \geq 1$. Thus $|q| = d|t| \geq d$, giving $d \leq |q|$. Hence $D \subseteq \{1, 2, \ldots, |q|\}$. By Lemma~\ref{lem:fin-max}, $D$ has a largest element; call it $d$.
+
+Since $d \mid p$ and $d \mid q$, write $p = da$ and $q = db$ for integers $a, b$. Then $b \neq 0$ (since $q \neq 0$) and $p/q = a/b$.
+
+We claim $a$ and $b$ have no positive common divisor greater than $1$. Suppose for contradiction that $c > 1$ with $c \mid a$ and $c \mid b$. Write $a = ca_1$ and $b = cb_1$. Then $p = dca_1$ and $q = dcb_1$, so $dc \mid p$ and $dc \mid q$. Since $d > 0$ and $c > 1$, we have $dc > d$ and $dc \in D$, contradicting the maximality of $d$.
+\end{proof}
+
+\begin{lemma}[Prime divisibility for $7$]\label{lem:prime7}
+For any $n \in \mathbb{Z}$, if $7 \mid n^2$ then $7 \mid n$.
+\end{lemma}
+
+\begin{proof}
+By the division algorithm, write $n = 7a + r$ with $a \in \mathbb{Z}$ and $r \in \{0, 1, 2, 3, 4, 5, 6\}$. Then
+\[
+n^2 = (7a + r)^2 = 49a^2 + 14ar + r^2,
+\]
+so $n^2 - r^2 = 7(7a^2 + 2ar)$, hence $7 \mid (n^2 - r^2)$.
+
+By hypothesis $7 \mid n^2$, so Lemma~\ref{lem:div-sub} gives $7 \mid (n^2 - (n^2 - r^2)) = r^2$.
+
+Checking all residues: $r^2 \in \{0, 1, 4, 9, 16, 25, 36\}$ for $r \in \{0,\ldots,6\}$. Of these, only $r^2 = 0$ is divisible by $7$, so $r = 0$. Therefore $n = 7a$, giving $7 \mid n$.
+\end{proof}
+
+\begin{theorem}\label{thm:sqrt7-irr}
+$\sqrt{7}$ is irrational.
 \end{theorem}
 
 \begin{proof}
-We first prove an elementary divisibility fact.
+Suppose for contradiction that $\sqrt{7}$ is not irrational. Then by definition there exist integers $p, q$ with $q \neq 0$ such that $\sqrt{7} = p/q$.
 
-\medskip
+By Lemma~\ref{lem:low-terms}, we may write $\sqrt{7} = a/b$ where $a, b \in \mathbb{Z}$, $b \neq 0$, and $a$ and $b$ have no positive common divisor greater than $1$.
 
-\noindent
-\textbf{Claim 1.} If $n \in \mathbb{Z}$ and $7 \mid n^2$, then $7 \mid n$.
+Squaring gives $7 = a^2/b^2$, and multiplying both sides by $b^2$ (valid since $b \neq 0$):
+\[
+7b^2 = a^2.
+\]
+Hence $7 \mid a^2$. By Lemma~\ref{lem:prime7}, $7 \mid a$, so $a = 7k$ for some $k \in \mathbb{Z}$.
 
-\smallskip
+Substituting: $7b^2 = (7k)^2 = 49k^2$. Dividing by $7$: $b^2 = 7k^2$, hence $7 \mid b^2$. By Lemma~\ref{lem:prime7} again, $7 \mid b$.
 
-\noindent
-By the division algorithm, applied to the integer $n$ and the positive integer $7$, there exist $k \in \mathbb{Z}$ and
-\[
-r \in \{0,1,2,3,4,5,6\}
-\]
-such that
-\[
-n = 7k+r.
-\]
-Squaring gives
-\[
-n^2 = (7k+r)^2 = 49k^2+14kr+r^2 = 7(7k^2+2kr)+r^2.
-\]
-Now suppose $7 \mid n^2$. Then there exists $t \in \mathbb{Z}$ such that
-\[
-n^2 = 7t.
-\]
-Using the displayed formula for $n^2$, we get
-\[
-r^2
-= n^2 - 7(7k^2+2kr)
-= 7t - 7(7k^2+2kr)
-= 7\bigl(t-7k^2-2kr\bigr).
-\]
-Thus $7 \mid r^2$.
+Thus $7 \mid a$ and $7 \mid b$. Since $7 > 1$, the integer $7$ is a positive common divisor of $a$ and $b$ greater than $1$, contradicting our choice of $a$ and $b$.
 
-But since
-\[
-r \in \{0,1,2,3,4,5,6\},
-\]
-the possible values of $r^2$ are
-\[
-0,1,4,9,16,25,36.
-\]
-Among these, the only number divisible by $7$ is $0$. Therefore $r^2=0$, so $r=0$. Hence
-\[
-n=7k,
-\]
-and therefore $7 \mid n$. This proves Claim 1.
-
-\medskip
-
-We also justify the use of a fraction in lowest terms.
-
-\medskip
-
-\noindent
-\textbf{Claim 2.} If a nonzero rational number $x$ is given, then there exist integers $p$ and $q$ with $q \neq 0$ and $\gcd(p,q)=1$ such that
-\[
-x=\frac{p}{q}.
-\]
-
-\smallskip
-
-\noindent
-Since $x$ is rational, there exist integers $a$ and $b$ with $b \neq 0$ such that
-\[
-x=\frac{a}{b}.
-\]
-Because $x \neq 0$, we also have $a \neq 0$. Let
-\[
-D=\{d \in \mathbb{Z}_{>0} : d \mid a \text{ and } d \mid b\}.
-\]
-The set $D$ is nonempty because $1 \in D$. Also, if $d \in D$, then $d \mid a$, so $d \leq |a|$. Thus $D$ is a nonempty finite set of positive integers, so it has a largest element. Let that largest element be $d$.
-
-Since $d \mid a$ and $d \mid b$, there exist integers $p$ and $q$ such that
-\[
-a=dp
-\qquad\text{and}\qquad
-b=dq.
-\]
-Because $b \neq 0$ and $d \neq 0$, we have $q \neq 0$. Also,
-\[
-\frac{a}{b}=\frac{dp}{dq}=\frac{p}{q}.
-\]
-We now show that $\gcd(p,q)=1$. Suppose $c$ is a positive integer dividing both $p$ and $q$. Then $cd$ divides both $dp=a$ and $dq=b$, so $cd \in D$. Since $d$ was chosen to be the largest element of $D$, we have
-\[
-cd \leq d.
-\]
-Because $d>0$, this implies $c \leq 1$. Since $c$ is positive, $c=1$. Therefore the only positive common divisor of $p$ and $q$ is $1$, so
-\[
-\gcd(p,q)=1.
-\]
-This proves Claim 2.
-
-\medskip
-
-Now suppose, for contradiction, that $\sqrt{7}$ is rational. Since $\sqrt{7}\neq 0$, Claim 2 gives integers $p$ and $q$ with $q \neq 0$ and
-\[
-\gcd(p,q)=1
-\]
-such that
-\[
-\sqrt{7}=\frac{p}{q}.
-\]
-Squaring both sides gives
-\[
-7=\frac{p^2}{q^2}.
-\]
-Since $q \neq 0$, we may multiply both sides by $q^2$ to obtain
-\[
-p^2=7q^2.
-\]
-Therefore $7 \mid p^2$. By Claim 1, it follows that
-\[
-7 \mid p.
-\]
-So there exists $m \in \mathbb{Z}$ such that
-\[
-p=7m.
-\]
-Substituting this into $p^2=7q^2$ gives
-\[
-(7m)^2=7q^2,
-\]
-so
-\[
-49m^2=7q^2.
-\]
-Dividing both sides by $7$ yields
-\[
-7m^2=q^2.
-\]
-Equivalently,
-\[
-q^2=7m^2.
-\]
-Thus $7 \mid q^2$. Applying Claim 1 again, we get
-\[
-7 \mid q.
-\]
-
-Hence $7$ divides both $p$ and $q$. This contradicts the fact that
-\[
-\gcd(p,q)=1.
-\]
-Therefore our assumption that $\sqrt{7}$ is rational must be false. Hence $\sqrt{7}$ is irrational.
+Therefore $\sqrt{7}$ is irrational.
 \end{proof}
