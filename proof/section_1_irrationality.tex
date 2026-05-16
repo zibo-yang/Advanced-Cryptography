@@ -1,0 +1,117 @@
+\begin{theorem}
+The number $\sqrt{7}$ is irrational.
+\end{theorem}
+
+\begin{proof}
+We argue by contradiction. The proof will avoid assuming a reduced fraction
+representation, and we will prove explicitly the divisibility fact that is needed.
+
+First, we prove the following elementary lemma.
+
+\medskip
+
+\noindent\textbf{Lemma.} If $n$ is an integer and $7 \mid n^2$, then $7 \mid n$.
+
+\smallskip
+
+\noindent\textit{Proof of the lemma.}
+By the division algorithm, every integer $n$ can be written as
+\[
+n=7t+r
+\]
+for some integers $t$ and $r$ with
+\[
+r \in \{0,1,2,3,4,5,6\}.
+\]
+Then
+\[
+n^2 \equiv r^2 \pmod 7.
+\]
+The possible values of $r^2$ modulo $7$ are
+\[
+\begin{array}{c|ccccccc}
+r & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\ \hline
+r^2 \bmod 7 & 0 & 1 & 4 & 2 & 2 & 4 & 1
+\end{array}
+\]
+Thus $r^2 \equiv 0 \pmod 7$ only when $r=0$. Therefore, if
+\[
+7 \mid n^2,
+\]
+then $n^2 \equiv 0 \pmod 7$, so $r=0$, and hence
+\[
+n=7t.
+\]
+So $7 \mid n$. This proves the lemma.
+
+\medskip
+
+Now suppose, for contradiction, that $\sqrt{7}$ is rational. Then there exist integers
+$a$ and $b$ with $b \neq 0$ such that
+\[
+\sqrt{7}=\frac{a}{b}.
+\]
+Changing the signs of both $a$ and $b$ if necessary, we may assume $b>0$.
+
+Consider the set
+\[
+S=\left\{ b \in \mathbb{Z}_{>0} : \text{there exists } a \in \mathbb{Z}
+\text{ such that } \sqrt{7}=\frac{a}{b} \right\}.
+\]
+This set is nonempty because $\sqrt{7}$ is assumed rational. By the well-ordering
+principle, $S$ has a least element. Choose $b \in S$ minimal, and choose an integer
+$a$ such that
+\[
+\sqrt{7}=\frac{a}{b}.
+\]
+
+Squaring both sides gives
+\[
+7=\frac{a^2}{b^2}.
+\]
+Since $b \neq 0$, multiplying both sides by $b^2$ gives
+\[
+a^2=7b^2.
+\]
+Therefore
+\[
+7 \mid a^2.
+\]
+By the lemma, $7 \mid a$, so there exists an integer $c$ such that
+\[
+a=7c.
+\]
+Substituting this into $a^2=7b^2$, we get
+\[
+(7c)^2=7b^2.
+\]
+Hence
+\[
+49c^2=7b^2.
+\]
+Dividing both sides by $7$ gives
+\[
+7c^2=b^2.
+\]
+Thus
+\[
+7 \mid b^2.
+\]
+By the lemma again, $7 \mid b$, so there exists an integer $d$ such that
+\[
+b=7d.
+\]
+Since $b>0$, we have $d>0$, and since $7>1$,
+\[
+d=\frac{b}{7}<b.
+\]
+
+Now
+\[
+\sqrt{7}=\frac{a}{b}=\frac{7c}{7d}=\frac{c}{d}.
+\]
+Thus $d \in S$. But $d<b$, contradicting the minimality of $b$ in $S$.
+
+Therefore our assumption that $\sqrt{7}$ is rational was false. Hence
+$\sqrt{7}$ is irrational.
+\end{proof}
